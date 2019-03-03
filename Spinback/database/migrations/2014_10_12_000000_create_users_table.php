@@ -19,7 +19,8 @@ class CreateUsersTable extends Migration
             $table->string('password');
             $table->string('first_name')->default("");
             $table->string('last_name')->default("");
-            $table->integer('department_id')->default(1);
+            $table->integer('user_permission_id')->default(1);
+            $table->foreign('user_permission_id')->references('id')->on('user_permissions');
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();
             $table->rememberToken();
