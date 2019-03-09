@@ -6,10 +6,10 @@ A web system used for management of multiple local departments of a company deal
 
 ## Requirements
 
-- php >=7.1
-- composer
-- mysql
-- node/npm
+-   php >=7.1
+-   composer
+-   mysql
+-   node/npm
 
 All the requirements above are met by [Laragon](https://laragon.org), local development environment software
 
@@ -48,10 +48,22 @@ You can also populate the database with example data
 php artisan db:seed
 ```
 
+Compile assets
+
+```
+npm run dev
+```
+
 ### Startup
 
 For development purposes either use web server provided by [Laragon](https://laragon.org), or built-in one:
 
 ```
 php artisan serve
+```
+
+Watch changes in assets by running:
+
+```
+npm run watch
 ```
