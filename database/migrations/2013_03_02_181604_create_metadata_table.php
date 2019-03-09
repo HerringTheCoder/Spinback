@@ -16,11 +16,11 @@ class CreateMetadataTable extends Migration
         Schema::create('metadata', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('title');
-            $table->integer('artist_id')->unsigned();
+            $table->bigInteger('artist_id')->unsigned();
             $table->foreign('artist_id')->references('id')->on('artists');
             $table->string('genre');
             $table->string('country');
-            $table->integer('release_year')->unsigned();
+            $table->smallInteger('release_year')->unsigned();
             $table->string('format');
             $table->timestamps();
         });

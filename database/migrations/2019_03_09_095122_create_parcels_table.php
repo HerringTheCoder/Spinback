@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateDepartmentsTable extends Migration
+class CreateParcelsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,12 +13,10 @@ class CreateDepartmentsTable extends Migration
      */
     public function up()
     {
-        Schema::create('departments', function (Blueprint $table) {
+        Schema::create('parcels', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('name');
-            $table->string('address');
-            $table->string('city');
-            $table->integer('phone_number');
+            $table->string('tracking_code');
+            $table->boolean('completed');
             $table->timestamps();
         });
     }
@@ -30,6 +28,6 @@ class CreateDepartmentsTable extends Migration
      */
     public function down()
     {
-
+        Schema::dropIfExists('parcels');
     }
 }

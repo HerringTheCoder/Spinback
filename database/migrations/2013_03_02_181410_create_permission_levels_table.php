@@ -27,6 +27,6 @@ class CreatePermissionLevelsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('permission_levels');
+
     }
 }
