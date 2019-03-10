@@ -38,11 +38,11 @@
         </form>
         
         <div class="container">
-            <button class="ui basic button">
+            <button class="ui button">
                 <i class="pl flag"></i> polski
             </button>
             
-            <button class="ui basic button">
+            <button class="ui button">
                 <i class="uk flag"></i> English
             </button>
         </div>
