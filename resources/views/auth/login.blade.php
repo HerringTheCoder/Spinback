@@ -11,7 +11,7 @@
                 <div class="field{{ $errors->has('login') ? ' error' : '' }}">
                     <div class="ui left icon input">
                         <i class="user icon"></i>
-                        <input type="text" name="login" placeholder="Login" value="{{ old('login') }}">
+                        <input type="text" name="login" placeholder="{{ __('auth.labels.login') }}" value="{{ old('login') }}">
                     </div>
                     @if ($errors->has('login'))
                         <div class="ui pointing red basic label">
@@ -23,7 +23,7 @@
                 <div class="field{{ $errors->has('password') ? ' error' : '' }}">
                     <div class="ui left icon input">
                         <i class="key icon"></i>
-                        <input type="password" name="password" placeholder="Password">
+                        <input type="password" name="password" placeholder="{{ __('auth.labels.password') }}">
                     </div>
                     @if ($errors->has('password'))
                         <div class="ui pointing red basic label">
@@ -32,19 +32,23 @@
                     @endif
                 </div>
 
-                <button class="ui fluid large orange submit button" type="submit">Login</button>
+                <button class="ui fluid large orange submit button" type="submit">{{  __('auth.labels.submit') }}</button>
             </div>
 
         </form>
         
         <div class="container">
-            <button class="ui button">
-                <i class="pl flag"></i> polski
-            </button>
+            <a href="{{ route('locale', ['locale' => 'pl']) }}">
+                <button class="ui button">
+                    <i class="pl flag"></i> polski
+                </button>
+            </a>
             
-            <button class="ui button">
-                <i class="uk flag"></i> English
-            </button>
+            <a href="{{ route('locale', ['locale' => 'en']) }}">
+                    <button class="ui button">
+                    <i class="uk flag"></i> English
+                </button>
+            </a>
         </div>
     </div>
 </div>
