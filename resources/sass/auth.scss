@@ -1,0 +1,21 @@
+.ui.grid.auth {
+    width: 100%;
+    min-height: 100vh;
+    margin: 0;
+    background: rgb(240, 240, 240);
+    z-index: 1;
+    position: relative;
+
+    .column {
+        margin: 0.5em;
+        max-width: 500px;
+    }
+
+    .ui.piled.segment {
+        margin: 2em;
+    }
+
+    .logo {
+        max-width: 200px;
+    }
+}
