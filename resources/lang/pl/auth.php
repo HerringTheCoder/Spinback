@@ -14,7 +14,7 @@ return [
      */
 
     'failed' => 'Błędny login lub hasło.',
-    'throttle' => 'Zarejestrowano zbyt wiele nieudanych prób logowania. Spróbuj podownie za :seconds sekund.',
+    'throttle' => 'Zbyt wiele prób logowania. Spróbuj ponownie za :seconds sekund.',
 
     'labels' => [
         'login' => 'Login',
