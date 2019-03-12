@@ -8,3 +8,5 @@ class ShippingRequest extends Model
 {
     //
 }
+
+//TODO: MASS + RELATIONS

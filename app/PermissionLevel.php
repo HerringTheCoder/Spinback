@@ -8,3 +8,5 @@ class PermissionLevel extends Model
 {
     //
 }
+
+//TODO: MASS + RELATIONS

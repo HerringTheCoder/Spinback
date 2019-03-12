@@ -8,3 +8,5 @@ class Metadata extends Model
 {
     //
 }
+
+//TODO: MASS + RELATIONS

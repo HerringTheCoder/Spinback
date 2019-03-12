@@ -8,3 +8,5 @@ class Parcel extends Model
 {
     //
 }
+
+//TODO: MASS + RELATIONS

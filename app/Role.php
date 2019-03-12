@@ -8,3 +8,5 @@ class Role extends Model
 {
     //
 }
+
+//TODO: MASS + RELATIONS
