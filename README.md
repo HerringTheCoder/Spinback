@@ -48,6 +48,11 @@ You can also populate the database with example data
 php artisan db:seed
 ```
 
+If you don't want to populate the whole database, you may need to at least seed default policies 
+```
+php artisan db:seed --class=BouncerSeeder
+``` 
+
 Compile assets
 
 ```
