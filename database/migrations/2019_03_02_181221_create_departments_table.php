@@ -30,6 +30,6 @@ class CreateDepartmentsTable extends Migration
      */
     public function down()
     {
-
+        Schema::dropIfExists('departments');
     }
 }

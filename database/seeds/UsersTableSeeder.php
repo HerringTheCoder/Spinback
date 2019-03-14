@@ -30,6 +30,7 @@ class UsersTableSeeder extends Seeder
             ];
         foreach ($data as $row) {
             $model = User::firstOrNew(["id" => $row["id"]]);
+            Bouncer::assign('user')->to($model);
             $model->fill($row);
             $model->save();
         }

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\User;
 use Illuminate\Http\Request;
+use Bouncer;
 
 class UserController extends Controller
 {
@@ -47,6 +48,7 @@ class UserController extends Controller
     public function show(User $user)
     {
         dd($user);
+
     }
 
     /**

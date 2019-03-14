@@ -14,9 +14,4 @@ class Department extends Model
         return $this->hasMany('App\ShippingRequest');
     }
 
-    public function roles()
-    {
-        return $this->hasMany('App\Role');
-    }
-
 }
