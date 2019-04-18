@@ -2,6 +2,7 @@
 
 use Illuminate\Database\Seeder;
 use App\User;
+use App\Department;
 class BouncerSeeder extends Seeder
 {
     /**
@@ -12,9 +13,15 @@ class BouncerSeeder extends Seeder
     public function run()
     {
         Bouncer::allow('admin')->everything();
-        Bouncer::allow('manager')->toManage(User::class);
-        Bouncer::forbid('user')->to('destroy', User::class);
-        Bouncer::forbid('banned')->everything();
+
+        Bouncer::allow('manager')->everything();
+        Bouncer::forbid('manager')->toManage(Department::class);
+
+        Bouncer::allow('salesman')->everything();
+        Bouncer::forbid('salesman')->toManage(User::class);
+        Bouncer::forbid('salesman')->toManage(Department::class);
+        Bouncer::forbid('salesman')->to('destroy', Transaction::class);
+        Bouncer::forbid('deactivated')->everything();
 
     }
 }

@@ -6,9 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Parcel extends Model
 {
-    protected $fillable = [
-        'tracking_code', 'completed'
-    ];
+    protected $guarded = ['id', 'created_at', 'updated_at'];
 
     public function requests()
     {

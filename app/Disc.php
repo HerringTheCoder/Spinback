@@ -17,7 +17,7 @@ class Disc extends Model
 
     public function departments()
     {
-        $this->belongsTo('App\Metadata');
+        $this->belongsTo('App\Department');
     }
 
     public function requests()
