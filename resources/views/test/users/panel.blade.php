@@ -1,5 +1,15 @@
 @extends('layouts.app')
 @section('content')
+    <div class="ui message">Logged as: {{Auth::User()}}</div>
+    <a href="{{ route('logout') }}"
+       onclick="event.preventDefault();
+                                                     document.getElementById('logout-form').submit();">
+        {{ __('Logout') }}
+    </a>
+    <form id="logout-form" action="{{ route('logout') }}" method="POST"
+          style="display: none;">
+        @csrf
+    </form>
     @isset($message)
         <div class="ui warning message">
             <i class="close link icon" onclick="window.location.reload()"></i>

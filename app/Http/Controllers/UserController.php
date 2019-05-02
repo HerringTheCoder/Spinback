@@ -3,14 +3,15 @@
 namespace App\Http\Controllers;
 
 use App\User;
+use App\Services\UserService;
 use Illuminate\Http\Request;
 use Bouncer;
 
 class UserController extends Controller
 {
-
-    public function __construct()
+    public function __construct(UserService $user)
     {
+        $this->user = $user;
         $this->authorizeResource(User::class);
         $this->middleware('auth');
 
@@ -22,13 +23,8 @@ class UserController extends Controller
      */
     public function index()
     {
-        $users = User::All();
-        if(session('message')) {
-            $message = session('message');
-        }
-            else {
-                $message = NULL;
-            }
+        $users=$this->user->index();
+       $message = session('message');
         return view('test.users.panel')->with('users', $users)->with('message', $message);
     }
 
@@ -97,13 +93,7 @@ class UserController extends Controller
      */
     public function destroy(User $user)
     {
-        if($user) {
-            $user->delete();
-            session()->flash('message','User deleted successfully');
-        }
-        else{
-            session()->flash('message','User not found');
-        }
+        $this->user->destroy($user);
         return redirect()->action('UserController@index');
     }
 }
