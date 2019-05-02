@@ -40,7 +40,7 @@
         <div class="container">
             <a href="{{ route('locale', ['locale' => 'pl']) }}">
                 <button class="ui button">
-                    <i class="pl flag"></i> polski
+                    <i class="pl flag"></i> Polski
                 </button>
             </a>
             

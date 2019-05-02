@@ -16,7 +16,6 @@ Route::get('/', function () {
 });
 
 Auth::routes();
-
 Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/lang/{locale}', 'LocalizationController@locale')->name('locale');
 
@@ -32,3 +31,4 @@ Route::resources([
     'shipping_requests' => 'ShippingRequestController',
     'users' => 'UserController'
 ]);
+

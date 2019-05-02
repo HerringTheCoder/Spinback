@@ -8,14 +8,28 @@ use Bouncer;
 
 class UserController extends Controller
 {
+
+    public function __construct()
+    {
+        $this->authorizeResource(User::class);
+        $this->middleware('auth');
+
+    }
     /**
      * Display a listing of the resource.
-     *
+     * @param $successMsg
      * @return \Illuminate\Http\Response
      */
     public function index()
     {
-        //
+        $users = User::All();
+        if(session('message')) {
+            $message = session('message');
+        }
+            else {
+                $message = NULL;
+            }
+        return view('test.users.panel')->with('users', $users)->with('message', $message);
     }
 
     /**
@@ -79,9 +93,17 @@ class UserController extends Controller
      *
      * @param  \App\User  $user
      * @return \Illuminate\Http\Response
+     * @throws
      */
     public function destroy(User $user)
     {
-        //
+        if($user) {
+            $user->delete();
+            session()->flash('message','User deleted successfully');
+        }
+        else{
+            session()->flash('message','User not found');
+        }
+        return redirect()->action('UserController@index');
     }
 }
