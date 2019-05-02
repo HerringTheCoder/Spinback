@@ -13,10 +13,8 @@ class BouncerSeeder extends Seeder
     public function run()
     {
         Bouncer::allow('admin')->everything();
-
         Bouncer::allow('manager')->everything();
         Bouncer::forbid('manager')->toManage(Department::class);
-
         Bouncer::allow('salesman')->everything();
         Bouncer::forbid('salesman')->toManage(User::class);
         Bouncer::forbid('salesman')->toManage(Department::class);
