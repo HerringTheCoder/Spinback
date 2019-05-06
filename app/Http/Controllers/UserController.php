@@ -35,7 +35,7 @@ class UserController extends Controller
      */
     public function create()
     {
-        //
+
     }
 
     /**
@@ -57,7 +57,7 @@ class UserController extends Controller
      */
     public function show(User $user)
     {
-        dd($user);
+        return view('test.users.profile')->with('user', $user);
 
     }
 
@@ -69,7 +69,7 @@ class UserController extends Controller
      */
     public function edit(User $user)
     {
-        //
+        //return view('users.edit');
     }
 
     /**
@@ -81,7 +81,8 @@ class UserController extends Controller
      */
     public function update(Request $request, User $user)
     {
-        //
+        $this->user->validateUpdate($request);
+        $this->user->update($user, $request);
     }
 
     /**

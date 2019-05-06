@@ -22,10 +22,18 @@ class UserService
         }
     public function show()
         {
+            //YAGNI or so they said...
         }
-    public function update()
+    public function update(User $user, Request $request) : void
         {
+            $user->login = $request->input('login');
+            $user->email = $request->input('email');
+            $user->password = bcrypt($request->input('password'));
+            $user->save();
+
+            return;
         }
+
     public function destroy(User $user) :void
     {
             if($user && $user->id!==Auth::Id()) {
@@ -40,6 +48,15 @@ class UserService
                 session()->flash('message','User not found');
             }
             return;
+    }
+
+    public function validateUpdate(Request $request)
+    {
+        $request->validate([
+            'login' => 'unique:users',
+            'email' => 'required|email|unique:users',
+            'password' => 'required|min:6|confirmed'
+        ]);
     }
 
 }
