@@ -2,9 +2,9 @@
 @section('content')
     <table class="ui celled table">
         <thead>
-        <tr><th>First name</th>
+        <tr><th>ID</th>
+            <th>First name</th>
             <th>Last name</th>
-            <th>Action</th>
         </tr></thead>
         <tbody>
 <tr>
@@ -13,4 +13,14 @@
 <td data-label="Last name">{{$user->last_name}}</td>
 </tr>
         </tbody>
+    </table>
+        <form method="POST" action="{{route('users.update', $user->id)}}">
+        @csrf
+            @method('PUT')
+           Change first name:<br>
+            <input type="text" name="first_name"><br>
+            Change last name:<br>
+            <input type="text" name="last_name"><br>
+            <input type="submit" value="Submit">
+        </form>
 @endsection

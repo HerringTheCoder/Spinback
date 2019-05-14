@@ -9,6 +9,7 @@
 namespace App\Services;
 use App\User;
 use Auth;
+use Illuminate\Http\Request;
 
 class UserService
 {
@@ -26,11 +27,9 @@ class UserService
         }
     public function update(User $user, Request $request) : void
         {
-            $user->login = $request->input('login');
-            $user->email = $request->input('email');
-            $user->password = bcrypt($request->input('password'));
+            $user->first_name= $request->input('first_name');
+            $user->last_name = $request->input('last_name');
             $user->save();
-
             return;
         }
 
@@ -53,9 +52,8 @@ class UserService
     public function validateUpdate(Request $request)
     {
         $request->validate([
-            'login' => 'unique:users',
-            'email' => 'required|email|unique:users',
-            'password' => 'required|min:6|confirmed'
+            'first_name' => 'min:3|max:20',
+            'last_name' => 'min:3|max:20',
         ]);
     }
 

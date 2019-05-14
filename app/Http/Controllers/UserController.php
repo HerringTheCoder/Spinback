@@ -83,6 +83,7 @@ class UserController extends Controller
     {
         $this->user->validateUpdate($request);
         $this->user->update($user, $request);
+        return back();
     }
 
     /**
