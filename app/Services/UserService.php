@@ -9,6 +9,7 @@
 namespace App\Services;
 use App\User;
 use Auth;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Http\Request;
 
 class UserService
@@ -18,12 +19,23 @@ class UserService
         $users = User::All();
         return $users;
     }
-    public function create()
+    public function validateStore(Request $request) :void
+    {
+        //TODO
+        return;
+    }
+    public function store(Request $request) : void
         {
-        }
-    public function show()
-        {
-            //YAGNI or so they said...
+            $user=new User;
+            $user->login = $request->input('login');
+            $user->password = Hash::make($request->input('password'));
+            $user->first_name=$request->input('first_name');
+            $user->last_name= $request->input('last_name');
+            $user->email=$request->input('email');
+            $user->save();
+            session()->flash('message', 'Account created successfully');
+            return;
+
         }
     public function update(User $user, Request $request) : void
         {

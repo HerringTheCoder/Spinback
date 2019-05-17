@@ -22,17 +22,17 @@
 
     <table class="ui celled table">
         <thead>
-        <tr><th>First name</th>
-            <th>Last name</th>
+        <tr><th>Name</th>
+            <th>Country</th>
             <th>Action</th>
         </tr></thead>
         <tbody>
-@foreach($users as $user)
+@foreach($artists as $artist)
 <tr>
-    <td data-label="First name">{{$user->first_name}}</td>
-    <td data-label="Last name">{{$user->last_name}}</td>
+    <td data-label="name">{{$artist->name}}</td>
+    <td data-label="country">{{$artist->country}}</td>
     <td data-label="Action">
-        <form method="POST" action="{{route('users.destroy', $user->id)}}">
+        <form method="POST" action="{{route('artists.destroy', $artist->id)}}">
             @csrf
             @method('DELETE')
             <button class="negative ui button" type="submit">Delete</button>
@@ -41,4 +41,5 @@
 </tr>
 @endforeach
         </tbody>
+    </table>
 @endsection

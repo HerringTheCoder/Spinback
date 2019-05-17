@@ -3,6 +3,7 @@
 use Illuminate\Database\Seeder;
 use App\User;
 use App\Department;
+use App\Transaction;
 class BouncerSeeder extends Seeder
 {
     /**

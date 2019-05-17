@@ -35,7 +35,7 @@ class UserController extends Controller
      */
     public function create()
     {
-
+        return view('test.users.create');
     }
 
     /**
@@ -46,7 +46,9 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $this->user->validateStore($request);
+        $this->user->store($request);
+        return redirect()->action('UserController@index');
     }
 
     /**
