@@ -12,17 +12,17 @@ class Disc extends Model
 
     public function metadata()
     {
-        $this->belongsTo('App\Metadata');
+       return $this->belongsTo('App\Metadata');
     }
 
     public function departments()
     {
-        $this->belongsTo('App\Department');
+        return $this->belongsTo('App\Department');
     }
 
     public function requests()
     {
-        $this->hasOne('App\ShippingRequest');
+        return $this->hasOne('App\ShippingRequest');
     }
 
 

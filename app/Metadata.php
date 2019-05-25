@@ -12,12 +12,12 @@ class Metadata extends Model
 
     public function artist()
     {
-        $this->belongsTo('App\Artist');
+        return $this->belongsTo('App\Artist', 'artist_id');
     }
 
     public function discs()
     {
-        $this->hasMany('App\Disc');
+        return $this->hasMany('App\Disc');
     }
 }
 

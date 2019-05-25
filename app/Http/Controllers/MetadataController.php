@@ -3,10 +3,18 @@
 namespace App\Http\Controllers;
 
 use App\Metadata;
+use App\Services\MetadataService;
 use Illuminate\Http\Request;
 
 class MetadataController extends Controller
 {
+    public function __construct(MetadataService $metadata)
+    {
+        $this->metadata = $metadata;
+        $this->authorizeResource(Metadata::class);
+        $this->middleware('auth');
+
+    }
     /**
      * Display a listing of the resource.
      *
@@ -14,7 +22,9 @@ class MetadataController extends Controller
      */
     public function index()
     {
-        //
+        $metatable= $this->metadata->index();
+        $message = session('message');
+        return view('test.metadata.panel')->with('metatable', $metatable)->with('message', $message);
     }
 
     /**
@@ -24,7 +34,7 @@ class MetadataController extends Controller
      */
     public function create()
     {
-        //
+        //TODO: Return metadata field creation form
     }
 
     /**
@@ -35,7 +45,9 @@ class MetadataController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $this->metadata->validateStore($request);
+        $this->metadata->store($request);
+        return redirect()->action('MetadataController@index');
     }
 
     /**
@@ -46,7 +58,7 @@ class MetadataController extends Controller
      */
     public function show(Metadata $metadata)
     {
-        //
+        //TODO: return single metadata field view
     }
 
     /**
@@ -57,7 +69,7 @@ class MetadataController extends Controller
      */
     public function edit(Metadata $metadata)
     {
-        //
+        //TODO: Return view with edit form (probably not recommended)
     }
 
     /**
@@ -69,7 +81,9 @@ class MetadataController extends Controller
      */
     public function update(Request $request, Metadata $metadata)
     {
-        //
+        $this->metadata->validateUpdate($request);
+        $this->metadata->update($metadata, $request);
+        return back();
     }
 
     /**
@@ -80,6 +94,7 @@ class MetadataController extends Controller
      */
     public function destroy(Metadata $metadata)
     {
-        //
+        $this->metadata->destroy($metadata);
+        return redirect()->action('MetadataController@index');
     }
 }

@@ -3,10 +3,18 @@
 namespace App\Http\Controllers;
 
 use App\Disc;
+use App\Services\DiscService;
 use Illuminate\Http\Request;
 
 class DiscController extends Controller
 {
+    public function __construct(DiscService $disc)
+    {
+        $this->disc = $disc;
+        $this->authorizeResource(Disc::class);
+        $this->middleware('auth');
+
+    }
     /**
      * Display a listing of the resource.
      *
@@ -14,7 +22,9 @@ class DiscController extends Controller
      */
     public function index()
     {
-        //
+        $discs=$this->disc->index();
+        $message = session('message');
+        return view('test.discs.panel')->with('discs', $discs)->with('message', $message);
     }
 
     /**
@@ -24,7 +34,8 @@ class DiscController extends Controller
      */
     public function create()
     {
-        //
+        //TODO
+        //return view with creation form here
     }
 
     /**
@@ -35,7 +46,9 @@ class DiscController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $this->disc->validateStore($request);
+        $this->disc->store($request);
+        return redirect()->action('DiscController@index');
     }
 
     /**
@@ -46,7 +59,8 @@ class DiscController extends Controller
      */
     public function show(Disc $disc)
     {
-        //
+        //TODO
+        //return single disc view
     }
 
     /**
@@ -57,7 +71,8 @@ class DiscController extends Controller
      */
     public function edit(Disc $disc)
     {
-        //
+        //TODO
+        //Return view with edit form
     }
 
     /**
@@ -69,7 +84,9 @@ class DiscController extends Controller
      */
     public function update(Request $request, Disc $disc)
     {
-        //
+        $this->disc->validateUpdate($request);
+        $this->disc->update($disc, $request);
+        return back();
     }
 
     /**
@@ -80,6 +97,7 @@ class DiscController extends Controller
      */
     public function destroy(Disc $disc)
     {
-        //
+        $this->disc->destroy($disc);
+        return redirect()->action('DiscController@index');
     }
 }
