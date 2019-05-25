@@ -7,6 +7,8 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <title>{{ config('app.name', 'Spinback') }}</title>
 
+    <link rel="icon" type="image/png" href="{{ asset('favicon-32.png') }}" />
+
     <link rel="stylesheet" href="{{ mix('css/app.css') }}">
     <link rel="stylesheet" href="{{ mix('css/vendor.css') }}">
 </head>
