@@ -16,7 +16,7 @@
         @lang('departments.delete')
     </button>
 
-    <table class="ui compact celled striped definition table departments">
+    <table class="ui compact selectable celled striped definition table departments">
         <thead>
             <tr>
                 <th></th>
@@ -138,7 +138,10 @@
         });
 
         $('input[name="department"]').change(function () {
+            const departmentId = $('input[name="department"]:checked').val();
             $('.delete-department, .edit-department').removeClass('disabled');
+            $('table.departments tbody tr').removeClass('active');
+            $('tr[data-id="' + departmentId + '"]').addClass('active');
         });
 
         $('button.delete-department').click(function() {
