@@ -3,14 +3,14 @@
 .dashboard {
     display: grid;
     grid-template-columns: 18rem 1fr;
-    grid-template-rows: 3.4rem 1fr;
+    grid-template-rows: 56px 1fr;
     grid-template-areas:
         'navigation header'
         'navigation main';
     height: 100vh;
 }
 
-.header {
+header.header {
     grid-area: header;
     background: #474747;
 
@@ -19,13 +19,24 @@
     }
 }
 
-.navigation {
+aside.navigation {
     grid-area: navigation;
-    border-radius: 0 !important;
-    margin: 0 !important;
+    background: #1b1c1d;
+
+    .menu {
+        border-radius: 0 !important;
+    }
+
+    .item.logo-wrapper {
+        text-align: center;
+
+        .logo {
+            display: inline-block !important;
+        }
+    }
 }
 
-.main {
+main.main {
     grid-area: main;
     padding: 0.8rem;
 }
