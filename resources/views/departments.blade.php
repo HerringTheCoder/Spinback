@@ -5,15 +5,15 @@
     <h3 class="ui dividing header">{{ __('departments.title') }}</h3>
 
     <button class="ui primary button new-department">
-        New department
+        @lang('departments.new_department')
     </button>
     <button class="ui button disabled edit-department">
         <i class="edit icon"></i>
-        Edit
+        @lang('departments.edit')
     </button>
     <button class="ui button disabled delete-department">
         <i class="trash icon"></i>
-        Delete
+        @lang('departments.delete')
     </button>
 
     <table class="ui compact celled striped definition table departments">
@@ -21,10 +21,10 @@
             <tr>
                 <th></th>
                 <th>#</th>
-                <th>Name</th>
-                <th>City</th>
-                <th>Address</th>
-                <th>Phone</th>
+                <th>@lang('departments.name')</th>
+                <th>@lang('departments.city')</th>
+                <th>@lang('departments.address')</th>
+                <th>@lang('departments.phone')</th>
             </tr>
         </thead>
         <tbody>
@@ -40,62 +40,62 @@
                     </td>
                     </td>
                     <td data-label="#">{{ $department->id }}</td>
-                    <td data-label="Name">{{ $department->name }}</td>
-                    <td data-label="City">{{ $department->city }}</td>
-                    <td data-label="Address">{{ $department->address }}</td>
-                    <td data-label="Phone">{{ $department->phone_number }}</td>
+                    <td data-label="@lang('departments.name')">{{ $department->name }}</td>
+                    <td data-label="@lang('departments.city')">{{ $department->city }}</td>
+                    <td data-label="@lang('departments.address')">{{ $department->address }}</td>
+                    <td data-label="@lang('departments.phone')">{{ $department->phone_number }}</td>
                 </tr>
             @endforeach
         </tbody>
     </table>
 
     <button class="ui primary button new-department">
-        New department
+        @lang('departments.new_department')
     </button>
     <button class="ui button disabled edit-department">
         <i class="edit icon"></i>
-        Edit
+        @lang('departments.edit')
     </button>
     <button class="ui button disabled delete-department">
         <i class="trash icon"></i>
-        Delete
+        @lang('departments.delete')
     </button>
 
     <div class="ui tiny modal new-department-modal">
         <i class="close icon"></i>
         <div class="header">
-            New department
+            @lang('departments.new_department')
         </div>
         <div class="content">
             <form class="ui form new-department-form" method="post" action="{{ route('departments.store') }}">
                 @csrf
                 <div class="field">
-                    <label>Name</label>
-                    <input type="text" name="name" placeholder="Department name">
+                    <label>@lang('departments.name')</label>
+                    <input type="text" name="name" placeholder="@lang('departments.name')">
                 </div>
                 <div class="field">
-                    <label>Address</label>
-                    <input type="text" name="address" placeholder="Address">
+                    <label>@lang('departments.address')</label>
+                    <input type="text" name="address" placeholder="@lang('departments.address')">
                 </div>
                 <div class="two fields">
                     <div class="field">
-                        <label>City</label>
-                        <input type="text" name="city" placeholder="City">
+                        <label>@lang('departments.city')</label>
+                        <input type="text" name="city" placeholder="@lang('departments.city')">
                     </div>
                     <div class="field">
-                        <label>Phone</label>
-                        <input type="text" name="phone_number" placeholder="Phone number">
+                        <label>@lang('departments.phone')</label>
+                        <input type="text" name="phone_number" placeholder="@lang('departments.phone')">
                     </div>
                 </div>
             </form>
         </div>
         <div class="actions">
             <div class="ui deny button">
-                Cancel
+                @lang('departments.cancel')
             </div>
             <div class="ui positive button">
                 <i class="save icon"></i>
-                Save
+                @lang('departments.save')
             </div>
         </div>
     </div>
@@ -103,18 +103,18 @@
     <div class="ui tiny basic modal delete-department-modal">
         <div class="ui icon header">
             <i class="trash icon"></i>
-            Delete department
+            @lang('departments.delete_header')
         </div>
         <div class="content">
-            You're about to delete <strong></strong>. Are you sure?
+            @lang('departments.delete_confirm')
         </div>
         <div class="actions">
             <div class="ui basic cancel inverted button">
-                Cancel
+                @lang('departments.cancel')
             </div>
             <div class="ui red ok inverted button">
                 <i class="trash icon"></i>
-                Delete
+                @lang('departments.delete')
             </div>
         </div>
     </div>
