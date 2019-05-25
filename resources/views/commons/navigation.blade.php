@@ -1,34 +1,34 @@
 <aside class="navigation">
     <div class="ui inverted vertical fluid menu">
-        <div class="item close-menu">
+        <a class="item close-menu" href="">
             <i class="close icon"></i>
             <b>{{ __('dashboard.nav.close_menu') }}</b>
-        </div>
+        </a>
         <a class="item logo-wrapper" href="/">
             <img src="{{ asset('images/spinback-alt.png') }}" class="logo">
         </a>
         <div class="item">
-            <b>Lorem</b>
+            <b>{{ __('dashboard.nav.departments') }}</b>
         </div>
         <div class="item">
             <div class="header">
-                Lorem ipsum
+                {{ __('dashboard.nav.metadata') }}
             </div>
             <div class="menu">
                 <div class="item">
-                    Lorem
+                    {{ __('dashboard.nav.artists') }}
                 </div>
                 <div class="item">
-                    Ipsum
+                    {{ __('dashboard.nav.albums') }}
                 </div>
             </div>
         </div>
         <div class="item">
-            <b>Lorem</b>
+            <b>{{ __('dashboard.nav.users') }}</b>
         </div>
-        <div class="item">
-            <b>Ipsum</b>
-        </div>
+        <a class="item" href="{{ route('about') }}">
+            <b>{{ __('dashboard.nav.about') }}</b>
+        </a>
     </div>
     
     <div style="clear: both;"></div>

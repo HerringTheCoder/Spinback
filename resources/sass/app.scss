@@ -46,7 +46,7 @@ main.main {
     padding: 0.8rem;
 }
 
-@media only screen and (max-width: 768px) {
+@media only screen and (max-width: 767px) {
     .dashboard {
         grid-template-columns: 100%;
         grid-template-areas:

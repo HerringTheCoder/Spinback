@@ -7,6 +7,12 @@ return [
     ],
 
     'nav' => [
-        'close_menu' => 'Close menu'
+        'close_menu' => 'Close menu',
+        'about' => 'About system',
+        'departments' => 'Departments',
+        'metadata' => 'Metadata',
+        'artists' => 'Artists',
+        'albums' => 'Albums',
+        'users' => 'Manage users'
     ]
 ];
