@@ -16,7 +16,10 @@
             <div class="item">
                 <form action="/logout" method="post">
                     @csrf
-                    <input type="submit" class="ui inverted grey basic button" value="{{ __('dashboard.header.logout') }}">
+                    <button type="submit" class="ui inverted grey basic button">
+                            <i class="sign-out icon"></i>
+                            {{ __('dashboard.header.logout') }}
+                    </button>
                 </form>
             </div>
         </div>

@@ -1,6 +1,6 @@
 <aside class="navigation">
     <div class="ui inverted vertical fluid menu">
-        <a class="item close-menu" href="">
+        <a class="item close-menu">
             <i class="close icon"></i>
             <b>{{ __('dashboard.nav.close_menu') }}</b>
         </a>
