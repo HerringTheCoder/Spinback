@@ -6,25 +6,25 @@
             <div class="four wide column">
                 <div class="ui segment">
                     <h2>{{ $departments }}</h2>
-                    departments
+                    @lang('home.departments')
                 </div>
             </div>
             <div class="four wide column">
                 <div class="ui segment">
                     <h2>{{ $transactions }}</h2>
-                    transactions
+                    @lang('home.transactions')
                 </div>
             </div>
             <div class="four wide column">
                 <div class="ui segment">
                     <h2>{{ $discs }}</h2>
-                    discs
+                    @lang('home.discs')
                 </div>
             </div>
             <div class="four wide column">
                 <div class="ui segment">
                     <h2>{{ $parcels }}</h2>
-                    parcels
+                    @lang('home.parcels')
                 </div>
             </div>
         </div>
