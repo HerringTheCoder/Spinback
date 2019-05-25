@@ -21,9 +21,16 @@ class UserService
     }
     public function validateStore(Request $request) :void
     {
-        //TODO
+        $request->validate([
+            'login'=>'required|alpha|max:30',
+            'first_name' => 'min:3|max:20',
+            'last_name' => 'min:3|max:20',
+            'email' => 'unique|required|min:10|max:50'
+        ]);
         return;
     }
+
+
     public function store(Request $request) : void
         {
             $user=new User;
@@ -41,6 +48,7 @@ class UserService
         {
             $user->first_name= $request->input('first_name');
             $user->last_name = $request->input('last_name');
+            $user->email=$request->input('email');
             $user->save();
             return;
         }
@@ -64,8 +72,10 @@ class UserService
     public function validateUpdate(Request $request)
     {
         $request->validate([
-            'first_name' => 'min:3|max:20',
-            'last_name' => 'min:3|max:20',
+
+            'first_name' => 'required|min:3|alpha|max:20',
+            'last_name' => 'required|min:3|alpha|max:20',
+            'email' => 'unique|min:10|max:50'
         ]);
     }
 

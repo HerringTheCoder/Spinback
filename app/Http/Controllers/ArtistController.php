@@ -36,6 +36,7 @@ class ArtistController extends Controller
     public function create()
     {
         //TODO
+        //return view with creation form here
     }
 
     /**
@@ -70,7 +71,8 @@ class ArtistController extends Controller
      */
     public function edit(Artist $artist)
     {
-        //
+        //TODO
+        //Return view with edit form
     }
 
     /**

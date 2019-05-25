@@ -4,6 +4,7 @@ use Illuminate\Database\Seeder;
 use App\User;
 use App\Department;
 use App\Transaction;
+use App\Artist;
 class BouncerSeeder extends Seeder
 {
     /**
