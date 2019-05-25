@@ -4,7 +4,7 @@
             <i class="content icon"></i>
         </div>
         <div class="item mobile-hidden">
-            {{ __('dashboard.header.greeting') }}, {{ Auth::user()->first_name }} {{ Auth::user()->last_name }}
+            {{ __('dashboard.header.greeting') }}, {{ Auth::user()->full_name }}
         </div>
         <div class="right menu">
             <a class="item" href="{{ route('locale', ['locale' => 'pl']) }}">
