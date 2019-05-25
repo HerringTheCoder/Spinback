@@ -12,7 +12,7 @@
 </head>
 
 <body>
-    @yield('content')
+    @yield('body')
 
     <script src="{{ mix('js/manifest.js') }}"></script>
     <script src="{{ mix('js/vendor.js') }}"></script>
