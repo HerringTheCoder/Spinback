@@ -39,7 +39,7 @@ class ArtistService
     {
 
         $artist->delete();
-        session()->flash('message','User deleted successfully');
+        session()->flash('message','Artist deleted successfully');
         return;
     }
 

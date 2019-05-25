@@ -19,17 +19,6 @@ class UserService
         $users = User::All();
         return $users;
     }
-    public function validateStore(Request $request) :void
-    {
-        $request->validate([
-            'login'=>'required|alpha|max:30',
-            'first_name' => 'min:3|max:20',
-            'last_name' => 'min:3|max:20',
-            'email' => 'unique|required|min:10|max:50'
-        ]);
-        return;
-    }
-
 
     public function store(Request $request) : void
         {
@@ -69,6 +58,17 @@ class UserService
             return;
     }
 
+    public function validateStore(Request $request) :void
+    {
+        $request->validate([
+            'login'=>'required|alpha|max:30',
+            'first_name' => 'min:3|max:20',
+            'last_name' => 'min:3|max:20',
+            'email' => 'unique|required|min:10|max:50'
+        ]);
+        return;
+    }
+    
     public function validateUpdate(Request $request)
     {
         $request->validate([
