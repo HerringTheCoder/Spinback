@@ -9,6 +9,8 @@
 
 __webpack_require__(/*! ./bootstrap */ "./resources/js/bootstrap.js");
 
+$('.ui.dropdown').dropdown();
+
 /***/ }),
 
 /***/ "./resources/js/bootstrap.js":
@@ -99,9 +101,9 @@ __webpack_require__(/*! semantic-ui-css/semantic.min.js */ "./node_modules/seman
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! C:\Users\Szymon\PhpstormProjects\Spinback\resources\js\app.js */"./resources/js/app.js");
-__webpack_require__(/*! C:\Users\Szymon\PhpstormProjects\Spinback\resources\sass\app.scss */"./resources/sass/app.scss");
-module.exports = __webpack_require__(/*! C:\Users\Szymon\PhpstormProjects\Spinback\resources\sass\vendor.scss */"./resources/sass/vendor.scss");
+__webpack_require__(/*! C:\laragon\www\Spinback\resources\js\app.js */"./resources/js/app.js");
+__webpack_require__(/*! C:\laragon\www\Spinback\resources\sass\app.scss */"./resources/sass/app.scss");
+module.exports = __webpack_require__(/*! C:\laragon\www\Spinback\resources\sass\vendor.scss */"./resources/sass/vendor.scss");
 
 
 /***/ })

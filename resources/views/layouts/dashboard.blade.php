@@ -1,9 +1,13 @@
 @extends('layouts.master')
 
-<aside>
+@section('body')
+<div class="dashboard">
+    @include('commons.navigation')
 
-</aside>
+    @include('commons.header')
 
-<main>
-    @yield('content')
-</main>
+    <main class="main">
+        @yield('content')
+    </main>
+</div>
+@endsection

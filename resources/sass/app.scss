@@ -1,1 +1,31 @@
-@import "auth";
+@import 'auth';
+
+.dashboard {
+    display: grid;
+    grid-template-columns: 18rem 1fr;
+    grid-template-rows: 3.4rem 1fr;
+    grid-template-areas:
+        'navigation header'
+        'navigation main';
+    height: 100vh;
+}
+
+.header {
+    grid-area: header;
+    background: #474747;
+
+    .menu {
+        height: 100% !important;
+    }
+}
+
+.navigation {
+    grid-area: navigation;
+    border-radius: 0 !important;
+    margin: 0 !important;
+}
+
+.main {
+    grid-area: main;
+    padding: 0.8rem;
+}

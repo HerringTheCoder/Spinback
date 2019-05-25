@@ -45,7 +45,7 @@
             </a>
             
             <a href="{{ route('locale', ['locale' => 'en']) }}">
-                    <button class="ui button">
+                <button class="ui button">
                     <i class="uk flag"></i> English
                 </button>
             </a>
