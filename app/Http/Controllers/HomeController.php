@@ -3,6 +3,10 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Department;
+use App\Transaction;
+use App\Disc;
+use App\Parcel;
 
 class HomeController extends Controller
 {
@@ -23,7 +27,11 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('home');
+        $departments = Department::count();
+        $transactions = Transaction::count();
+        $discs = Disc::count();
+        $parcels = Parcel::count();
+        return view('home', compact('departments', 'transactions', 'discs', 'parcels'));
     }
 
     public function about()
