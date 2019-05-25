@@ -49,8 +49,6 @@ class DepartmentService
         $request->validate([
             'name' => 'min:3|max:20',
             'city' => 'min:3|max:20|alphanumeric',
-            'address'=> 'min:5|max:40|alphanumeric',
-            'phone_number'=> 'digits_between:10,12'
         ]);
     }
 
@@ -58,6 +56,8 @@ class DepartmentService
     {
         $request->validate([
             'name' => 'min:3|max:20',
+            'phone_number'=> 'digits_between:10,12',
+            'address'=> 'min:5|max:40|alphanumeric',
             'phone_number'=> 'digits_between:10,12'
         ]);
     }
