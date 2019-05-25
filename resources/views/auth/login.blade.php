@@ -1,5 +1,6 @@
 @extends('layouts.master')
 
+@section('title', 'Login')
 @section('body')
 <div class="ui grid middle aligned center aligned auth">
     <div class="column">

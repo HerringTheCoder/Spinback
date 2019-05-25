@@ -1,5 +1,6 @@
 @extends('layouts.dashboard')
 
+@section('title', __('dashboard.nav.about'))
 @section('content')
     <h3 class="ui dividing header">{{ __('dashboard.nav.about') }}</h3>
     <p>@lang('about.about')</p>

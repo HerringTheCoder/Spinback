@@ -1,5 +1,6 @@
 @extends('layouts.dashboard')
 
+@section('title', __('home.title'))
 @section('content')
     <div class="ui grid">
         <div class="doubling four column row">
