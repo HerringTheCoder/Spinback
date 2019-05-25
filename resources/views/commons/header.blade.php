@@ -1,6 +1,9 @@
 <header class="header ">
     <div class="ui inverted secondary menu">
-        <div class="item">
+        <div class="ui grid mobile only item show-menu">
+            <i class="content icon"></i>
+        </div>
+        <div class="item mobile-hidden">
             {{ __('dashboard.header.greeting') }}, {{ Auth::user()->first_name }} {{ Auth::user()->last_name }}
         </div>
         <div class="right menu">

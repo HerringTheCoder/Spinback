@@ -25,6 +25,7 @@ aside.navigation {
 
     .menu {
         border-radius: 0 !important;
+        margin: 0 !important;
     }
 
     .item.logo-wrapper {
@@ -34,9 +35,41 @@ aside.navigation {
             display: inline-block !important;
         }
     }
+
+    .close-menu {
+        display: none !important;
+    }
 }
 
 main.main {
     grid-area: main;
     padding: 0.8rem;
+}
+
+@media only screen and (max-width: 768px) {
+    .dashboard {
+        grid-template-columns: 100%;
+        grid-template-areas:
+            'header'
+            'main';
+    }
+
+    .mobile-hidden {
+        display: none !important;
+    }
+
+    .dashboard.mobile-menu {
+        grid-template-columns: 100%;
+        grid-template-rows: 100%;
+        grid-template-areas: 'navigation';
+
+        main.main,
+        header.header {
+            display: none;
+        }
+
+        .close-menu {
+            display: block !important;
+        }
+    }
 }

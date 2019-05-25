@@ -1,5 +1,9 @@
 <aside class="navigation">
     <div class="ui inverted vertical fluid menu">
+        <div class="item close-menu">
+            <i class="close icon"></i>
+            <b>{{ __('dashboard.nav.close_menu') }}</b>
+        </div>
         <a class="item logo-wrapper" href="/">
             <img src="{{ asset('images/spinback-alt.png') }}" class="logo">
         </a>
