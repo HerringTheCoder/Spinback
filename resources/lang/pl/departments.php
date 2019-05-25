@@ -2,6 +2,7 @@
 
 return [
     'title' => 'Oddziały',
+    'edit_title' => 'Edytuj oddział',
 
     // Buttons
     'new_department' => 'Nowy oddział',
@@ -18,4 +19,6 @@ return [
 
     'delete_header' => 'Usuń oddział',
     'delete_confirm' => 'Za chwilę usuniesz oddział <strong></strong>. Jesteś pewien?',
+
+    'successfully_deleted' => 'Oddział usunięty pomyślnie.'
 ];

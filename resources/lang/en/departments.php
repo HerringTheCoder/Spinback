@@ -2,6 +2,7 @@
 
 return [
     'title' => 'Departments',
+    'edit_title' => 'Edit department',
 
     // Buttons
     'new_department' => 'New department',
@@ -18,4 +19,6 @@ return [
 
     'delete_header' => 'Delete department',
     'delete_confirm' => 'You\'re about to delete <strong></strong>. Are you sure?',
+
+    'successfully_deleted' => 'Department deleted succesfully.'
 ];

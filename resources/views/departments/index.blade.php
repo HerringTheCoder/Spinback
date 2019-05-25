@@ -33,17 +33,17 @@
                     data-id="{{ $department->id }}"
                     data-delete="{{ route('departments.destroy', ['id' => $department->id]) }}"
                     data-edit="{{ route('departments.edit', ['id' => $department->id]) }}">
-                    <td class="collapsing">
+                    <td class="collapsing ignored">
                         <div class="ui radio checkbox">
                             <input type="radio" name="department" value="{{ $department->id }}"><label></label>
                         </div>
                     </td>
                     </td>
                     <td data-label="#">{{ $department->id }}</td>
-                    <td data-label="@lang('departments.name')">{{ $department->name }}</td>
-                    <td data-label="@lang('departments.city')">{{ $department->city }}</td>
-                    <td data-label="@lang('departments.address')">{{ $department->address }}</td>
-                    <td data-label="@lang('departments.phone')">{{ $department->phone_number }}</td>
+                    <td data-label="Name">{{ $department->name }}</td>
+                    <td data-label="City">{{ $department->city }}</td>
+                    <td data-label="Address">{{ $department->address }}</td>
+                    <td data-label="Phone">{{ $department->phone_number }}</td>
                 </tr>
             @endforeach
         </tbody>
