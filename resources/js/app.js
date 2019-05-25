@@ -7,3 +7,9 @@ $('.show-menu').click(function() {
 $('.close-menu').click(function() {
     $('.dashboard').removeClass('mobile-menu');
 });
+
+$.ajaxSetup({
+    headers: {
+        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+    }
+});

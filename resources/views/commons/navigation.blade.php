@@ -7,9 +7,9 @@
         <a class="item logo-wrapper" href="/">
             <img src="{{ asset('images/spinback-alt.png') }}" class="logo">
         </a>
-        <div class="item">
+        <a class="item" href="{{ route('departments.index') }}">
             <b>{{ __('dashboard.nav.departments') }}</b>
-        </div>
+        </a>
         <div class="item">
             <div class="header">
                 {{ __('dashboard.nav.metadata') }}
