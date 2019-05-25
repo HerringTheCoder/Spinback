@@ -142,7 +142,7 @@
         });
 
         $('button.delete-department').click(function() {
-            const departmentId = $('input[name="department"]').val();
+            const departmentId = $('input[name="department"]:checked').val();
             const departmentName = $('tr[data-id="' + departmentId + '"] td[data-label="Name"]').text();
             const deleteRoute = $('tr[data-id="' + departmentId + '"]').data('delete');
 
@@ -159,7 +159,7 @@
         });
 
         $('button.edit-department').click(function() {
-            const departmentId = $('input[name="department"]').val();
+            const departmentId = $('input[name="department"]:checked').val();
             document.location = $('tr[data-id="' + departmentId + '"]').data('edit');
         });
     </script>
