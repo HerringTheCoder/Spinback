@@ -19,10 +19,11 @@ Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/about', 'HomeController@about')->name('about');
 Route::get('/lang/{locale}', 'LocalizationController@locale')->name('locale');
 
+Route::resource('departments', 'DepartmentController')->except(['create', 'show']);
+
 //TODO: Partial resources for appropriate middleware role groups
 Route::resources([
     'artists' => 'ArtistController',
-    'departments' => 'DepartmentController',
     'discs' => 'DiscController',
     'metadata' => 'MetadataController',
     'parcels' => 'ParcelController',

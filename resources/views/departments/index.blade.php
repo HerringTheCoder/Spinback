@@ -129,6 +129,10 @@
     <script>
         $('table.departments').tablesort();
 
+        $('table.departments tbody tr').click(function() {
+            $(this).find('td:first-child input[type="radio"]')[0].click();
+        });
+
         $('button.new-department').click(function() {
             $('.new-department-modal')
                 .modal({
