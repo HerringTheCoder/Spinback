@@ -11,12 +11,12 @@
 |
  */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', 'HomeController@index');
 
-Auth::routes();
+Auth::routes(['register' => false]);
+
 Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/about', 'HomeController@about')->name('about');
 Route::get('/lang/{locale}', 'LocalizationController@locale')->name('locale');
 
 Route::resource('artists', 'ArtistController')->except(['create', 'show']);
@@ -26,4 +26,3 @@ Route::resource('metadata', 'MetadataController')->except(['create', 'show']);
 Route::resource('parcels', 'ParcelController')->except(['create', 'show']);
 Route::resource('shipping_requests', 'ShippingRequestController')->except(['create', 'show']);
 Route::resource('users', 'UserController')->except(['create', 'show']);
-

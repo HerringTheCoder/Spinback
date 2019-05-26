@@ -1,6 +1,7 @@
-@extends('layouts.app')
+@extends('layouts.master')
 
-@section('content')
+@section('title', 'Login')
+@section('body')
 <div class="ui grid middle aligned center aligned auth">
     <div class="column">
         <img src="{{ asset('images/spinback-300.png') }}" title="Spinback" class="logo">
@@ -45,7 +46,7 @@
             </a>
             
             <a href="{{ route('locale', ['locale' => 'en']) }}">
-                    <button class="ui button">
+                <button class="ui button">
                     <i class="uk flag"></i> English
                 </button>
             </a>

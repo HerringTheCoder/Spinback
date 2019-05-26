@@ -17,6 +17,5 @@ class DatabaseSeeder extends Seeder
         $this->call(DepartmentsTableSeeder::class);
         $this->call(MetadataTableSeeder::class);
         $this->call(DiscsTableSeeder::class);
-
     }
 }

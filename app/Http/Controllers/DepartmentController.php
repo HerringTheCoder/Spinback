@@ -12,19 +12,8 @@ class DepartmentController extends Controller
 {
     public function __construct(DepartmentService $department)
     {
-        $this->department = $department;
-        $this->authorizeResource(Department::class);
-        $this->middleware('auth');
-    }
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index()
-    {
-        $departments = Department::All();
-        return view('departments.index')->with('departments', $departments);
+        $departments = Department::all();
+        return view('departments.index', compact('departments'));
     }
 
     /**
@@ -47,8 +36,7 @@ class DepartmentController extends Controller
      */
     public function edit(Department $department)
     {
-        //TODO
-        //Return view with Department edit form
+        return view('departments.edit', compact('department'));
     }
 
     /**
@@ -72,7 +60,7 @@ class DepartmentController extends Controller
      */
     public function destroy(Department $department)
     {
-        $this->department->destroy($department);
-        return redirect()->action('DepartmentController@index')->with('success', __('departments.successfully_deleted'));
+        $department->delete();
+        return redirect()->route('departments.index')->with('success', __('departments.successfully_deleted'));
     }
 }
