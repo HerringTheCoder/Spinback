@@ -5,10 +5,12 @@
     <div class="ui grid">
         <div class="doubling four column row">
             <div class="four wide column">
-                <div class="ui segment">
-                    <h2>{{ $departments }}</h2>
-                    @lang('home.departments')
-                </div>
+                <a href="{{ route('departments.index') }}">
+                    <div class="ui segment">
+                        <h2>{{ $departments }}</h2>
+                        @lang('home.departments')
+                    </div>
+                </a>
             </div>
             <div class="four wide column">
                 <div class="ui segment">
