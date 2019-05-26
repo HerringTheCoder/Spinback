@@ -3,19 +3,29 @@
 namespace App\Http\Controllers;
 
 use App\User;
+use App\Services\UserService;
 use Illuminate\Http\Request;
 use Bouncer;
 
 class UserController extends Controller
 {
+    public function __construct(UserService $user)
+    {
+        $this->user = $user;
+        $this->authorizeResource(User::class);
+        $this->middleware('auth');
+
+    }
     /**
      * Display a listing of the resource.
-     *
+     * @param $successMsg
      * @return \Illuminate\Http\Response
      */
     public function index()
     {
-        //
+        $users=$this->user->index();
+       $message = session('message');
+        return view('test.users.panel')->with('users', $users)->with('message', $message);
     }
 
     /**
@@ -25,7 +35,7 @@ class UserController extends Controller
      */
     public function create()
     {
-        //
+        return view('test.users.create');
     }
 
     /**
@@ -36,7 +46,9 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $this->user->validateStore($request);
+        $this->user->store($request);
+        return redirect()->action('UserController@index');
     }
 
     /**
@@ -47,7 +59,7 @@ class UserController extends Controller
      */
     public function show(User $user)
     {
-        dd($user);
+        return view('test.users.profile')->with('user', $user);
 
     }
 
@@ -59,7 +71,7 @@ class UserController extends Controller
      */
     public function edit(User $user)
     {
-        //
+        //return view('users.edit');
     }
 
     /**
@@ -71,7 +83,9 @@ class UserController extends Controller
      */
     public function update(Request $request, User $user)
     {
-        //
+        $this->user->validateUpdate($request);
+        $this->user->update($user, $request);
+        return back();
     }
 
     /**
@@ -79,9 +93,11 @@ class UserController extends Controller
      *
      * @param  \App\User  $user
      * @return \Illuminate\Http\Response
+     * @throws
      */
     public function destroy(User $user)
     {
-        //
+        $this->user->destroy($user);
+        return redirect()->action('UserController@index');
     }
 }

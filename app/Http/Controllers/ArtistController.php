@@ -3,10 +3,19 @@
 namespace App\Http\Controllers;
 
 use App\Artist;
+use App\Services\ArtistService;
 use Illuminate\Http\Request;
 
 class ArtistController extends Controller
 {
+
+    public function __construct(ArtistService $artist)
+    {
+        $this->artist = $artist;
+        $this->authorizeResource(Artist::class);
+        $this->middleware('auth');
+
+    }
     /**
      * Display a listing of the resource.
      *
@@ -14,7 +23,9 @@ class ArtistController extends Controller
      */
     public function index()
     {
-        //
+        $artists=$this->artist->index();
+        $message = session('message');
+        return view('test.artists.panel')->with('artists', $artists)->with('message', $message);
     }
 
     /**
@@ -24,7 +35,7 @@ class ArtistController extends Controller
      */
     public function create()
     {
-        //
+        //TODO
     }
 
     /**
@@ -35,7 +46,9 @@ class ArtistController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $this->artist->validateStore($request);
+        $this->artist->store($request);
+        return redirect()->action('ArtistController@index');
     }
 
     /**
@@ -46,7 +59,7 @@ class ArtistController extends Controller
      */
     public function show(Artist $artist)
     {
-        //
+        return view('test.artists.profile')->with('artist', $artist);
     }
 
     /**
@@ -69,7 +82,9 @@ class ArtistController extends Controller
      */
     public function update(Request $request, Artist $artist)
     {
-        //
+        $this->artist->validateUpdate($request);
+        $this->artist->update($artist, $request);
+        return back();
     }
 
     /**
@@ -80,6 +95,7 @@ class ArtistController extends Controller
      */
     public function destroy(Artist $artist)
     {
-        //
+        $this->artist->destroy($artist);
+        return redirect()->action('ArtistController@index');
     }
 }
