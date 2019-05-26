@@ -7,6 +7,8 @@
     @include('commons.header')
 
     <main class="main">
+        @include('commons.messages')
+        
         @yield('content')
     </main>
 </div>
