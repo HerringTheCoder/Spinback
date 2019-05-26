@@ -3,14 +3,23 @@
 namespace App\Http\Controllers;
 
 use App\Department;
-use Illuminate\Http\Request;
-use App\Services\DepartmentService;
 use App\Http\Requests\StoreDepartment;
 use App\Http\Requests\UpdateDepartment;
 
 class DepartmentController extends Controller
 {
-    public function __construct(DepartmentService $department)
+    public function __construct()
+    {
+        $this->authorizeResource(Department::class);
+        $this->middleware('auth');
+    }
+
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function index()
     {
         $departments = Department::all();
         return view('departments.index', compact('departments'));
