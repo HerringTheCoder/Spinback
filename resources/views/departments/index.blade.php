@@ -133,6 +133,8 @@
             $(this).find('td:first-child input[type="radio"]')[0].click();
         });
 
+        $('input[type="radio"]').prop('checked', false);
+
         $('button.new-department').click(function() {
             $('.new-department-modal')
                 .modal({
