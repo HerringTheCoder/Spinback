@@ -16,7 +16,7 @@
         @lang('departments.delete')
     </button>
 
-    <table class="ui compact selectable celled striped definition table departments">
+    <table class="ui compact sortable selectable celled striped definition table departments">
         <thead>
             <tr>
                 <th></th>
@@ -39,7 +39,7 @@
                         </div>
                     </td>
                     </td>
-                    <td data-label="#">{{ $department->id }}</td>
+                    <td data-label="#" data-sort-value="{{ $department->id }}">{{ $department->id }}</td>
                     <td data-label="Name">{{ $department->name }}</td>
                     <td data-label="City">{{ $department->city }}</td>
                     <td data-label="Address">{{ $department->address }}</td>
@@ -127,6 +127,8 @@
 
 @push('scripts')
     <script>
+        $('table.departments').tablesort();
+
         $('button.new-department').click(function() {
             $('.new-department-modal')
                 .modal({
