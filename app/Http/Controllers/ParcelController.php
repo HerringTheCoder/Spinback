@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Parcel;
 use Illuminate\Http\Request;
+use App\Http\Requests\StoreParcel;
 
 class ParcelController extends Controller
 {
@@ -14,17 +15,8 @@ class ParcelController extends Controller
      */
     public function index()
     {
-        //
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
+        $parcels = Parcel::All();
+        return view('parcels.index')->with('parcels', $parcels);
     }
 
     /**
@@ -33,20 +25,10 @@ class ParcelController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(StoreParcel $request)
     {
-        //
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Parcel  $parcel
-     * @return \Illuminate\Http\Response
-     */
-    public function show(Parcel $parcel)
-    {
-        //
+        Parcel::Create($request->validated());
+        return redirect()->route('parcels.index')->with('success', __('parcels.successfully_stored'));
     }
 
     /**
@@ -67,9 +49,10 @@ class ParcelController extends Controller
      * @param  \App\Parcel  $parcel
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Parcel $parcel)
+    public function update(StoreParcel $request, Parcel $parcel)
     {
-        //
+        $parcel->update($request->validated());
+        return redirect()->route('parcels.index')->with('success', __('parcels.successfully_updated'));
     }
 
     /**
@@ -80,6 +63,7 @@ class ParcelController extends Controller
      */
     public function destroy(Parcel $parcel)
     {
-        //
+        $parcel->delete();
+        return redirect()->route('parcels.index')->with('success', __('parcels.successfully_deleted'));
     }
 }

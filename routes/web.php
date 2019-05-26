@@ -19,16 +19,11 @@ Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/lang/{locale}', 'LocalizationController@locale')->name('locale');
 
-//TODO: Partial resources for appropriate middleware role groups
-Route::resources([
-    'artists' => 'ArtistController',
-    'departments' => 'DepartmentController',
-    'discs' => 'DiscController',
-    'metadata' => 'MetadataController',
-    'parcels' => 'ParcelController',
-    'permission_levels' => 'PermissionLevelController',
-    'roles' => 'RoleController',
-    'shipping_requests' => 'ShippingRequestController',
-    'users' => 'UserController'
-]);
+Route::resource('artists', 'ArtistController')->except(['create', 'show']);
+Route::resource('departments', 'DepartmentController')->except(['create', 'show']);
+Route::resource('discs', 'DiscController')->except(['create', 'show']);
+Route::resource('metadata', 'MetadataController')->except(['create', 'show']);
+Route::resource('parcels', 'ParcelController')->except(['create', 'show']);
+Route::resource('shipping_requests', 'ShippingRequestController')->except(['create', 'show']);
+Route::resource('users', 'UserController')->except(['create', 'show']);
 

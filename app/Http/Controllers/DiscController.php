@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Disc;
 use App\Services\DiscService;
 use Illuminate\Http\Request;
+use App\Http\Requests\StoreDisc;
+use App\Http\Requests\UpdateDisc;
 
 class DiscController extends Controller
 {
@@ -22,21 +24,10 @@ class DiscController extends Controller
      */
     public function index()
     {
-        $discs=$this->disc->index();
-        $message = session('message');
-        return view('test.discs.panel')->with('discs', $discs)->with('message', $message);
+        $discs = Disc::All();
+        return view('discs.index')->with('discs', $discs);
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //TODO
-        //return view with creation form here
-    }
 
     /**
      * Store a newly created resource in storage.
@@ -44,24 +35,12 @@ class DiscController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(StoreDisc $request)
     {
-        $this->disc->validateStore($request);
-        $this->disc->store($request);
-        return redirect()->action('DiscController@index');
+        Department::create($request->validated());
+        return redirect()->route('discs.index')->with('success', __('discs.successfully_stored'));
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Disc  $disc
-     * @return \Illuminate\Http\Response
-     */
-    public function show(Disc $disc)
-    {
-        //TODO
-        //return single disc view
-    }
 
     /**
      * Show the form for editing the specified resource.
@@ -82,11 +61,10 @@ class DiscController extends Controller
      * @param  \App\Disc  $disc
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Disc $disc)
+    public function update(UpdateDisc $request, Disc $disc)
     {
-        $this->disc->validateUpdate($request);
-        $this->disc->update($disc, $request);
-        return back();
+        $disc->update($request->validated());
+        return redirect()->route('discs.index')->with('success', __('discs.successfully_updated'));
     }
 
     /**
@@ -98,6 +76,6 @@ class DiscController extends Controller
     public function destroy(Disc $disc)
     {
         $this->disc->destroy($disc);
-        return redirect()->action('DiscController@index');
+        return redirect()->route('discs.index')->with('success', __('discs.successfully_deleted'));
     }
 }

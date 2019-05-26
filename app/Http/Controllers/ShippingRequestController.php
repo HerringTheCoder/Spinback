@@ -3,7 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\ShippingRequest;
-use Illuminate\Http\Request;
+use App\Http\Requests\StoreShippingRequest;
+use App\Http\Requests\UpdateShippingRequest;
 
 class ShippingRequestController extends Controller
 {
@@ -14,18 +15,10 @@ class ShippingRequestController extends Controller
      */
     public function index()
     {
-        //
+        $shippingRequests = ShippingRequest::All();
+        return view('shippingrequests.index')->with('shippingRequests', $shippingRequests);
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
 
     /**
      * Store a newly created resource in storage.
@@ -33,20 +26,10 @@ class ShippingRequestController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(StoreShippingRequest $request)
     {
-        //
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\ShippingRequest  $shippingRequest
-     * @return \Illuminate\Http\Response
-     */
-    public function show(ShippingRequest $shippingRequest)
-    {
-        //
+        ShippingRequest::Create($request->validated());
+        return redirect()->route('shippingrequests.index')->with('success', __('shippingrequests.successfully_stored'));
     }
 
     /**
@@ -67,9 +50,10 @@ class ShippingRequestController extends Controller
      * @param  \App\ShippingRequest  $shippingRequest
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, ShippingRequest $shippingRequest)
+    public function update(UpdateShippingRequest $request, ShippingRequest $shippingRequest)
     {
-        //
+        $shippingRequest->update($request->validated());
+        return redirect()->route('shippingrequests.index')->with('success', __('shippingrequests.successfully_stored'));
     }
 
     /**
@@ -80,6 +64,7 @@ class ShippingRequestController extends Controller
      */
     public function destroy(ShippingRequest $shippingRequest)
     {
-        //
+        $shippingRequest->delete();
+        return redirect()->route('shippingrequests.index')->with('success', __('shippingrequests.successfully_stored'));
     }
 }

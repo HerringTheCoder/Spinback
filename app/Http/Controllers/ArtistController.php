@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Artist;
 use App\Services\ArtistService;
 use Illuminate\Http\Request;
+use App\Http\Requests\UpdateArtist;
+use App\Http\Requests\StoreArtist;
 
 class ArtistController extends Controller
 {
@@ -23,21 +25,10 @@ class ArtistController extends Controller
      */
     public function index()
     {
-        $artists=$this->artist->index();
-        $message = session('message');
-        return view('test.artists.panel')->with('artists', $artists)->with('message', $message);
+        $artists = Artist::All();
+        return view('artists.index')->with('artists', $artists);
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //TODO
-        //return view with creation form here
-    }
 
     /**
      * Store a newly created resource in storage.
@@ -45,23 +36,12 @@ class ArtistController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(StoreArtist $request)
     {
-        $this->artist->validateStore($request);
-        $this->artist->store($request);
-        return redirect()->action('ArtistController@index');
+        Artist::Create($request->validated());
+        return redirect()->route('artists.index')->with('success', __('artists.successfully stored'));
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Artist  $artist
-     * @return \Illuminate\Http\Response
-     */
-    public function show(Artist $artist)
-    {
-        return view('test.artists.profile')->with('artist', $artist);
-    }
 
     /**
      * Show the form for editing the specified resource.
@@ -82,11 +62,10 @@ class ArtistController extends Controller
      * @param  \App\Artist  $artist
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Artist $artist)
+    public function update(UpdateArtist $request, Artist $artist)
     {
-        $this->artist->validateUpdate($request);
-        $this->artist->update($artist, $request);
-        return back();
+        $artist->update($request->validated());
+        return redirect()->route('artists.index')->with('success', __('artists.successfully_updated'));
     }
 
     /**
@@ -98,6 +77,6 @@ class ArtistController extends Controller
     public function destroy(Artist $artist)
     {
         $this->artist->destroy($artist);
-        return redirect()->action('ArtistController@index');
+        return redirect()->action('ArtistController@index')->with('success', __('departments.successfully_deleted'));
     }
 }

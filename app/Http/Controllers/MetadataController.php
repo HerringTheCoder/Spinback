@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Metadata;
 use App\Services\MetadataService;
 use Illuminate\Http\Request;
+use App\Http\Requests\UpdateMetadata;
+use App\Http\Requests\StoreMetadata;
 
 class MetadataController extends Controller
 {
@@ -22,19 +24,8 @@ class MetadataController extends Controller
      */
     public function index()
     {
-        $metatable= $this->metadata->index();
-        $message = session('message');
-        return view('test.metadata.panel')->with('metatable', $metatable)->with('message', $message);
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //TODO: Return metadata field creation form
+        $metadata = Metadata::All();
+        return view('metadata.index')->with('metadata', $metadata);
     }
 
     /**
@@ -43,23 +34,12 @@ class MetadataController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(StoreMetadata $request)
     {
-        $this->metadata->validateStore($request);
-        $this->metadata->store($request);
-        return redirect()->action('MetadataController@index');
+        Metadata::Create($request->validated());
+        return redirect()->route('metadata.index')->with('success', __('metadata.successfully_stored'));
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Metadata  $metadata
-     * @return \Illuminate\Http\Response
-     */
-    public function show(Metadata $metadata)
-    {
-        //TODO: return single metadata field view
-    }
 
     /**
      * Show the form for editing the specified resource.
@@ -79,11 +59,10 @@ class MetadataController extends Controller
      * @param  \App\Metadata  $metadata
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Metadata $metadata)
+    public function update(UpdateMetadata $request, Metadata $metadata)
     {
-        $this->metadata->validateUpdate($request);
-        $this->metadata->update($metadata, $request);
-        return back();
+        $metadata->update($request->validated());
+        return redirect()->route('metadata.index')->with('success', __('metadata.successfully_updated'));
     }
 
     /**
@@ -95,6 +74,6 @@ class MetadataController extends Controller
     public function destroy(Metadata $metadata)
     {
         $this->metadata->destroy($metadata);
-        return redirect()->action('MetadataController@index');
+        return redirect()->route('metadata.index')->with('success', __('metadata.successfully_deleted'));
     }
 }
