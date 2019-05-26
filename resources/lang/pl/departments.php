@@ -20,5 +20,8 @@ return [
     'delete_header' => 'Usuń oddział',
     'delete_confirm' => 'Za chwilę usuniesz oddział <strong></strong>. Jesteś pewien?',
 
-    'successfully_deleted' => 'Oddział usunięty pomyślnie.'
+    'successfully_deleted' => 'Oddział usunięty pomyślnie',
+    'successfully_stored' => 'Oddział dodany pomyślnie',
+    'successfully_updated' => 'Oddział zaktualizowany pomyślnie'
+
 ];

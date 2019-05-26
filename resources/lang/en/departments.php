@@ -20,5 +20,8 @@ return [
     'delete_header' => 'Delete department',
     'delete_confirm' => 'You\'re about to delete <strong></strong>. Are you sure?',
 
-    'successfully_deleted' => 'Department deleted succesfully.'
+    'successfully_deleted' => 'Department deleted succesfully',
+    'successfully_stored' => 'Department stored succesfully',
+    'updated' => 'Department updated succesfully'
+
 ];

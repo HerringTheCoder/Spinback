@@ -4,6 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Department;
 use Illuminate\Http\Request;
+use Illuminate\Validation\Rule;
+use App\Http\Requests\StoreDepartment;
+use App\Http\Requests\UpdateDepartment;
 
 class DepartmentController extends Controller
 {
@@ -24,9 +27,10 @@ class DepartmentController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(StoreDepartment $request)
     {
-        //
+        Department::create($request->validated());
+        return redirect()->route('departments.index')->with('success', __('departments.successfully_stored'));
     }
 
     /**
@@ -47,9 +51,10 @@ class DepartmentController extends Controller
      * @param  \App\Department  $department
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Department $department)
+    public function update(UpdateDepartment $request, Department $department)
     {
-        //
+        $department->update($request->validated());
+        return redirect()->route('departments.index')->with('success', __('departments.successfully_updated'));
     }
 
     /**
