@@ -6,6 +6,8 @@ use App\User;
 use App\Services\UserService;
 use Illuminate\Http\Request;
 use Bouncer;
+use App\Http\Requests\UpdateUser;
+use App\Http\Requests\StoreUser;
 
 class UserController extends Controller
 {
@@ -23,19 +25,8 @@ class UserController extends Controller
      */
     public function index()
     {
-        $users=$this->user->index();
-       $message = session('message');
-        return view('test.users.panel')->with('users', $users)->with('message', $message);
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        return view('test.users.create');
+        $users = User::All();
+        return view('users.index')->with('users', $users);
     }
 
     /**
@@ -44,23 +35,10 @@ class UserController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(StoreUser $request)
     {
-        $this->user->validateStore($request);
-        $this->user->store($request);
-        return redirect()->action('UserController@index');
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\User  $user
-     * @return \Illuminate\Http\Response
-     */
-    public function show(User $user)
-    {
-        return view('test.users.profile')->with('user', $user);
-
+        User::Create($request->validated());
+        return redirect()->route('users.index')->with('success', __('users.successfully_stored'));
     }
 
     /**
@@ -81,11 +59,10 @@ class UserController extends Controller
      * @param  \App\User  $user
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, User $user)
+    public function update(UpdateUser $request, User $user)
     {
-        $this->user->validateUpdate($request);
-        $this->user->update($user, $request);
-        return back();
+        $user->update($request->validated());
+        return redirect()->route('users.index')->with('success', __('users.successfully_updated'));
     }
 
     /**
@@ -97,7 +74,17 @@ class UserController extends Controller
      */
     public function destroy(User $user)
     {
-        $this->user->destroy($user);
-        return redirect()->action('UserController@index');
+        if( $this->user->destroy($user) )
+        return redirect()->route('users.index')->with('success', __('users.successfully_deleted'));
+        else
+        return redirect()->route('users.index')->with('warning', __('users.self_protection'));
+    }
+
+    public function deactivate(User $user)
+    {
+        if($this->user->deactivate($user))
+        return redirect()->route('users.index')->with('success', __('users.successfully_deactivated'));
+        else
+        return redirect()->route('users.index')->with('warning', __('users.self_protection'));
     }
 }

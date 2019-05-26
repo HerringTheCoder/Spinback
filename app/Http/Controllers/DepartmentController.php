@@ -4,18 +4,13 @@ namespace App\Http\Controllers;
 
 use App\Department;
 use Illuminate\Http\Request;
-use Illuminate\Validation\Rule;
+use App\Services\DepartmentService;
 use App\Http\Requests\StoreDepartment;
 use App\Http\Requests\UpdateDepartment;
 
 class DepartmentController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index()
+    public function __construct(DepartmentService $department)
     {
         $departments = Department::all();
         return view('departments.index', compact('departments'));

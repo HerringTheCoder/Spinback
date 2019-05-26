@@ -3,7 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Transaction;
-use Illuminate\Http\Request;
+use App\Http\Requests\StoreTransaction;
+use App\Http\Requests\UpdateTransaction;
 
 class TransactionController extends Controller
 {
@@ -14,17 +15,8 @@ class TransactionController extends Controller
      */
     public function index()
     {
-        //
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
+        $transactions= Transaction::All();
+        return view('transactions.index')->with('transactions', $transactions);
     }
 
     /**
@@ -33,20 +25,10 @@ class TransactionController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(StoreTransaction $request)
     {
-        //
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Transaction  $transaction
-     * @return \Illuminate\Http\Response
-     */
-    public function show(Transaction $transaction)
-    {
-        //
+        Transaction::Create($request->validated());
+        return redirect()->route('parcels.index')->with('success', __('parcels.successfully_stored'));
     }
 
     /**
@@ -67,9 +49,10 @@ class TransactionController extends Controller
      * @param  \App\Transaction  $transaction
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Transaction $transaction)
+    public function update(UpdateTransaction $request, Transaction $transaction)
     {
-        //
+        $transaction->update($request->validated());
+        return redirect()->route('transactions.index')->with('success', __('transactions.successfully_stored'));
     }
 
     /**
@@ -80,6 +63,7 @@ class TransactionController extends Controller
      */
     public function destroy(Transaction $transaction)
     {
-        //
+        $transaction->delete();
+        return redirect()->route('transactions.index')->with('success', __('transactions.successfully_stored'));
     }
 }
