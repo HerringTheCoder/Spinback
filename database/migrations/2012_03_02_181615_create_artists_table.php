@@ -18,6 +18,7 @@ class CreateArtistsTable extends Migration
             $table->string('name');
             $table->string('country');
             $table->string('description');
+            $table->softDeletes();
             $table->timestamps();
         });
     }

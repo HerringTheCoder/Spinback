@@ -23,6 +23,7 @@ class CreateShippingRequestsTable extends Migration
             $table->foreign('disc_id')->references('id')->on('discs');
             $table->boolean('accepted')->default(0);
             $table->string('comments')->default("");
+            $table->softDeletes();
             $table->timestamps();
         });
     }

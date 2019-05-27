@@ -76,7 +76,7 @@ class ArtistController extends Controller
      */
     public function destroy(Artist $artist)
     {
-        $this->artist->destroy($artist);
+        $artist->delete();
         return redirect()->action('ArtistController@index')->with('success', __('departments.successfully_deleted'));
     }
 }

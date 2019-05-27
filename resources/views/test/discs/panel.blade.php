@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts.dashboard')
 @section('content')
     <div class="ui message">Logged as: {{Auth::User()}}</div>
     <a href="{{ route('logout') }}"
@@ -37,7 +37,7 @@
     <td data-label="photo_path">{{$disc->photo_path}}</td>
     <td data-label="offer_price">{{$disc->offer_price}}</td>
     <td data-label="sold">{{$disc->sold}}</td>
-    <td data-label="department_id">{{$disc->department_id}}</td>
+    <td data-label="department_id">{{$disc->department->name}}</td>
     <td data-label="Action">
         <form method="POST" action="{{route('discs.destroy', $disc->id)}}">
             @csrf

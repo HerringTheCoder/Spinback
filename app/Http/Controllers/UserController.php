@@ -74,7 +74,7 @@ class UserController extends Controller
      */
     public function destroy(User $user)
     {
-        if( $this->user->destroy($user) )
+        if( $this->user->safeDelete($user) )
         return redirect()->route('users.index')->with('success', __('users.successfully_deleted'));
         else
         return redirect()->route('users.index')->with('warning', __('users.self_protection'));
@@ -82,7 +82,7 @@ class UserController extends Controller
 
     public function deactivate(User $user)
     {
-        if($this->user->deactivate($user))
+        if($this->user->safeDeactivate($user))
         return redirect()->route('users.index')->with('success', __('users.successfully_deactivated'));
         else
         return redirect()->route('users.index')->with('warning', __('users.self_protection'));

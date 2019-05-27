@@ -3,21 +3,23 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Disc extends Model
 {
+    use SoftDeletes;
     protected $fillable = [
         'metadata_id', 'condition', 'photo_path', 'offer_price', 'sold', 'department_id'
     ];
 
     public function metadata()
     {
-       return $this->belongsTo('App\Metadata');
+       return $this->belongsTo('App\Metadata')->withTrashed();
     }
 
-    public function departments()
+    public function department()
     {
-        return $this->belongsTo('App\Department');
+        return $this->belongsTo('App\Department')->withTrashed();
     }
 
     public function requests()
