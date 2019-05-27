@@ -16,4 +16,9 @@ class Department extends Model
         return $this->hasMany('App\ShippingRequest');
     }
 
+    public function discs()
+    {
+        return $this->hasMany('App\Disc');
+    }
+
 }

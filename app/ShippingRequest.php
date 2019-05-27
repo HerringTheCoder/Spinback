@@ -13,12 +13,12 @@ class ShippingRequest extends Model
 
     public function source()
     {
-        return $this->belongsTo('App/Department');
+        return $this->belongsTo('App/Department')->withTrashed();
     }
 
     public function destination()
     {
-        return $this->belongsTo('App\Department');
+        return $this->belongsTo('App\Department')->withTrashed();
     }
 
     public function disc()

@@ -13,7 +13,7 @@ class Metadata extends Model
 
     public function artist()
     {
-        return $this->belongsTo('App\Artist', 'artist_id');
+        return $this->belongsTo('App\Artist', 'artist_id')->withTrashed();
     }
 
     public function discs()

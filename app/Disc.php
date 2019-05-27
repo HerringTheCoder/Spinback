@@ -14,12 +14,12 @@ class Disc extends Model
 
     public function metadata()
     {
-       return $this->belongsTo('App\Metadata');
+       return $this->belongsTo('App\Metadata')->withTrashed();
     }
 
-    public function departments()
+    public function department()
     {
-        return $this->belongsTo('App\Department');
+        return $this->belongsTo('App\Department')->withTrashed();
     }
 
     public function requests()

@@ -11,16 +11,16 @@ class Transaction extends Model
 
     public function department()
     {
-        return $this->belongsTo('App/Department');
+        return $this->belongsTo('App/Department')->withTrashed();
     }
 
     public function user()
     {
-        return $this->belongsTo('App/User');
+        return $this->belongsTo('App/User')->withTrashed();
     }
 
     public function disc()
     {
-        return $this->belongsTo('App/Disc');
+        return $this->belongsTo('App/Disc')->withTrashed();
     }
 }
