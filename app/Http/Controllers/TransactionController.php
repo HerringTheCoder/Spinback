@@ -5,9 +5,17 @@ namespace App\Http\Controllers;
 use App\Transaction;
 use App\Http\Requests\StoreTransaction;
 use App\Http\Requests\UpdateTransaction;
+use App\Services\TransactionService;
 
 class TransactionController extends Controller
 {
+    public function __construct(TransactionService $transaction)
+    {
+        $this->transaction = $transaction;
+        $this->authorizeResource(Transaction::class);
+        $this->middleware('auth');
+
+    }
     /**
      * Display a listing of the resource.
      *
@@ -15,7 +23,7 @@ class TransactionController extends Controller
      */
     public function index()
     {
-        $transactions= Transaction::All();
+        $transactions = Transaction::All();
         return view('transactions.index')->with('transactions', $transactions);
     }
 
@@ -65,5 +73,11 @@ class TransactionController extends Controller
     {
         $transaction->delete();
         return redirect()->route('transactions.index')->with('success', __('transactions.successfully_stored'));
+    }
+
+    public function report()
+    {
+        $this->transaction->report();
+        return redirect()->route('transactions.index')->with('success', __('transaction.succesfully_mailed'));
     }
 }
