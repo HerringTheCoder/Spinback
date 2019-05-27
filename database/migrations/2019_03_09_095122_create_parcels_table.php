@@ -17,6 +17,7 @@ class CreateParcelsTable extends Migration
             $table->bigIncrements('id');
             $table->string('tracking_code');
             $table->boolean('completed');
+            $table->softDeletes();
             $table->timestamps();
         });
     }

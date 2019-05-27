@@ -23,6 +23,7 @@ class CreateDiscsTable extends Migration
             $table->boolean('sold');
             $table->bigInteger('department_id')->unsigned();
             $table->foreign('department_id')->references('id')->on('departments');
+            $table->softDeletes();
             $table->timestamps();
         });
     }

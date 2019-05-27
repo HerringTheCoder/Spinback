@@ -19,6 +19,7 @@ class CreateDepartmentsTable extends Migration
             $table->string('address');
             $table->string('city');
             $table->integer('phone_number');
+            $table->softDeletes();
             $table->timestamps();
         });
     }

@@ -3,9 +3,10 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
-
+use Illuminate\Database\Eloquent\SoftDeletes;
 class Metadata extends Model
 {
+    use SoftDeletes;
     protected $fillable = [
         'title', 'artist_id', 'genre', 'country', 'release_year', 'format'
         ];

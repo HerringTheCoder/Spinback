@@ -73,7 +73,7 @@ class MetadataController extends Controller
      */
     public function destroy(Metadata $metadata)
     {
-        $this->metadata->destroy($metadata);
+        $metadata->delete();
         return redirect()->route('metadata.index')->with('success', __('metadata.successfully_deleted'));
     }
 }

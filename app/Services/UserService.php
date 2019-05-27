@@ -6,7 +6,7 @@ use Auth;
 class UserService
 {
 
-    public function destroy(User $user) : bool
+    public function safeDelete(User $user) : bool
     {
             if($user && $user->id!==Auth::Id()) {
                 Transaction::Where('user_id', $user->id)->updated(array('user_id', NULL));
@@ -19,7 +19,7 @@ class UserService
             }
     }
 
-    public function deactivate(User $user) : bool
+    public function safeDeactivate(User $user) : bool
     {
         if($user && $user->id!==Auth::Id()) {
 

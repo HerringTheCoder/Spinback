@@ -75,7 +75,7 @@ class DiscController extends Controller
      */
     public function destroy(Disc $disc)
     {
-        $this->disc->destroy($disc);
+        $disc->delete();
         return redirect()->route('discs.index')->with('success', __('discs.successfully_deleted'));
     }
 }

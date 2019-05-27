@@ -22,6 +22,7 @@ class CreateMetadataTable extends Migration
             $table->string('country');
             $table->smallInteger('release_year')->unsigned();
             $table->string('format');
+            $table->softDeletes();
             $table->timestamps();
         });
     }
