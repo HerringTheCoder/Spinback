@@ -21,4 +21,9 @@ class Department extends Model
         return $this->hasMany('App\Disc');
     }
 
+    public function transactions()
+    {
+        return $this->hasMany('App\Transaction');
+    }
+
 }

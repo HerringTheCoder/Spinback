@@ -13,7 +13,7 @@ class ShippingRequest extends Model
 
     public function source()
     {
-        return $this->belongsTo('App/Department')->withTrashed();
+        return $this->belongsTo('App\Department')->withTrashed();
     }
 
     public function destination()
