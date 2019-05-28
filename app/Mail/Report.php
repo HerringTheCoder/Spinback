@@ -11,14 +11,20 @@ class Report extends Mailable
 {
     use Queueable, SerializesModels;
     public $transactions;
+    public $income;
+    public $expense;
+    public $balance;
     /**
      * Create a new message instance.
      *
      * @return void
      */
-    public function __construct($result)
+    public function __construct($transactions, $income, $expense,$balance)
     {
-        $this->transactions = $result;
+        $this->transactions = $transactions;
+        $this->income = $income;
+        $this->expense=$expense;
+        $this->balance=$balance;
     }
     /**
      * Build the message.
