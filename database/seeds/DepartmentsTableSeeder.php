@@ -12,6 +12,7 @@ class DepartmentsTableSeeder extends Seeder
      */
     public function run()
     {
+        factory(Department::class, 20)->create();
         $data =
             [
                 [

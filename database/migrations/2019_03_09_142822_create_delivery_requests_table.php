@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateShippingRequestsTable extends Migration
+class CreateDeliveryRequestsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,7 +13,7 @@ class CreateShippingRequestsTable extends Migration
      */
     public function up()
     {
-        Schema::create('shipping_requests', function (Blueprint $table) {
+        Schema::create('delivery_requests', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->bigInteger('source_id')->unsigned();
             $table->foreign('source_id')->references('id')->on('departments');
@@ -35,6 +35,6 @@ class CreateShippingRequestsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('shipping_requests');
+        Schema::dropIfExists('delivery_requests');
     }
 }
