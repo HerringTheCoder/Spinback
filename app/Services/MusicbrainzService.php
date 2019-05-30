@@ -28,6 +28,6 @@ class MusicbrainzService
                 'query' => $query
             ]
         ]);
-        return json_decode($res->getBody()->getContents());
+        return json_decode($res->getBody()->getContents())->artists;
     }
 }

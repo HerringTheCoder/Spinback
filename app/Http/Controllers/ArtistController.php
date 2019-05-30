@@ -80,6 +80,6 @@ class ArtistController extends Controller
     public function search(Request $request)
     {
         $artists = $this->brainz->searchArtist($request->input('artist'));
-        return view('artists.results')->with('data', $artists);
+        return view('artists.results')->with('artists', $artists);
     }
 }
