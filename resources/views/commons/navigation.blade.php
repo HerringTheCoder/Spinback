@@ -7,7 +7,7 @@
         <a class="item logo-wrapper" href="/">
             <img src="{{ asset('images/spinback-alt.png') }}" class="logo">
         </a>
-        <a class="item" href="{{ route('departments.index') }}">
+        <a class="item {{ request()->is('departments*') ? 'active' : '' }}" href="{{ route('departments.index') }}">
             <b>{{ __('dashboard.nav.departments') }}</b>
         </a>
         <div class="item">
@@ -15,18 +15,18 @@
                 {{ __('dashboard.nav.metadata') }}
             </div>
             <div class="menu">
-                <div class="item">
+                <a class="item {{ request()->is('artists*') ? 'active' : '' }}" href="{{ route('artists.index') }}">
                     {{ __('dashboard.nav.artists') }}
-                </div>
-                <div class="item">
+                </a>
+                <a class="item {{ request()->is('metadata*') ? 'active' : '' }}" href="{{ route('metadata.index') }}">
                     {{ __('dashboard.nav.albums') }}
-                </div>
+                </a>
             </div>
         </div>
         <div class="item">
             <b>{{ __('dashboard.nav.users') }}</b>
         </div>
-        <a class="item" href="{{ route('about') }}">
+        <a class="item {{ request()->is('about') ? 'active' : '' }}" href="{{ route('about') }}">
             <b>{{ __('dashboard.nav.about') }}</b>
         </a>
     </div>
