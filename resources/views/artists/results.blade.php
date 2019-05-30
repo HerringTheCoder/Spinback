@@ -1,8 +1,8 @@
 @extends('layouts.dashboard')
 
-@section('title', 'Artists search results')
+@section('title', 'Artists results for \'' . request()->input('artist') . '\'')
 @section('content')
-    <h3 class="ui dividing header">Artists search results</h3>
+    <h3 class="ui dividing header">Artists results for '<em>{{ request()->input('artist') }}</em>'</h3>
 
     <div class="ui segments">
         @foreach ($artists as $artist)
@@ -10,8 +10,13 @@
                 <div class="ui grid">
                     <div class="twelve wide column">
                         <p>
+                            @if (isset($artist->country))
+                                <i class="{{ strtolower($artist->country) }} flag"></i>
+                            @endif
                             <strong>{{ $artist->name }}</strong>
-                            {!! isset($artist->disambiguation) ? "<em>({$artist->disambiguation})</em>" : "" !!}
+                            @if (isset($artist->disambiguation))
+                                <em>({{ $artist->disambiguation }})</em>
+                            @endif
                         </p>
                         @if (isset($artist->tags))
                             <p class="ui labels">
