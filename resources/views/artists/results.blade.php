@@ -4,7 +4,6 @@
 @section('content')
     <h3 class="ui dividing header">Artists search results</h3>
 
-    {{ dd($artists) }}
     <div class="ui segments">
         @foreach ($artists as $artist)
             <div class="ui segment">
