@@ -20,6 +20,6 @@ return [
 
     'successfully_deleted' => 'Zlecenie dostawy usunięte pomyślnie',
     'successfully_stored' => 'Zlecenie dostawy dodane pomyślnie',
-    'updated' => 'Zlecenie dostawy usunięte pomyślnie'
+    'updated' => 'Zlecenie dostawy zaktualizowane pomyślnie'
 
 ];

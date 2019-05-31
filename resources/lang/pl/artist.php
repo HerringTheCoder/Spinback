@@ -21,6 +21,6 @@ return [
 
     'successfully_deleted' => 'Artysta usunięty pomyślnie',
     'successfully_stored' => 'Artysta dodany pomyślnie',
-    'updated' => 'Artysta usunięty pomyślnie'
+    'updated' => 'Artysta zaktualizowany pomyślnie'
 
 ];

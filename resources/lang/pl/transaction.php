@@ -21,5 +21,5 @@ return [
 
     'successfully_deleted' => 'Transakcja usunięta pomyślnie',
     'successfully_stored' => 'Transakcja dodana pomyślnie',
-    'updated' => 'Transakcja usunięta pomyślnie'
+    'updated' => 'Transakcja zaktualizowana pomyślnie'
 ];

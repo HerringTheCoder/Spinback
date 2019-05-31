@@ -23,6 +23,6 @@ return [
 
     'successfully_deleted' => 'Płyta usunięta pomyślnie',
     'successfully_stored' => 'Płyta dodana pomyślnie',
-    'updated' => 'Płyta usunięta pomyślnie'
+    'updated' => 'Płyta zaktualizowana pomyślnie'
 
 ];
