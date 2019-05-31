@@ -9,12 +9,12 @@ class Disc extends Model
 {
     use SoftDeletes;
     protected $fillable = [
-        'metadata_id', 'condition', 'photo_path', 'offer_price', 'sold', 'department_id'
+        'album_id', 'condition', 'photo_path', 'offer_price', 'sold', 'department_id'
     ];
 
     public function metadata()
     {
-       return $this->belongsTo('App\Metadata')->withTrashed();
+        return $this->belongsTo('App\Album')->withTrashed();
     }
 
     public function department()
@@ -26,6 +26,4 @@ class Disc extends Model
     {
         return $this->hasOne('App\ShippingRequest');
     }
-
-
 }

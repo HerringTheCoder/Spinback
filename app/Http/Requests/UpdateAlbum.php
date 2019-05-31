@@ -1,8 +1,10 @@
 <?php
 namespace App\Http\Requests;
+
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Validation\Rule;
-class UpdateMetadata extends FormRequest
+
+class UpdateAlbum extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -27,9 +29,8 @@ class UpdateMetadata extends FormRequest
                 'genre' => 'string|min:3|max:15',
                 'country' => 'string|max:20|min:3',
                 'release_year' => 'date_format:"Y"',
-                'format' =>'string',
+                'format' => 'string',
             ]
         ];
-
     }
 }

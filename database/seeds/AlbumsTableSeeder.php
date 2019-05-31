@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Database\Seeder;
-use App\Metadata;
+use App\Album;
 
 class MetadataTableSeeder extends Seeder
 {
@@ -37,7 +37,7 @@ class MetadataTableSeeder extends Seeder
             ];
 
         foreach ($data as $row) {
-            $model = Metadata::firstOrNew(["id" => $row["id"]]);
+            $model = Album::firstOrNew(["id" => $row["id"]]);
             $model->fill($row);
             $model->save();
         }

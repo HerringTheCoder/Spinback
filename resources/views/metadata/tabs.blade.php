@@ -3,7 +3,7 @@
         <div class="item active">
             {{ __('dashboard.nav.artists') }}
         </div>
-        <a href="{{ route('metadata.index') }}" class="item">
+        <a href="{{ route('albums.index') }}" class="item">
             {{ __('dashboard.nav.albums') }}
         </a>
     @else

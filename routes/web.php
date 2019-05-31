@@ -23,7 +23,7 @@ Route::resource('artists', 'ArtistController')->except(['create', 'show', 'edit'
 Route::get('artists/search', 'ArtistController@search')->name('artists.search');
 Route::resource('departments', 'DepartmentController')->except(['create', 'show']);
 Route::resource('discs', 'DiscController')->except(['create', 'show']);
-Route::resource('metadata', 'MetadataController')->except(['create', 'show']);
+Route::resource('albums', 'AlbumController')->except(['create', 'show']);
 Route::resource('parcels', 'ParcelController')->except(['create', 'show']);
 Route::resource('shipping_requests', 'ShippingRequestController')->except(['create', 'show']);
 Route::get('transactions/report', 'TransactionController@report');
