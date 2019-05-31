@@ -7,7 +7,7 @@
     <div class="ui segments">
         @foreach ($artists as $artist)
             <div class="ui segment">
-                <div class="ui grid">
+                <div class="ui middle aligned grid">
                     <div class="twelve wide column">
                         <p>
                             @if (isset($artist->country))
@@ -26,11 +26,11 @@
                             </p>
                         @endif
                     </div>
-                    <div class="four wide column">
+                    <div class="four wide right aligned column">
                         <form method="post" action="{{ route('artist.pick') }}">
                             @csrf
                             <input type="hidden" name="id" value="{{ $artist->id }}">
-                            <button type="submit" class="ui right floated primary button">Pick</button>
+                            <button type="submit" class="ui primary button">Pick</button>
                         </form>
                     </div>
                 </div>
