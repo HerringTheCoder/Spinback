@@ -22,10 +22,17 @@ class ArtistController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        $artists = Artist::simplePaginate(20);
-        return view('artists.index')->with('artists', $artists);
+        $query = Artist::query();
+
+        if ($request->filled('query')) {
+            $query->where('name', 'like', '%' . $request->input('query') . '%');
+        }
+
+        $artists = $query->simplePaginate(20);
+
+        return view('metadata.artists.index')->with('artists', $artists);
     }
 
     /**
@@ -36,20 +43,14 @@ class ArtistController extends Controller
      */
     public function store(StoreArtist $request)
     {
-        Artist::create($request->validated());
-        return redirect()->route('artists.index')->with('success', __('artists.successfully stored'));
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Artist  $artist
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(Artist $artist)
-    {
-        //TODO
-        //Return view with edit form
+        $artist = $this->brainz->getArtist($request->input('id'));
+        Artist::create([
+            'id' => $artist->id,
+            'name' => $artist->name,
+            'country' => isset($artist->country) ? $artist->country : '',
+            'description' => isset($artist->disambiguation) ? $artist->disambiguation : ''
+        ]);
+        return redirect()->route('metadata.artists.index')->with('success', __('artists.successfully stored'));
     }
 
     /**
@@ -62,7 +63,7 @@ class ArtistController extends Controller
     public function update(UpdateArtist $request, Artist $artist)
     {
         $artist->update($request->validated());
-        return redirect()->route('artists.index')->with('success', __('artists.successfully_updated'));
+        return redirect()->route('metadata.artists.index')->with('success', __('artists.successfully_updated'));
     }
 
     /**
@@ -80,14 +81,14 @@ class ArtistController extends Controller
     public function search(Request $request)
     {
         $artists = $this->brainz->searchArtist($request->input('query'));
-        return view('artists.results')->with('artists', $artists);
+        return view('metadata.artists.results')->with('artists', $artists);
     }
 
     public function pick(Request $request)
     {
         $artist = $this->brainz->getArtist($request->input('id'));
         Artist::create([
-            'brainz_id' => $artist->id,
+            'id' => $artist->id,
             'name' => $artist->name,
             'country' => isset($artist->country) ? $artist->country : '',
             'description' => isset($artist->disambiguation) ? $artist->disambiguation : ''

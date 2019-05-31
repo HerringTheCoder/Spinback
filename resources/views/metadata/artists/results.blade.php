@@ -27,7 +27,7 @@
                         @endif
                     </div>
                     <div class="four wide right aligned column">
-                        <form method="post" action="{{ route('artist.pick') }}">
+                        <form method="post" action="{{ route('artists.store') }}">
                             @csrf
                             <input type="hidden" name="id" value="{{ $artist->id }}">
                             <button type="submit" class="ui primary button">Pick</button>

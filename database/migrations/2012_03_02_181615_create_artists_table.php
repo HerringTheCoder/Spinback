@@ -14,8 +14,7 @@ class CreateArtistsTable extends Migration
     public function up()
     {
         Schema::create('artists', function (Blueprint $table) {
-            $table->bigIncrements('id');
-            $table->uuid('brainz_id')->default('');
+            $table->uuid('id')->primary();
             $table->string('name');
             $table->string('country', 2)->default('');
             $table->string('description')->default('');

@@ -16,7 +16,7 @@ class CreateMetadataTable extends Migration
         Schema::create('metadata', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('title');
-            $table->bigInteger('artist_id')->unsigned();
+            $table->uuid('artist_id');
             $table->foreign('artist_id')->references('id')->on('artists');
             $table->string('genre');
             $table->string('country');

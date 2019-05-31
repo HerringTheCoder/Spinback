@@ -8,8 +8,11 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 class Artist extends Model
 {
     use SoftDeletes;
+
+    public $incrementing = false;
+
     protected $fillable = [
-        'brainz_id', 'name', 'country', 'description'
+        'id', 'name', 'country', 'description'
     ];
 
     public function metadata()
