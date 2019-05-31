@@ -13,7 +13,7 @@ class Department extends Model
 
     public function requests()
     {
-        return $this->hasMany('App\ShippingRequest');
+        return $this->hasMany('App\DeliveryRequest');
     }
 
     public function discs()

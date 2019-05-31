@@ -24,7 +24,7 @@ class Disc extends Model
 
     public function requests()
     {
-        return $this->hasOne('App\ShippingRequest');
+        return $this->hasOne('App\DeliveryRequest');
     }
 
 

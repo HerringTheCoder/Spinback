@@ -4,7 +4,7 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
-class ShippingRequest extends Model
+class DeliveryRequest extends Model
 {
     use SoftDeletes;
     protected $fillable = [

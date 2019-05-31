@@ -24,7 +24,7 @@ Route::resource('departments', 'DepartmentController')->except(['create', 'show'
 Route::resource('discs', 'DiscController')->except(['create', 'show']);
 Route::resource('metadata', 'MetadataController')->except(['create', 'show']);
 Route::resource('parcels', 'ParcelController')->except(['create', 'show']);
-Route::resource('shipping_requests', 'ShippingRequestController')->except(['create', 'show']);
+Route::resource('deliveries', 'DeliveryController')->except(['create', 'show']);
 Route::get('transactions/report', 'TransactionController@report');
 Route::resource('transactions', 'TransactionController')->except(['create', 'show']);
 Route::resource('users', 'UserController')->except(['create', 'show']);
