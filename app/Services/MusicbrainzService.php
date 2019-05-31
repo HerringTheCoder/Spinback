@@ -21,7 +21,7 @@ class MusicbrainzService
 
     public function searchArtist(string $name)
     {
-        $url = self::BRAINZ_URL . 'artist';
+        $url = self::BRAINZ_URL . 'artist?fmt=json';
         $query = "artist:{$name}";
         $res = $this->client->request('GET', $url, [
             'query' => [
@@ -29,5 +29,14 @@ class MusicbrainzService
             ]
         ]);
         return json_decode($res->getBody()->getContents())->artists;
+    }
+
+    public function getArtist(string $id)
+    {
+        $url = self::BRAINZ_URL . 'artist/' . $id . '?fmt=json';
+        $res = $this->client->request('GET', $url);
+        $contents = $res->getBody()->getContents();
+        $decoded = json_decode($contents);
+        return $decoded;
     }
 }

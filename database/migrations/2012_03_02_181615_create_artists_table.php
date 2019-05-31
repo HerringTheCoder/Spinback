@@ -15,9 +15,10 @@ class CreateArtistsTable extends Migration
     {
         Schema::create('artists', function (Blueprint $table) {
             $table->bigIncrements('id');
+            $table->uuid('brainz_id')->default('');
             $table->string('name');
-            $table->string('country');
-            $table->string('description');
+            $table->string('country', 2)->default('');
+            $table->string('description')->default('');
             $table->softDeletes();
             $table->timestamps();
         });

@@ -24,7 +24,7 @@ class ArtistController extends Controller
      */
     public function index()
     {
-        $artists = Artist::all();
+        $artists = Artist::simplePaginate(20);
         return view('artists.index')->with('artists', $artists);
     }
 
@@ -79,7 +79,19 @@ class ArtistController extends Controller
 
     public function search(Request $request)
     {
-        $artists = $this->brainz->searchArtist($request->input('artist'));
+        $artists = $this->brainz->searchArtist($request->input('query'));
         return view('artists.results')->with('artists', $artists);
+    }
+
+    public function pick(Request $request)
+    {
+        $artist = $this->brainz->getArtist($request->input('id'));
+        Artist::create([
+            'brainz_id' => $artist->id,
+            'name' => $artist->name,
+            'country' => isset($artist->country) ? $artist->country : '',
+            'description' => isset($artist->disambiguation) ? $artist->disambiguation : ''
+        ]);
+        return redirect()->route('artists.index')->with('success', 'Succesfully added new artist');
     }
 }

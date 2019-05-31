@@ -1,8 +1,8 @@
 @extends('layouts.dashboard')
 
-@section('title', 'Artists results for \'' . request()->input('artist') . '\'')
+@section('title', 'Artists results for \'' . request()->input('query') . '\'')
 @section('content')
-    <h3 class="ui dividing header">Artists results for '<em>{{ request()->input('artist') }}</em>'</h3>
+    <h3 class="ui dividing header">Artists results for '<em>{{ request()->input('query') }}</em>'</h3>
 
     <div class="ui segments">
         @foreach ($artists as $artist)
@@ -27,7 +27,11 @@
                         @endif
                     </div>
                     <div class="four wide column">
-                        <button class="ui right floated primary button">Pick</button>
+                        <form method="post" action="{{ route('artist.pick') }}">
+                            @csrf
+                            <input type="hidden" name="id" value="{{ $artist->id }}">
+                            <button type="submit" class="ui right floated primary button">Pick</button>
+                        </form>
                     </div>
                 </div>
             </div>

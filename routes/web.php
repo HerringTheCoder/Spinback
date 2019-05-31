@@ -20,7 +20,8 @@ Route::get('/about', 'HomeController@about')->name('about');
 Route::get('/lang/{locale}', 'LocalizationController@locale')->name('locale');
 
 Route::resource('artists', 'ArtistController')->except(['create', 'show']);
-Route::post('artists/search', 'ArtistController@search')->name('artist.search');
+Route::get('artists/search', 'ArtistController@search')->name('artist.search');
+Route::post('artists/pick', 'ArtistController@pick')->name('artist.pick');
 Route::resource('departments', 'DepartmentController')->except(['create', 'show']);
 Route::resource('discs', 'DiscController')->except(['create', 'show']);
 Route::resource('metadata', 'MetadataController')->except(['create', 'show']);

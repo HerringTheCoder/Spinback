@@ -81,3 +81,15 @@ main.main {
         }
     }
 }
+
+.pagination {
+    margin-bottom: 1em;
+}
+
+.pagination:after {
+    content: '.';
+    display: block;
+    height: 0;
+    clear: both;
+    visibility: hidden;
+}
