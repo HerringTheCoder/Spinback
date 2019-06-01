@@ -16,6 +16,11 @@ header.header {
 
     .menu {
         height: 100% !important;
+        margin: 0 !important;
+    }
+
+    .item:last-child {
+        margin-right: 0 !important;
     }
 }
 
@@ -79,6 +84,10 @@ main.main {
         .close-menu {
             display: block !important;
         }
+    }
+
+    .header .icon.sign-out {
+        margin: 0 !important;
     }
 }
 

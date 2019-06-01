@@ -9,8 +9,14 @@ class Album extends Model
 {
     use SoftDeletes;
 
+    public $incrementing = false;
+
+    protected $dates = [
+        'release_date'
+    ];
+
     protected $fillable = [
-        'title', 'artist_id', 'genre', 'country', 'release_year', 'format'
+        'id', 'title', 'artist_id', 'genre', 'cover', 'release_date'
     ];
 
     public function artist()

@@ -23,9 +23,9 @@
         Delete
     </button>
 
-    <form method="get" action="{{ route('artists.index') }}" class="ui icon input">
+    <form method="get" action="{{ route('artists.index') }}" class="ui icon input" style="float: right;">
         <i class="search icon"></i>
-        <input type="text" name="query" placeholder="Search...">
+        <input type="text" name="query" placeholder="Search..." value="{{ request()->input('query') }}">
     </form>
 
     <table class="ui compact selectable celled striped definition table artists">
@@ -46,7 +46,6 @@
                         <div class="ui radio checkbox">
                             <input type="radio" name="artist" value="{{ $artist->id }}"><label></label>
                         </div>
-                    </td>
                     </td>
                     <td data-label="Name">
                         @if ($artist->country)

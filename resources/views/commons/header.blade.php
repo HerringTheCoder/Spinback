@@ -18,7 +18,7 @@
                     @csrf
                     <button type="submit" class="ui inverted grey basic button">
                             <i class="sign-out icon"></i>
-                            {{ __('dashboard.header.logout') }}
+                            <span class="mobile-hidden">{{ __('dashboard.header.logout') }}</span>
                     </button>
                 </form>
             </div>

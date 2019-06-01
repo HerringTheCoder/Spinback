@@ -18,7 +18,7 @@
                 <a class="item {{ request()->is('artists*') ? 'active' : '' }}" href="{{ route('artists.index') }}">
                     {{ __('dashboard.nav.artists') }}
                 </a>
-                <a class="item {{ request()->is('metadata*') ? 'active' : '' }}" href="{{ route('albums.index') }}">
+                <a class="item {{ request()->is('albums*') ? 'active' : '' }}" href="{{ route('albums.index') }}">
                     {{ __('dashboard.nav.albums') }}
                 </a>
             </div>

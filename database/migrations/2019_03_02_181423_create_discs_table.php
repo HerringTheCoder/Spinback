@@ -15,7 +15,7 @@ class CreateDiscsTable extends Migration
     {
         Schema::create('discs', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->bigInteger('album_id')->unsigned();
+            $table->uuid('album_id');
             $table->foreign('album_id')->references('id')->on('albums');
             $table->string('condition');
             $table->string('photo_path');

@@ -50,7 +50,7 @@ class ArtistController extends Controller
             'country' => isset($artist->country) ? $artist->country : '',
             'description' => isset($artist->disambiguation) ? $artist->disambiguation : ''
         ]);
-        return redirect()->route('metadata.artists.index')->with('success', __('artists.successfully stored'));
+        return redirect()->route('artists.index')->with('success', __('artists.successfully stored'));
     }
 
     /**
@@ -63,7 +63,7 @@ class ArtistController extends Controller
     public function update(UpdateArtist $request, Artist $artist)
     {
         $artist->update($request->validated());
-        return redirect()->route('metadata.artists.index')->with('success', __('artists.successfully_updated'));
+        return redirect()->route('artists.index')->with('success', __('artists.successfully_updated'));
     }
 
     /**
@@ -94,5 +94,15 @@ class ArtistController extends Controller
             'description' => isset($artist->disambiguation) ? $artist->disambiguation : ''
         ]);
         return redirect()->route('artists.index')->with('success', 'Succesfully added new artist');
+    }
+
+    public function autocomplete(Request $request)
+    {
+        $artists = Artist::where('name', 'like', '%' . $request->input('query') . '%')->get();
+        return [
+            'results' => $artists->map(function ($item) {
+                return ['name' => $item->name];
+            })
+        ];
     }
 }
