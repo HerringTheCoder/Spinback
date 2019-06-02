@@ -39,7 +39,7 @@
                         data-name="{{ $department->name }}">
                         <td class="collapsing ignored">
                             <div class="ui radio checkbox">
-                                <input type="radio"><label></label>
+                                <input type="radio" name="departments"><label></label>
                             </div>
                         </td>
                         </td>

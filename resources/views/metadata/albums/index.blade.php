@@ -50,7 +50,7 @@
                         data-name="{{ $album->title }}">
                         <td class="collapsing ignored">
                             <div class="ui radio checkbox">
-                                <input type="radio"><label></label>
+                                <input type="radio" name="album"><label></label>
                             </div>
                         </td>
                         <td class="center aligned">
