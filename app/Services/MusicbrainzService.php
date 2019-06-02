@@ -44,13 +44,10 @@ class MusicbrainzService
         return $decoded;
     }
 
-    public function searchAlbum(string $name, ?string $artist)
+    public function searchAlbum(string $name)
     {
         $url = self::BRAINZ_URL . 'release-group/?fmt=json';
         $query = "release:{$name}";
-        if ($artist) {
-            $query .= " AND artist:{$artist}";
-        }
         $res = $this->client->request('GET', $url, [
             'query' => [
                 'query' => $query
