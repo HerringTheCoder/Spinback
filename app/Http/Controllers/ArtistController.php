@@ -29,6 +29,7 @@ class ArtistController extends Controller
         if ($request->filled('query')) {
             $query->where('name', 'like', '%' . $request->input('query') . '%');
         }
+        $query->orderBy('name', 'asc');
         $artists = $query->simplePaginate(20);
         return view('metadata.artists.index')->with('artists', $artists);
     }

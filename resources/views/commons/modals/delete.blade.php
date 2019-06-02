@@ -1,18 +1,18 @@
 <div class="ui tiny basic modal delete-modal">
     <div class="ui icon header">
         <i class="trash icon"></i>
-        Removing resource
+        {{ __('resources.delete_modal_header') }}
     </div>
     <div class="content">
-        You're about to delete <strong></strong>. Are you sure?
+        {!! __('resources.delete_modal_text') !!}
     </div>
     <div class="actions">
         <div class="ui basic cancel inverted button">
-            Cancel
+            {{ __('resources.cancel_button') }}
         </div>
         <div class="ui red ok inverted button">
             <i class="trash icon"></i>
-            Delete
+            {{ __('resources.delete_button') }}
         </div>
     </div>
     <form method="post">

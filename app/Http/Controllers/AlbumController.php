@@ -27,6 +27,7 @@ class AlbumController extends Controller
         if ($request->filled('query')) {
             $query->where('title', 'like', '%' . $request->input('query') . '%');
         }
+        $query->orderBy('title', 'asc');
         $albums = $query->simplePaginate(20);
         return view('metadata.albums.index')->with('albums', $albums);
     }

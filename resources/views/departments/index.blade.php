@@ -11,11 +11,11 @@
             </button>
             <button class="ui button disabled edit-resource">
                 <i class="edit icon"></i>
-                @lang('departments.edit')
+                {{ __('resources.edit_button') }}
             </button>
             <button class="ui button disabled delete-resource">
                 <i class="trash icon"></i>
-                @lang('departments.delete')
+                {{ __('resources.delete_button') }}
             </button>
         </div>
 
@@ -59,11 +59,11 @@
             </button>
             <button class="ui button disabled edit-resource">
                 <i class="edit icon"></i>
-                @lang('departments.edit')
+                {{ __('resources.edit_button') }}
             </button>
             <button class="ui button disabled delete-resource">
                 <i class="trash icon"></i>
-                @lang('departments.delete')
+                {{ __('resources.delete_button') }}
             </button>
         </div>
 
@@ -97,11 +97,11 @@
             </div>
             <div class="actions">
                 <div class="ui deny button">
-                    @lang('departments.cancel')
+                    {{ __('resources.cancel_button') }}
                 </div>
                 <div class="ui positive button">
                     <i class="save icon"></i>
-                    @lang('departments.save')
+                    {{ __('resources.save_button') }}
                 </div>
             </div>
         </div>
