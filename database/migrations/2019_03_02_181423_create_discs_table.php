@@ -15,8 +15,8 @@ class CreateDiscsTable extends Migration
     {
         Schema::create('discs', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->bigInteger('metadata_id')->unsigned();
-            $table->foreign('metadata_id')->references('id')->on('metadata');
+            $table->uuid('album_id');
+            $table->foreign('album_id')->references('id')->on('albums');
             $table->string('condition');
             $table->string('photo_path');
             $table->integer('offer_price')->unsigned();

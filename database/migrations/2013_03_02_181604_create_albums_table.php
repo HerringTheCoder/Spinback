@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateMetadataTable extends Migration
+class CreateAlbumsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,15 +13,14 @@ class CreateMetadataTable extends Migration
      */
     public function up()
     {
-        Schema::create('metadata', function (Blueprint $table) {
-            $table->bigIncrements('id');
+        Schema::create('albums', function (Blueprint $table) {
+            $table->uuid('id')->primary();
             $table->string('title');
-            $table->bigInteger('artist_id')->unsigned();
+            $table->uuid('artist_id');
             $table->foreign('artist_id')->references('id')->on('artists');
-            $table->string('genre');
-            $table->string('country');
-            $table->smallInteger('release_year')->unsigned();
-            $table->string('format');
+            $table->string('genre')->default('');
+            $table->boolean('cover')->default(false);
+            $table->date('release_date')->nullable();
             $table->softDeletes();
             $table->timestamps();
         });

@@ -7,6 +7,6 @@ class LocalizationController extends Controller
     public function locale($locale)
     {
         session(['locale' => $locale]);
-        return redirect()->back();
+        return redirect()->back()->withInput();
     }
 }

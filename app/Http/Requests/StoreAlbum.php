@@ -1,7 +1,9 @@
 <?php
 namespace App\Http\Requests;
+
 use Illuminate\Foundation\Http\FormRequest;
-class StoreMetadata extends FormRequest
+
+class StoreAlbum extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -26,7 +28,7 @@ class StoreMetadata extends FormRequest
                 'genre' => 'string|min:3|max:15',
                 'country' => 'string|max:20|min:3',
                 'release_year' => 'date_format:"Y"',
-                'format' =>'string',
+                'format' => 'string',
             ]
         ];
     }

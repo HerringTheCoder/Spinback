@@ -2,6 +2,7 @@
 
 @section('title', __('home.title'))
 @section('content')
+    <div class="home-background"></div>
     <div class="ui grid">
         <div class="doubling four column row">
             <div class="four wide column">

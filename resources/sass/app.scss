@@ -16,12 +16,21 @@ header.header {
 
     .menu {
         height: 100% !important;
+        margin: 0 !important;
+    }
+
+    .item:last-child {
+        margin-right: 0 !important;
     }
 }
 
 aside.navigation {
     grid-area: navigation;
     background: #1b1c1d;
+
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
 
     .menu {
         border-radius: 0 !important;
@@ -39,12 +48,34 @@ aside.navigation {
     .close-menu {
         display: none !important;
     }
+
+    footer {
+        text-align: center;
+        color: #555;
+        padding-bottom: 15px;
+        margin-top: 10px;
+        background: linear-gradient(#1b1c1d, #111);
+    }
 }
 
 main.main {
+    position: relative;
     grid-area: main;
     padding: 0.8rem;
 }
+
+.home-background {
+    position: absolute;
+    width: 100%;
+    height: 120px;
+    margin: -0.8rem;
+
+    background: linear-gradient(#ddd, #fff);
+}
+
+// .home-background + div {
+//     margin-top: 0.5em !important;
+// }
 
 @media only screen and (max-width: 767px) {
     .dashboard {
@@ -68,7 +99,8 @@ main.main {
         grid-template-areas: 'navigation';
 
         main.main,
-        header.header {
+        header.header,
+        aside.navigation footer {
             display: none;
         }
 
@@ -80,4 +112,26 @@ main.main {
             display: block !important;
         }
     }
+
+    .header .icon.sign-out {
+        margin: 0 !important;
+    }
+
+    .resource .controls > * {
+        display: block !important;
+        float: none !important;
+        margin: 5px 0 !important;
+    }
+}
+
+.pagination {
+    margin-bottom: 1em;
+}
+
+.pagination:after {
+    content: '.';
+    display: block;
+    height: 0;
+    clear: both;
+    visibility: hidden;
 }

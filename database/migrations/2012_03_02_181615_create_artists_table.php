@@ -14,10 +14,10 @@ class CreateArtistsTable extends Migration
     public function up()
     {
         Schema::create('artists', function (Blueprint $table) {
-            $table->bigIncrements('id');
+            $table->uuid('id')->primary();
             $table->string('name');
-            $table->string('country');
-            $table->string('description');
+            $table->string('country', 2)->default('');
+            $table->string('description')->default('');
             $table->softDeletes();
             $table->timestamps();
         });

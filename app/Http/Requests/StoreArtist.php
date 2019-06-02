@@ -1,6 +1,8 @@
 <?php
 namespace App\Http\Requests;
+
 use Illuminate\Foundation\Http\FormRequest;
+
 class StoreArtist extends FormRequest
 {
     /**
@@ -20,11 +22,7 @@ class StoreArtist extends FormRequest
     public function rules()
     {
         return [
-            [
-                'name' => 'min:3|max:25|required',
-                'country' => 'min:3|max:20',
-                'description' => 'max:250'
-            ]
+            'id' => 'uuid|unique:artists|required'
         ];
     }
 }
