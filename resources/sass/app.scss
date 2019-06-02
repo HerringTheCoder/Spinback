@@ -28,6 +28,10 @@ aside.navigation {
     grid-area: navigation;
     background: #1b1c1d;
 
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+
     .menu {
         border-radius: 0 !important;
         margin: 0 !important;
@@ -43,6 +47,14 @@ aside.navigation {
 
     .close-menu {
         display: none !important;
+    }
+
+    footer {
+        text-align: center;
+        color: #555;
+        padding-bottom: 15px;
+        margin-top: 10px;
+        background: linear-gradient(#1b1c1d, #111);
     }
 }
 
@@ -87,7 +99,8 @@ main.main {
         grid-template-areas: 'navigation';
 
         main.main,
-        header.header {
+        header.header,
+        aside.navigation footer {
             display: none;
         }
 

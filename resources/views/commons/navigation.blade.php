@@ -33,4 +33,7 @@
     
     <div style="clear: both;"></div>
 
+    <footer>
+        <i class="copyright outline icon"></i> Spinback {{ date('Y') }}
+    </footer>
 </aside>
