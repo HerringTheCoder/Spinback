@@ -103,6 +103,12 @@ main.main {
     .header .icon.sign-out {
         margin: 0 !important;
     }
+
+    .resource .controls > * {
+        display: block !important;
+        float: none !important;
+        margin: 5px 0 !important;
+    }
 }
 
 .pagination {

@@ -26,8 +26,10 @@
             </button>
         
             <form method="get" action="{{ route('artists.index') }}" class="ui icon input" style="float: right;">
-                <i class="search icon"></i>
-                <input type="text" name="query" placeholder="Search..." value="{{ request()->input('query') }}">
+                <div class="ui icon input">
+                    <i class="search icon"></i>
+                    <input type="text" name="query" placeholder="Search..." value="{{ request()->input('query') }}">
+                </div>
             </form>
         </div>
     
