@@ -18,105 +18,52 @@
 
     <h3 class="ui dividing header">Artists</h3>
 
-    <button class="ui button disabled delete-artist">
-        <i class="trash icon"></i>
-        Delete
-    </button>
-
-    <form method="get" action="{{ route('artists.index') }}" class="ui icon input" style="float: right;">
-        <i class="search icon"></i>
-        <input type="text" name="query" placeholder="Search..." value="{{ request()->input('query') }}">
-    </form>
-
-    <table class="ui compact selectable celled striped definition table artists">
-        <thead>
-            <tr>
-                <th></th>
-                <th>Name</th>
-                <th>Description</th>
-            </tr>
-        </thead>
-        <tbody>
-            @foreach ($artists as $artist)
-                <tr
-                    data-id="{{ $artist->id }}"
-                    data-delete="{{ route('artists.destroy', ['id' => $artist->id]) }}"
-                    data-name="{{ $artist->name }}">
-                    <td class="collapsing ignored">
-                        <div class="ui radio checkbox">
-                            <input type="radio" name="artist" value="{{ $artist->id }}"><label></label>
-                        </div>
-                    </td>
-                    <td data-label="Name">
-                        @if ($artist->country)
-                            <i class="{{ strtolower($artist->country) }} flag"></i>
-                        @endif
-                        <a href="https://musicbrainz.org/artist/{{ $artist->id }}" target="_blank" rel="noopener noreferrer">{{ $artist->name }}</a>
-                    </td>
-                    <td data-label="Description">{{ $artist->description }}</td>
-                </tr>
-            @endforeach
-        </tbody>
-    </table>
-
-    {{ $artists->appends(request()->input())->links() }}
-
-    <div class="ui tiny basic modal delete-artist-modal">
-        <div class="ui icon header">
-            <i class="trash icon"></i>
-            Deleting artist
-        </div>
-        <div class="content">
-            You're about to delete <strong></strong>. Are you sure?
-        </div>
-        <div class="actions">
-            <div class="ui basic cancel inverted button">
-                Cancel
-            </div>
-            <div class="ui red ok inverted button">
+    <div class="resource">
+        <div class="controls">
+            <button class="ui button disabled delete-resource">
                 <i class="trash icon"></i>
-                delete
-            </div>
+                Delete
+            </button>
+        
+            <form method="get" action="{{ route('artists.index') }}" class="ui icon input" style="float: right;">
+                <i class="search icon"></i>
+                <input type="text" name="query" placeholder="Search..." value="{{ request()->input('query') }}">
+            </form>
         </div>
-    </div>
-
-    <form method="post" class="delete-artist-form">
-        @csrf
-        @method('delete')
-    </form>
     
+        <table class="ui compact selectable celled striped definition table artists">
+            <thead>
+                <tr>
+                    <th></th>
+                    <th>Name</th>
+                    <th>Description</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach ($artists as $artist)
+                    <tr
+                        data-id="{{ $artist->id }}"
+                        data-delete-route="{{ route('artists.destroy', ['id' => $artist->id]) }}"
+                        data-name="{{ $artist->name }}">
+                        <td class="collapsing ignored">
+                            <div class="ui radio checkbox">
+                                <input type="radio"><label></label>
+                            </div>
+                        </td>
+                        <td data-label="Name">
+                            @if ($artist->country)
+                                <i class="{{ strtolower($artist->country) }} flag"></i>
+                            @endif
+                            <a href="https://musicbrainz.org/artist/{{ $artist->id }}" target="_blank" rel="noopener noreferrer">{{ $artist->name }}</a>
+                        </td>
+                        <td data-label="Description">{{ $artist->description }}</td>
+                    </tr>
+                @endforeach
+            </tbody>
+        </table>
+    
+        {{ $artists->appends(request()->input())->links() }}
+    
+        @include('commons.modals.delete')
+    </div>
 @endsection
-
-@push('scripts')
-    <script>
-        $('table.artists tbody tr').click(function() {
-            $(this).find('td:first-child input[type="radio"]')[0].click();
-        });
-
-        $('input[type="radio"]').prop('checked', false);
-
-        $('input[name="artist"]').change(function () {
-            const artistId = $('input[name="artist"]:checked').val();
-            $('.delete-artist').removeClass('disabled');
-            $('table.artists tbody tr').removeClass('active');
-            $('tr[data-id="' + artistId + '"]').addClass('active');
-        });
-
-        $('button.delete-artist').click(function() {
-            const artistId = $('input[name="artist"]:checked').val();
-            const artistName = $('tr[data-id="' + artistId + '"]').data('name');
-            const deleteRoute = $('tr[data-id="' + artistId + '"]').data('delete');
-
-            $('.delete-artist-modal .content > strong:first-child').text(artistName);
-            $('.delete-artist-modal')
-                .modal({
-                    onApprove: function() {
-                        $('form.delete-artist-form')
-                            .attr('action', deleteRoute)
-                            .submit();
-                    }
-                })
-                .modal('show');
-        });
-    </script>
-@endpush

@@ -44,7 +44,6 @@ class AlbumController extends Controller
             'artist_id' => $albumData->{'artist-credit'}[0]->artist->id
         ];
         if (isset($albumData->{'first-release-date'})) {
-            dump($albumData->{'first-release-date'});
             $album['release_date'] = Carbon::parse($albumData->{'first-release-date'});
         }
         if (!empty($albumData->genres)) {

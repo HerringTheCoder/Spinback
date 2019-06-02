@@ -18,58 +18,68 @@
 
     <h3 class="ui dividing header">Albums</h3>
 
-    <table class="ui compact selectable celled striped definition table albums">
-        <thead>
-            <tr>
-                <th></th>
-                <th>Cover</th>
-                <th>Name</th>
-                <th>Artist</th>
-                <th>Genre</th>
-                <th>Release date</th>
-                {{-- <th>Description</th> --}}
-            </tr>
-        </thead>
-        <tbody>
-            @foreach ($albums as $album)
-                <tr
-                    data-id="{{ $album->id }}"
-                    data-delete="{{ route('albums.destroy', ['id' => $album->id]) }}"
-                    data-title="{{ $album->title }}">
-                    <td class="collapsing ignored">
-                        <div class="ui radio checkbox">
-                            <input type="radio" name="album" value="{{ $album->id }}"><label></label>
-                        </div>
-                    </td>
-                    <td class="center aligned">
-                        @if ($album->cover)
-                            <img src="{{ asset('storage/covers/' . $album->id . '.jpg') }}" height="80">
-                        @else
-                            No cover
-                        @endif
-                    </td>
-                    <td data-label="Title">
-                        <a href="https://musicbrainz.org/release-group/{{ $album->id }}" target="_blank" rel="noopener noreferrer">{{ $album->title }}</a>
-                    </td>
-                    <td>
-                        @if ($album->artist->country)
-                            <i class="{{ strtolower($album->artist->country) }} flag"></i>
-                        @endif
-                        <a href="https://musicbrainz.org/artist/{{ $album->artist->id }}" target="_blank" rel="noopener noreferrer">{{ $album->artist->name }}</a>
-                    </td>
-                    <td>
-                        {{ $album->genre }}
-                    </td>
-                    <td>
-                        {{ $album->release_date->format('Y-m-d') }}
-                    </td>
-                    {{-- <td data-label="Description">{{ $artist->description }}</td> --}}
-                </tr>
-            @endforeach
-        </tbody>
-    </table>
-    
-@endsection
+    <div class="resource">
+        <div class="controls">
+            <button class="ui button disabled delete-resource">
+                <i class="trash icon"></i>
+                Delete
+            </button>
+        
+            <form method="get" action="{{ route('albums.index') }}" class="ui icon input" style="float: right;">
+                <i class="search icon"></i>
+                <input type="text" name="query" placeholder="Search..." value="{{ request()->input('query') }}">
+            </form>
+        </div>
 
-@push('scripts')
-@endpush
+        <table class="ui compact selectable celled striped definition table albums">
+            <thead>
+                <tr>
+                    <th></th>
+                    <th>Cover</th>
+                    <th>Name</th>
+                    <th>Artist</th>
+                    <th>Genre</th>
+                    <th>Release date</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach ($albums as $album)
+                    <tr
+                        data-id="{{ $album->id }}"
+                        data-delete-route="{{ route('albums.destroy', ['id' => $album->id]) }}"
+                        data-name="{{ $album->title }}">
+                        <td class="collapsing ignored">
+                            <div class="ui radio checkbox">
+                                <input type="radio"><label></label>
+                            </div>
+                        </td>
+                        <td class="center aligned">
+                            @if ($album->cover)
+                                <img src="{{ asset('storage/covers/' . $album->id . '.jpg') }}" height="80">
+                            @else
+                                No cover
+                            @endif
+                        </td>
+                        <td data-label="Title">
+                            <a href="https://musicbrainz.org/release-group/{{ $album->id }}" target="_blank" rel="noopener noreferrer">{{ $album->title }}</a>
+                        </td>
+                        <td>
+                            @if ($album->artist->country)
+                                <i class="{{ strtolower($album->artist->country) }} flag"></i>
+                            @endif
+                            <a href="https://musicbrainz.org/artist/{{ $album->artist->id }}" target="_blank" rel="noopener noreferrer">{{ $album->artist->name }}</a>
+                        </td>
+                        <td>
+                            {{ $album->genre }}
+                        </td>
+                        <td>
+                            {{ $album->release_date->format('Y-m-d') }}
+                        </td>
+                    </tr>
+                @endforeach
+            </tbody>
+        </table>
+
+        @include('commons.modals.delete')
+    </div>
+@endsection

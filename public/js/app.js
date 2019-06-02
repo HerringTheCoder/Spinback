@@ -7,17 +7,48 @@
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! ./bootstrap */ "./resources/js/bootstrap.js");
+__webpack_require__(/*! ./bootstrap */ "./resources/js/bootstrap.js"); // RWD menu
+
 
 $('.show-menu').click(function () {
   $('.dashboard').addClass('mobile-menu');
 });
 $('.close-menu').click(function () {
   $('.dashboard').removeClass('mobile-menu');
-});
+}); // Handle message close button event
+
 $('.message .close.icon').click(function () {
   $(this).parent().remove();
+}); // Handle selectable resource tables
+
+$('.resource .selectable.table tbody tr').click(function () {
+  $(this).find('td:first-child input[type="radio"]')[0].click();
 });
+$('.resource .selectable.table td:first-child input[type="radio"]').prop('checked', false).change(function () {
+  $(this).closest('tbody').find('tr').removeClass('active');
+  $(this).closest('tr').addClass('active');
+  $(this).closest('.resource').find('.controls button.disabled').removeClass('disabled');
+}); // Handle resource delete button click
+
+$('.delete-resource').click(function () {
+  var _$$closest$find$data = $(this).closest('.resource').find('tr.active').data(),
+      name = _$$closest$find$data.name,
+      deleteRoute = _$$closest$find$data.deleteRoute;
+
+  var $modal = $('.delete-modal');
+  $modal.find('.content > strong').text(name);
+  $modal.modal({
+    onApprove: function onApprove() {
+      $('.delete-modal form').attr('action', deleteRoute).submit();
+    }
+  }).modal('show');
+}); // Handle resource edit button click
+
+$('.edit-resource').click(function () {
+  var route = $(this).closest('.resource').find('tr.active').data('edit-route');
+  document.location = route;
+}); // Add CSRF token to every ajax request
+
 $.ajaxSetup({
   headers: {
     'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
