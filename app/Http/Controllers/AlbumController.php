@@ -21,9 +21,13 @@ class AlbumController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        $albums = Album::with('artist')->get();
+        $query = Album::query();
+        if ($request->filled('query')) {
+            $query->where('title', 'like', '%' . $request->input('query') . '%');
+        }
+        $albums = $query->simplePaginate(20);
         return view('metadata.albums.index')->with('albums', $albums);
     }
 
