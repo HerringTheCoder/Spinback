@@ -5,9 +5,15 @@ namespace App\Http\Controllers;
 use App\Parcel;
 use Illuminate\Http\Request;
 use App\Http\Requests\StoreParcel;
+use App\Http\Requests\UpdateParcel;
 
 class ParcelController extends Controller
 {
+    public function __construct()
+    {
+        $this->authorizeResource(Parcel::class);
+        $this->middleware('auth');
+    }
     /**
      * Display a listing of the resource.
      *
@@ -39,7 +45,7 @@ class ParcelController extends Controller
      */
     public function edit(Parcel $parcel)
     {
-        //
+        return view('parcels.edit', compact('parcel'));
     }
 
     /**
@@ -49,7 +55,7 @@ class ParcelController extends Controller
      * @param  \App\Parcel  $parcel
      * @return \Illuminate\Http\Response
      */
-    public function update(StoreParcel $request, Parcel $parcel)
+    public function update(UpdateParcel $request, Parcel $parcel)
     {
         $parcel->update($request->validated());
         return redirect()->route('parcels.index')->with('success', __('parcels.successfully_updated'));

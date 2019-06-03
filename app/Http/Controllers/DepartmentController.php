@@ -32,7 +32,7 @@ class DepartmentController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function store(StoreDepartment $request)
-    {
+    {   
         Department::create($request->validated());
         return redirect()->route('departments.index')->with('success', __('departments.successfully_stored'));
     }

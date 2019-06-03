@@ -23,6 +23,9 @@
                 </a>
             </div>
         </div>
+        <a class="item {{ request()->is('parcels*') ? 'active' : '' }}" href="{{ route('parcels.index') }}">
+                <b>{{ __('dashboard.nav.parcels') }}</b>
+            </a>
         <div class="item">
             <b>{{ __('dashboard.nav.users') }}</b>
         </div>
@@ -30,7 +33,7 @@
             <b>{{ __('dashboard.nav.about') }}</b>
         </a>
     </div>
-    
+
     <div style="clear: both;"></div>
 
     <footer>
