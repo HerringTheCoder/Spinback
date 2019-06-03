@@ -13,6 +13,7 @@ return [
         'metadata' => 'Metadata',
         'artists' => 'Artists',
         'albums' => 'Albums',
-        'users' => 'Manage users'
+        'users' => 'Manage users',
+        'parcels' => 'Parcels'
     ]
 ];

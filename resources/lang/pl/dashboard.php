@@ -13,6 +13,7 @@ return [
         'metadata' => 'Metadane',
         'artists' => 'Artyści',
         'albums' => 'Albumy',
-        'users' => 'Zarządzaj użytkownikami'
+        'users' => 'Zarządzaj użytkownikami',
+        'parcels' => 'Przesyłki'
     ]
 ];

@@ -21,10 +21,10 @@ class UpdateParcel extends FormRequest
     public function rules()
     {
         return [
-            [
-                'tracking_code' => 'unique|min:3|max:40|alpha',
+
+                'tracking_code' => 'min:3|max:40',
                 'completed' => 'boolean'
-            ]
+
         ];
     }
 }
