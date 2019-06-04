@@ -31,6 +31,6 @@ class Album extends Model
 
     public function image()
     {
-        return asset("storage/covers/{$this->id}.jpg");
+        return $this->cover ? asset("storage/covers/{$this->id}.jpg") : asset('images/no-cover.png');
     }
 }

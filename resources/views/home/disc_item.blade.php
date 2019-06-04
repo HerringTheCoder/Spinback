@@ -1,8 +1,6 @@
 <a class="item" href="{{ route('discs.show', ['id' => $disc->id]) }}">
     <div class="ui tiny image">
-        @if ($disc->album->cover)
-            <img src="{{ $disc->album->image() }}">
-        @endif
+        <img src="{{ $disc->album->image() }}">
     </div>
     <div class="middle aligned content">
         <div class="ui small header">{{ $disc->album->title }}</div>

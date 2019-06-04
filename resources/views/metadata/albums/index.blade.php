@@ -56,11 +56,7 @@
                             </div>
                         </td>
                         <td class="center aligned">
-                            @if ($album->cover)
-                                <img src="{{ asset('storage/covers/' . $album->id . '.jpg') }}" height="80">
-                            @else
-                                No cover
-                            @endif
+                            <img src="{{ $album->image() }}" height="80">
                         </td>
                         <td data-label="Title">
                             <a href="https://musicbrainz.org/release-group/{{ $album->id }}" target="_blank" rel="noopener noreferrer">{{ $album->title }}</a>
