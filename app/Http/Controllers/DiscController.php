@@ -34,7 +34,7 @@ class DiscController extends Controller
             $album = Album::where('id', $request->input('album'))->first();
         }
         if ($request->filled('department')) {
-            $query->where('department_id', $request->input('department'));
+            $query->department($request->input('department'));
         }
         $query->orderBy('created_at', 'desc');
         $query->with('album.artist')->with('department')->get();

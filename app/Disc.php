@@ -42,4 +42,9 @@ class Disc extends Model
     {
         return $query->withoutGlobalScope('unsold')->where('sold', 1);
     }
+
+    public function scopeDepartment($query, $department)
+    {
+        return $query->where('department_id', $department);
+    }
 }
