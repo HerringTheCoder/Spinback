@@ -35,11 +35,11 @@ class HomeController extends Controller
         ];
         $discs = Disc::latest('id')->take(5)->with('album.artist')->with('department')->get();
         $sold = Disc::sold()->latest('updated_at')->take(5)->with('album.artist')->with('department')->get();
-        return view('home', compact('counts', 'discs', 'sold'));
+        return view('home.home', compact('counts', 'discs', 'sold'));
     }
 
     public function about()
     {
-        return view('about');
+        return view('home.about');
     }
 }
