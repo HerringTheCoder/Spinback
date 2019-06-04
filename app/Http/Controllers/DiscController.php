@@ -42,6 +42,11 @@ class DiscController extends Controller
         return view('discs.index')->with(compact('discs', 'departments', 'album'));
     }
 
+    public function show(Disc $disc)
+    {
+        return $disc;
+    }
+
 
     /**
      * Store a newly created resource in storage.

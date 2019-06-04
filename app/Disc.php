@@ -8,6 +8,7 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 class Disc extends Model
 {
     use SoftDeletes;
+
     protected $fillable = [
         'album_id', 'condition', 'photo_path', 'offer_price', 'sold', 'department_id'
     ];

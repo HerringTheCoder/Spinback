@@ -23,7 +23,7 @@ Route::resource('artists', 'ArtistController')->except(['create', 'show', 'edit'
 Route::get('artists/import', 'ArtistController@import')->name('artists.import');
 Route::get('api/artists', 'ArtistController@autocomplete')->name('api.artists.autocomplete');
 Route::resource('departments', 'DepartmentController')->except(['create', 'show']);
-Route::resource('discs', 'DiscController')->except(['create', 'show']);
+Route::resource('discs', 'DiscController')->except(['create']);
 Route::resource('albums', 'AlbumController')->except(['create', 'show']);
 Route::get('albums/import', 'AlbumController@import')->name('albums.import');
 Route::resource('parcels', 'ParcelController')->except(['create', 'show']);
