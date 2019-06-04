@@ -15,8 +15,8 @@ class DiscController extends Controller
         $this->disc = $disc;
         $this->authorizeResource(Disc::class);
         $this->middleware('auth');
-
     }
+
     /**
      * Display a listing of the resource.
      *
@@ -24,7 +24,7 @@ class DiscController extends Controller
      */
     public function index()
     {
-        $discs = Disc::All();
+        $discs = Disc::with('album.artist')->with('department')->get();
         return view('discs.index')->with('discs', $discs);
     }
 

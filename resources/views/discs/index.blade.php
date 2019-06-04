@@ -1,13 +1,13 @@
 @extends('layouts.dashboard')
 
-@section('title', __('departments.title'))
+@section('title', 'Discs')
 @section('content')
-    <h3 class="ui dividing header">{{ __('departments.title') }}</h3>
+    <h3 class="ui dividing header">Discs</h3>
 
     <div class="resource">
         <div class="controls">
             <button class="ui primary button new-resource">
-                @lang('departments.new_department')
+                New disc
             </button>
             <button class="ui button disabled edit-resource">
                 <i class="edit icon"></i>
@@ -17,37 +17,73 @@
                 <i class="trash icon"></i>
                 {{ __('resources.delete_button') }}
             </button>
+
+            {{-- <select class="ui compact selection dropdown">
+                <option value="all">All</option>
+                <option selected="" value="articles">Articles</option>
+                <option value="products">Products</option>
+            </select> --}}
         </div>
 
-        <table class="ui compact sortable selectable celled striped definition table departments">
+        <table class="ui compact selectable celled striped definition table departments">
             <thead>
                 <tr>
                     <th></th>
                     <th>#</th>
-                    <th>@lang('departments.name')</th>
-                    <th>@lang('departments.city')</th>
-                    <th>@lang('departments.address')</th>
-                    <th>@lang('departments.phone')</th>
+                    <th>Department</th>
+                    <th>Cover</th>
+                    <th>Album</th>
+                    <th>Artist</th>
+                    <th>Condition</th>
+                    <th>Price</th>
+                    <th>Created</th>
+                    <th>Updated</th>
                 </tr>
             </thead>
             <tbody>
-                @foreach ($departments as $department)
+                @foreach ($discs as $disc)
                     <tr
-                        data-id="{{ $department->id }}"
-                        data-delete-route="{{ route('departments.destroy', ['id' => $department->id]) }}"
-                        data-edit-route="{{ route('departments.edit', ['id' => $department->id]) }}"
-                        data-name="{{ $department->name }}">
+                        data-id="{{ $disc->id }}"
+                        data-delete-route="{{ route('discs.destroy', ['id' => $disc->id]) }}"
+                        data-edit-route="{{ route('discs.edit', ['id' => $disc->id]) }}"
+                        data-name="{{ $disc->album->title }} (#{{ $disc->id }})">
                         <td class="collapsing ignored">
                             <div class="ui radio checkbox">
-                                <input type="radio" name="departments"><label></label>
+                                <input type="radio" name="disc"><label></label>
                             </div>
                         </td>
+                        <td class="collapsing">
+                            {{ $disc->id }}
                         </td>
-                        <td data-label="#" data-sort-value="{{ $department->id }}">{{ $department->id }}</td>
-                        <td data-label="Name">{{ $department->name }}</td>
-                        <td data-label="City">{{ $department->city }}</td>
-                        <td data-label="Address">{{ $department->address }}</td>
-                        <td data-label="Phone">{{ $department->phone_number }}</td>
+                        <td class="collapsing">{{ $disc->department->name }}</td>
+                        <td class="collapsing">
+                            @if ($disc->album->cover)
+                                <img src="{{ asset('storage/covers/' . $disc->album->id . '.jpg') }}" height="80">
+                            @else
+                                No cover
+                            @endif
+                        </td>
+                        <td>
+                            <a href="https://musicbrainz.org/release-group/{{ $disc->album->id }}" target="_blank" rel="noopener noreferrer">{{ $disc->album->title }}</a>
+                        </td>
+                        <td>
+                            @if ($disc->album->artist->country)
+                                <i class="{{ strtolower($disc->album->artist->country) }} flag"></i>
+                            @endif
+                            <a href="https://musicbrainz.org/artist/{{ $disc->album->artist->id }}" target="_blank" rel="noopener noreferrer">{{ $disc->album->artist->name }}</a>
+                        </td>
+                        <td>
+                            {{ $disc->condition }}
+                        </td>
+                        <td class="collapsing">
+                            {{ $disc->offer_price }}
+                        </td>
+                        <td class="collapsing">
+                            {{ $disc->created_at }}
+                        </td>
+                        <td class="collapsing">
+                            {{ $disc->updated_at }}
+                        </td>
                     </tr>
                 @endforeach
             </tbody>
@@ -55,7 +91,7 @@
 
         <div class="controls">
             <button class="ui primary button new-resource">
-                @lang('departments.new_department')
+                New disc
             </button>
             <button class="ui button disabled edit-resource">
                 <i class="edit icon"></i>
@@ -70,10 +106,10 @@
         <div class="ui tiny modal new-resource-modal">
             <i class="close icon"></i>
             <div class="header">
-                @lang('departments.new_department')
+                New disc
             </div>
             <div class="content">
-                <form class="ui form" method="post" action="{{ route('departments.store') }}">
+                <form class="ui form" method="post" action="{{ route('discs.store') }}">
                     @csrf
                     <div class="field">
                         <label>@lang('departments.name')</label>
@@ -108,3 +144,9 @@
 
         @include('commons.modals.delete')
 @endsection
+
+@push('scripts')
+    <script>
+        $('table.departments').tablesort();
+    </script>
+@endpush

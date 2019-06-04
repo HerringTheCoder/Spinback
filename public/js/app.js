@@ -47,6 +47,15 @@ $('.delete-resource').click(function () {
 $('.edit-resource').click(function () {
   var route = $(this).closest('.resource').find('tr.active').data('edit-route');
   document.location = route;
+}); // Handle new resource form
+
+$('.resource .controls button.new-resource').click(function () {
+  var $modal = $('.new-resource-modal');
+  $modal.modal({
+    onApprove: function onApprove() {
+      $modal.find('form').submit();
+    }
+  }).modal('show');
 }); // Add CSRF token to every ajax request
 
 $.ajaxSetup({
