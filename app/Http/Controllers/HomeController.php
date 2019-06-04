@@ -34,7 +34,8 @@ class HomeController extends Controller
             'parcels' => Parcel::count()
         ];
         $discs = Disc::latest('id')->take(5)->with('album.artist')->with('department')->get();
-        return view('home', compact('counts', 'discs'));
+        $sold = Disc::sold()->latest('updated_at')->take(5)->with('album.artist')->with('department')->get();
+        return view('home', compact('counts', 'discs', 'sold'));
     }
 
     public function about()
