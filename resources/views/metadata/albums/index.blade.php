@@ -8,7 +8,7 @@
 
     <p>Album must be added to the local database before it can be used in other parts of the system.</p>
 
-    <form method="get" action="{{ route('albums.search') }}">
+    <form method="get" action="{{ route('albums.import') }}">
         <div class="ui action left icon input">
             <i class="search icon"></i>
             <input type="text" placeholder="Album" name="query">
@@ -81,6 +81,8 @@
                 @endforeach
             </tbody>
         </table>
+
+        {{ $albums->appends(request()->input())->links() }}
 
         @include('commons.modals.delete')
     </div>

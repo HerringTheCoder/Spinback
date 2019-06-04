@@ -61,9 +61,27 @@ class AlbumController extends Controller
         return redirect()->route('albums.index')->with('success', __('metadata.successfully_deleted'));
     }
 
-    public function search(Request $request)
+    public function import(Request $request)
     {
         $albums = $this->metadataService->findAlbums($request->input('query'));
         return view('metadata.albums.results')->with('albums', $albums);
+    }
+
+    public function search(Request $request)
+    {
+        $albums = Album::where('title', 'like', '%' . $request->input('query') . '%')->with('artist')->get();
+        return [
+            'results' => $albums->map(function ($item) {
+                $result = [
+                    'id' => $item->id,
+                    'title' => $item->title,
+                    'artist' => $item->artist->name
+                ];
+                if ($item->cover) {
+                    $result['image'] = $item->image();
+                }
+                return $result;
+            })
+        ];
     }
 }

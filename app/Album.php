@@ -28,4 +28,9 @@ class Album extends Model
     {
         return $this->hasMany('App\Disc');
     }
+
+    public function image()
+    {
+        return asset("storage/covers/{$this->id}.jpg");
+    }
 }

@@ -7,6 +7,8 @@ use App\Services\DiscService;
 use Illuminate\Http\Request;
 use App\Http\Requests\StoreDisc;
 use App\Http\Requests\UpdateDisc;
+use App\Department;
+use App\Album;
 
 class DiscController extends Controller
 {
@@ -22,10 +24,22 @@ class DiscController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        $discs = Disc::with('album.artist')->with('department')->get();
-        return view('discs.index')->with('discs', $discs);
+        $departments = Department::all();
+        $query = Disc::query();
+        $album = null;
+        if ($request->filled('album')) {
+            $query->where('album_id', $request->input('album'));
+            $album = Album::where('id', $request->input('album'))->first();
+        }
+        if ($request->filled('department')) {
+            $query->where('department_id', $request->input('department'));
+        }
+        $query->orderBy('created_at', 'desc');
+        $query->with('album.artist')->with('department')->get();
+        $discs = $query->simplePaginate(20);
+        return view('discs.index')->with(compact('discs', 'departments', 'album'));
     }
 
 

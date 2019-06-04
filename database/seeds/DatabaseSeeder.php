@@ -16,6 +16,6 @@ class DatabaseSeeder extends Seeder
         $this->call(ArtistsTableSeeder::class);
         $this->call(DepartmentsTableSeeder::class);
         $this->call(AlbumsTableSeeder::class);
-        //$this->call(DiscsTableSeeder::class);
+        $this->call(DiscsTableSeeder::class);
     }
 }
