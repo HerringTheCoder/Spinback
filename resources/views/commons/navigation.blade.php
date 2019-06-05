@@ -27,11 +27,14 @@
             <b>{{ __('dashboard.nav.discs') }}</b>
         </a>
         <a class="item {{ request()->is('transactions*') ? 'active' : '' }}" href="{{ route('transactions.index') }}">
-                <b>{{ __('dashboard.nav.transactions') }}</b>
-            </a>
+            <b>{{ __('dashboard.nav.transactions') }}</b>
+        </a>
         <a class="item {{ request()->is('parcels*') ? 'active' : '' }}" href="{{ route('parcels.index') }}">
-                <b>{{ __('dashboard.nav.parcels') }}</b>
-            </a>
+            <b>{{ __('dashboard.nav.parcels') }}</b>
+        </a>
+        <a class="item {{ request()->is('settings*') ? 'active' : '' }}" href="{{ route('users.settings') }}">
+            <b>{{ __('dashboard.nav.settings') }}</b>
+        </a>
         <div class="item">
             <b>{{ __('dashboard.nav.users') }}</b>
         </div>

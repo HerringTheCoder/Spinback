@@ -16,6 +16,7 @@ return [
         'users' => 'Manage users',
         'discs' => 'Discs',
         'parcels' => 'Parcels',
-        'transactions' => 'Transactions'
+        'transactions' => 'Transactions',
+        'settings' => 'Settings',
     ]
 ];

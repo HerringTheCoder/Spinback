@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Services;
+
 use App\Album;
 use App\Disc;
 use Illuminate\Http\Request;
@@ -23,4 +24,4 @@ class DiscService
         $query->with('album')->with('department')->get();
         return array($query, $album);
     }
- }
+}

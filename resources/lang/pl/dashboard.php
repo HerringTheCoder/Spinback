@@ -14,7 +14,9 @@ return [
         'artists' => 'Artyści',
         'albums' => 'Albumy',
         'users' => 'Zarządzaj użytkownikami',
+        'discs' => 'Płyty',
         'parcels' => 'Przesyłki',
-        'transactions' => 'Transakcje'
+        'transactions' => 'Transakcje',
+        'settings' => 'Ustawienia'
     ]
 ];
