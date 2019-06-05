@@ -1,6 +1,6 @@
 @extends('layouts.master')
 
-@section('title', 'Reset password')
+@section('title', __('auth.reset_title'))
 @section('body')
 <div class="ui grid middle aligned center aligned auth">
     <div class="column">

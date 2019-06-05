@@ -25,6 +25,8 @@ return [
         'reset' => 'Zresetuj hasło'
     ],
 
+    'reset_title' => 'Resetuj hasło',
+
     'forgot' => 'Zapomniałeś hasła?',
     'back_to_login' => 'Wróć do strony logowania',
 

@@ -25,6 +25,8 @@ return [
         'reset' => 'Reset password'
     ],
 
+    'reset_title' => 'Reset password',
+
     'forgot' => 'Forgot your password?',
     'back_to_login' => 'Back to the login page',
 
