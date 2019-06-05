@@ -37,7 +37,7 @@ class DiscController extends Controller
             $query->department($request->input('department'));
         }
         $query->orderBy('created_at', 'desc');
-        $query->with('album.artist')->with('department')->get();
+        $query->with('album')->with('department')->get();
         $discs = $query->simplePaginate(20);
         return view('discs.index')->with(compact('discs', 'departments', 'album'));
     }

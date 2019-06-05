@@ -64,7 +64,7 @@
                     <th>Department</th>
                     <th>Cover</th>
                     <th>Album</th>
-                    <th>Artist</th>
+                    {{-- <th>Artist</th> --}}
                     <th>Condition</th>
                     <th>Price</th>
                     <th>Created</th>
@@ -99,17 +99,17 @@
                         <td>
                             <a href="https://musicbrainz.org/release-group/{{ $disc->album->id }}" target="_blank" rel="noopener noreferrer">{{ $disc->album->title }}</a>
                         </td>
-                        <td>
+                        {{-- <td>
                             @if ($disc->album->artist->country)
                                 <i class="{{ strtolower($disc->album->artist->country) }} flag"></i>
                             @endif
                             <a href="https://musicbrainz.org/artist/{{ $disc->album->artist->id }}" target="_blank" rel="noopener noreferrer">{{ $disc->album->artist->name }}</a>
-                        </td>
+                        </td> --}}
                         <td>
                             {{ $disc->condition }}
                         </td>
-                        <td class="collapsing">
-                            {{ $disc->offer_price }}
+                        <td class="collapsing right aligned">
+                            {{ $disc->offer_price }} PLN
                         </td>
                         <td class="collapsing">
                             {{ $disc->created_at }}
