@@ -19,7 +19,7 @@ Clone the repository and navigate into the source code folder
 
 ```
 git clone https://github.com/HerringTheCoder/Spinback.git
-cd Spinback/Spinback
+cd Spinback
 ```
 
 Install required dependencies
