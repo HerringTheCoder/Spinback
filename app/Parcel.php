@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 class Parcel extends Model
 {
     use SoftDeletes;
-    protected $guarded = ['id', 'created_at', 'updated_at'];
+    protected $fillable = ['tracking_code','completed'];
 
     public function requests()
     {

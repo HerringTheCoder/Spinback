@@ -15,5 +15,7 @@ return [
         'albums' => 'Albums',
         'users' => 'Manage users',
         'discs' => 'Discs',
+        'parcels' => 'Parcels',
+        'transactions' => 'Transactions'
     ]
 ];

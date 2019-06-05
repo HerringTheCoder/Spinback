@@ -20,10 +20,7 @@ class StoreParcel extends FormRequest
     public function rules()
     {
         return [
-            [
-                'tracking_code' => 'unique|min:3|max:40|alpha',
-                'completed' => 'boolean'
-            ]
+                'tracking_code' => 'required|unique:parcels|min:3|max:40'
         ];
     }
 }
