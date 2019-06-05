@@ -138,45 +138,7 @@
             </button>
         </div>
 
-        <div class="ui tiny modal new-resource-modal">
-            <i class="close icon"></i>
-            <div class="header">
-                New disc
-            </div>
-            <div class="content">
-                <form class="ui form" method="post" action="{{ route('discs.store') }}">
-                    @csrf
-                    <div class="field">
-                        <label>@lang('departments.name')</label>
-                        <input type="text" name="name" placeholder="@lang('departments.name')">
-                    </div>
-                    <div class="field">
-                        <label>@lang('departments.address')</label>
-                        <input type="text" name="address" placeholder="@lang('departments.address')">
-                    </div>
-                    <div class="two fields">
-                        <div class="field">
-                            <label>@lang('departments.city')</label>
-                            <input type="text" name="city" placeholder="@lang('departments.city')">
-                        </div>
-                        <div class="field">
-                            <label>@lang('departments.phone')</label>
-                            <input type="text" name="phone_number" placeholder="@lang('departments.phone')">
-                        </div>
-                    </div>
-                </form>
-            </div>
-            <div class="actions">
-                <div class="ui deny button">
-                    {{ __('resources.cancel_button') }}
-                </div>
-                <div class="ui positive button">
-                    <i class="save icon"></i>
-                    {{ __('resources.save_button') }}
-                </div>
-            </div>
-        </div>
-
+        @include('discs.new_modal')
         @include('commons.modals.delete')
 @endsection
 

@@ -56,7 +56,12 @@ class DiscController extends Controller
      */
     public function store(StoreDisc $request)
     {
-        Department::create($request->validated());
+        Disc::create([
+            'album_id' => $request->input('album'),
+            'department_id' => $request->input('department'),
+            'offer_price' => $request->input('offer_price'),
+            'condition' => $request->input('condition')
+        ]);
         return redirect()->route('discs.index')->with('success', __('discs.successfully_stored'));
     }
 

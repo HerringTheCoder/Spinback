@@ -1,6 +1,8 @@
 <?php
 namespace App\Http\Requests;
+
 use Illuminate\Foundation\Http\FormRequest;
+
 class UpdateDisc extends FormRequest
 {
     /**
@@ -20,12 +22,8 @@ class UpdateDisc extends FormRequest
     public function rules()
     {
         return [
-            'condition'=>'alphanumeric|string',
-            'photo_path'=>'string',
-            'offer_price'=>'digits_between:1,4',
-            'sold'=>'boolean',
-            'department_id'=>'exists|digits'
+            'condition' => 'string|nullable',
+            'offer_price' => 'integer',
         ];
-
     }
 }
