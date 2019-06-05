@@ -66,6 +66,24 @@ Create symbolic link for public storage disk
 php artisan storage:link
 ```
 
+### Production
+
+In order to run Spinback in production mode, change following lines in .env file
+
+```
+APP_ENV=production
+APP_DEBUG=false
+APP_URL=...
+```
+
+Create optimized and minified assets
+
+```
+npm run prod
+```
+
+Configure mail environment variables. You can use services like [SendGrid](https://sendgrid.com/)
+
 ### Startup
 
 For development purposes either use web server provided by [Laragon](https://laragon.org), or built-in one:
