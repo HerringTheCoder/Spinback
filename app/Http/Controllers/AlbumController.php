@@ -75,15 +75,12 @@ class AlbumController extends Controller
             ->get();
         return [
             'results' => $albums->map(function ($item) {
-                $result = [
+                return [
                     'id' => $item->id,
                     'title' => $item->title,
-                    'artist' => $item->artist->name
+                    'artist' => $item->artist->name,
+                    'image' => $item->image()
                 ];
-                if ($item->cover) {
-                    $result['image'] = $item->image();
-                }
-                return $result;
             })
         ];
     }
