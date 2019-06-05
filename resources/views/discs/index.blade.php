@@ -90,11 +90,7 @@
                         </td>
                         <td class="collapsing">{{ $disc->department->name }}</td>
                         <td class="collapsing">
-                            @if ($disc->album->cover)
-                                <img src="{{ asset('storage/covers/' . $disc->album->id . '.jpg') }}" height="80">
-                            @else
-                                No cover
-                            @endif
+                            <img src="{{ $disc->album->image() }}" height="80">
                         </td>
                         <td>
                             <a href="https://musicbrainz.org/release-group/{{ $disc->album->id }}" target="_blank" rel="noopener noreferrer">{{ $disc->album->title }}</a>
