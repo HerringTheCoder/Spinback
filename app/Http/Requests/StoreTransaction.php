@@ -21,9 +21,9 @@ class StoreTransaction extends FormRequest
     {
         return [
             [
-                'department_id' => 'exists',
-                'user_id' => 'exists',
-                'disc_id' => 'exists',
+                'department_id' => 'number',
+                'user_id' => 'number',
+                'disc_id' => 'number',
                 'price' => 'digits_between:1,6',
                 'operation_type' => 'string',
                 'payment_type' => 'string'

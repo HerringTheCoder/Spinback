@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Transaction;
+use App\Department;
 use App\Http\Requests\StoreTransaction;
 use App\Http\Requests\UpdateTransaction;
 use App\Services\TransactionService;
@@ -24,7 +25,8 @@ class TransactionController extends Controller
     public function index()
     {
         $transactions = Transaction::All();
-        return view('transactions.index')->with('transactions', $transactions);
+        $departments = Department::All();
+        return view('transactions.index')->with('transactions', $transactions)->with('departments', $departments);
     }
 
     /**
@@ -36,7 +38,7 @@ class TransactionController extends Controller
     public function store(StoreTransaction $request)
     {
         Transaction::Create($request->validated());
-        return redirect()->route('parcels.index')->with('success', __('parcels.successfully_stored'));
+        return redirect()->route('parcels.index')->with('success', __('transactions.successfully_stored'));
     }
 
     /**
@@ -47,7 +49,7 @@ class TransactionController extends Controller
      */
     public function edit(Transaction $transaction)
     {
-        //
+        return view('transactions.edit', compact('transaction'));
     }
 
     /**
@@ -78,6 +80,6 @@ class TransactionController extends Controller
     public function report()
     {
         $this->transaction->report();
-        return redirect()->route('transactions.index')->with('success', __('transaction.succesfully_mailed'));
+        return redirect()->route('transactions.index')->with('success', __('transactions.succesfully_mailed'));
     }
 }
