@@ -86,28 +86,63 @@
                     @csrf
                     <div class="two fields">
                     <div class="field">
-                        <label>@lang('transactions.disc')</label>
+                        <label>@lang('transactions.disc') <i class="music icon orange"></i></label>
                         <input type="number" name="disc_id" placeholder="@lang('transactions.disc')">
                     </div>
                     <div class="field">
-                            <label>@lang('transactions.department')</label>
-                            <input type="number" name="department_id" placeholder="@lang('transactions.department')">
+                            <label>@lang('transactions.price') <i class="dollar sign icon green"></i></label>
+                            <input type="text" name="price" placeholder="@lang('transactions.price')">
                         </div>
                     </div>
                     <div class="field">
-                            <label>@lang('transactions.operation_type')</label>
-                            <input type="text" name="operation_type" placeholder="@lang('transactions.operation_type')">
+                            <label>@lang('transactions.department') <i class="home icon blue"></i></label>
+                        <div class="ui selection dropdown">
+                                <input type="hidden" name="department_id">
+                                <i class="dropdown icon"></i>
+                                <div class="default text">
+                                    @lang('transactions.department')
+                                </div>
+                                <div class="menu tooltip">
+                                    @foreach($departments as $department)
+                                <div class="item" value="{{$department->id}}"
+                                    data-tooltip="{{$department->address}}, {{$department->city}}, {{$department->phone_number}}">
+                                    {{$department->name}}</div>
+                                    @endforeach
+
+                            </div>
                         </div>
-                        <div class="two fields">
+                    </div>
+                    <div class="two fields">
                             <div class="field">
-                                <label>@lang('transactions.price')</label>
-                                <input type="text" name="price" placeholder="@lang('transactions.price')">
+                                <label>@lang('transactions.sale')/@lang('transactions.purchase')</label>
+                            <div class="ui selection dropdown">
+                                    <input type="hidden" name="operation_type">
+                                    <i class="dropdown icon"></i>
+                                    <div class="default text">
+                                        @lang('transactions.sale')/@lang('transactions.purchase')
+                                    </div>
+                                    <div class="menu">
+                                      <div class="item" value="@lang('transactions.sale')">@lang('transactions.sale')</div>
+                                      <div class="item" value="@lang('transactions.purchase')">@lang('transactions.purchase')</div>
+                                    </div>
                             </div>
-                            <div class="field">
-                                    <label>@lang('transactions.payment_type')</label>
-                                    <input type="text" name="payment_type" placeholder="@lang('transactions.payment_type')">
+                        </div>
+
+                        <div class="field">
+                                <label>@lang('transactions.payment_type')</label>
+                            <div class="ui selection dropdown">
+                                    <input type="hidden" name="payment_type">
+                                    <i class="dropdown icon"></i>
+                                    <div class="default text">
+                                        @lang('transactions.credit_card')/@lang('transactions.cash')
+                                    </div>
+                                    <div class="menu">
+                                    <div class="item" value="@lang('transactions.cash')">@lang('transactions.cash') <i class="money bill alternate outline green icon" ></i></div>
+                                      <div class="item" value="@lang('transactions.credit_card')">@lang('transactions.credit_card') <i class="credit card outline yellow icon"></i></div>
+                                    </div>
                             </div>
-                            </div>
+                        </div>
+                        </div>
                 </form>
             </div>
             <div class="actions">
@@ -126,8 +161,9 @@
 
 @push('scripts')
     <script>
-        $('table.transactions').tablesort();
 
+        $('.ui.dropdown').dropdown();
+        $('table.transactions').tablesort();
         $('button.new-transaction').click(function() {
             $('.new-transaction-modal')
                 .modal({

@@ -20,14 +20,11 @@ class StoreTransaction extends FormRequest
     public function rules()
     {
         return [
-            [
-                'department_id' => 'number',
-                'user_id' => 'number',
-                'disc_id' => 'number',
+                'department_id' => 'exists:departments,id',
+                'disc_id' => 'exists:discs,id',
                 'price' => 'digits_between:1,6',
                 'operation_type' => 'string',
                 'payment_type' => 'string'
-            ]
         ];
     }
 }

@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 class Transaction extends Model
 {
     use SoftDeletes;
-    protected $guarded = ['id', 'created_at', 'updated_at'];
+    protected $fillable = ['department_id', 'user_id', 'disc_id', 'price', 'operation_type', 'payment_type'];
 
     public function department()
     {

@@ -12,7 +12,7 @@
             <input type="text" name="price" placeholder="@lang('transactions.price')" value="{{ $transaction->price }}">
         </div>
 
-        <div class="ui simple selection dropdown">
+        <div class="ui selection dropdown">
             <input type="hidden" name="operation_type">
             <i class="dropdown icon"></i>
             <div class="default text">
@@ -28,3 +28,11 @@
         <button class="ui orange button" type="submit">@lang('transactions.save')</div>
     </form>
 @endsection
+
+@push('scripts')
+<script>
+$('.ui.dropdown')
+  .dropdown()
+;
+</script>
+@endpush

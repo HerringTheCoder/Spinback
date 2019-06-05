@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Auth;
 use Carbon\Carbon;
 
+
 class TransactionService
 {
 
@@ -32,4 +33,5 @@ class TransactionService
         Mail::to(Auth::user())->send(new Report($transactions, $income,$expense,$balance));
         return;
     }
+
 }

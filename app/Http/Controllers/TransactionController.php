@@ -7,6 +7,7 @@ use App\Department;
 use App\Http\Requests\StoreTransaction;
 use App\Http\Requests\UpdateTransaction;
 use App\Services\TransactionService;
+use Auth;
 
 class TransactionController extends Controller
 {
@@ -37,8 +38,8 @@ class TransactionController extends Controller
      */
     public function store(StoreTransaction $request)
     {
-        Transaction::Create($request->validated());
-        return redirect()->route('parcels.index')->with('success', __('transactions.successfully_stored'));
+        Transaction::create(array_merge($request->validated(), ['user_id' => Auth::Id()]));
+        return redirect()->route('transactions.index')->with('success', __('transactions.successfully_stored'));
     }
 
     /**
