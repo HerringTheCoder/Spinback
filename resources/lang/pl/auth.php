@@ -19,7 +19,15 @@ return [
     'labels' => [
         'login' => 'Login',
         'password' => 'Hasło',
+        'repeat_password' => 'Powtórz hasło',
         'submit' => 'Zaloguj',
+        'send_reset' => 'Wyślij link resetujący',
+        'reset' => 'Zresetuj hasło'
     ],
+
+    'forgot' => 'Zapomniałeś hasła?',
+    'back_to_login' => 'Wróć do strony logowania',
+
+    'help' => 'W celu użytkowania systemu Spinback wymagane jest logowanie. Jeśli nie masz konta, skontaktuj się z administratorem.'
 
 ];

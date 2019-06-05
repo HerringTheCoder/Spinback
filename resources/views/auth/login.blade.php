@@ -50,7 +50,22 @@
                     <i class="uk flag"></i> English
                 </button>
             </a>
+
+        
+            <div class="ui basic segment">
+                <p>
+                    <i class="question circle right floated icon" data-position="top center" data-content="@lang('auth.help')" data-inverted=""></i>
+                    <a href="{{ route('password.request') }}">@lang('auth.forgot')</a>
+                </p>
+            </div>
         </div>
+        
     </div>
 </div>
 @endsection
+
+@push('scripts')
+    <script>
+        $('.question.circle.icon').popup();
+    </script>
+@endpush
