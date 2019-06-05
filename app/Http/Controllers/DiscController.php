@@ -27,18 +27,9 @@ class DiscController extends Controller
     public function index(Request $request)
     {
         $departments = Department::all();
-        $query = Disc::query();
-        $album = null;
-        if ($request->filled('album')) {
-            $query->where('album_id', $request->input('album'));
-            $album = Album::where('id', $request->input('album'))->first();
-        }
-        if ($request->filled('department')) {
-            $query->department($request->input('department'));
-        }
-        $query->orderBy('created_at', 'desc');
-        $query->with('album')->with('department')->get();
-        $discs = $query->simplePaginate(20);
+        $query= $this->disc->query($request);
+        $discs = $query[0]->simplePaginate(20);
+        $album = $query[1];
         return view('discs.index')->with(compact('discs', 'departments', 'album'));
     }
 
