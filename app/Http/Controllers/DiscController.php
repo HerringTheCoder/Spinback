@@ -44,7 +44,7 @@ class DiscController extends Controller
 
     public function show(Disc $disc)
     {
-        return $disc;
+        return view('discs.show')->with(compact('disc'));
     }
 
 
@@ -69,8 +69,7 @@ class DiscController extends Controller
      */
     public function edit(Disc $disc)
     {
-        //TODO
-        //Return view with edit form
+        return view('discs.edit')->with(compact('disc'));
     }
 
     /**

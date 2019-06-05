@@ -84,7 +84,9 @@
                             </div>
                         </td>
                         <td class="collapsing">
-                            {{ $disc->id }}
+                            <a href="{{ route('discs.show', ['id' => $disc->id]) }}">
+                                {{ $disc->id }}
+                            </a>
                         </td>
                         <td class="collapsing">{{ $disc->department->name }}</td>
                         <td class="collapsing">

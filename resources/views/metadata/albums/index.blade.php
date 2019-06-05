@@ -55,7 +55,7 @@
                                 <input type="radio" name="album"><label></label>
                             </div>
                         </td>
-                        <td class="center aligned">
+                        <td class="center aligned collapsing">
                             <img src="{{ $album->image() }}" height="80">
                         </td>
                         <td data-label="Title">
