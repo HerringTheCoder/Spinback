@@ -69,7 +69,10 @@ class AlbumController extends Controller
 
     public function search(Request $request)
     {
-        $albums = Album::where('title', 'like', '%' . $request->input('query') . '%')->with('artist')->get();
+        $albums = Album::where('title', 'like', '%' . $request->input('query') . '%')
+            ->with('artist')
+            ->take(10)
+            ->get();
         return [
             'results' => $albums->map(function ($item) {
                 $result = [
