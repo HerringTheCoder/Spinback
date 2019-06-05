@@ -23,6 +23,9 @@
                 </a>
             </div>
         </div>
+        <a class="item {{ request()->is('transactions*') ? 'active' : '' }}" href="{{ route('transactions.index') }}">
+                <b>{{ __('dashboard.nav.transactions') }}</b>
+            </a>
         <a class="item {{ request()->is('parcels*') ? 'active' : '' }}" href="{{ route('parcels.index') }}">
                 <b>{{ __('dashboard.nav.parcels') }}</b>
             </a>

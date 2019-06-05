@@ -12,7 +12,7 @@ class Disc extends Model
         'album_id', 'condition', 'photo_path', 'offer_price', 'sold', 'department_id'
     ];
 
-    public function metadata()
+    public function album()
     {
         return $this->belongsTo('App\Album')->withTrashed();
     }

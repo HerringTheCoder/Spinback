@@ -14,6 +14,7 @@ return [
         'artists' => 'Artists',
         'albums' => 'Albums',
         'users' => 'Manage users',
-        'parcels' => 'Parcels'
+        'parcels' => 'Parcels',
+        'transactions' => 'Transactions'
     ]
 ];

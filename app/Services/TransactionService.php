@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Auth;
 use Carbon\Carbon;
 
+
 class TransactionService
 {
 
@@ -18,12 +19,12 @@ class TransactionService
         $transactions = Transaction::where('created_at','>=',$formatted_date)->get();
         foreach ($transactions as $transaction)
         {
-         if($transaction->operation_type==='sell')
+         if($transaction->operation_type==='sale')
          {
              $income+=$transaction->price;
              $balance+=$transaction->price;
          }
-            else if($transaction->operation_type==='buy')
+            else if($transaction->operation_type==='purchase')
             {
                 $expense+=$transaction->price;
                 $balance-=$transaction->price;
@@ -32,4 +33,5 @@ class TransactionService
         Mail::to(Auth::user())->send(new Report($transactions, $income,$expense,$balance));
         return;
     }
+
 }
