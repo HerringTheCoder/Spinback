@@ -10,7 +10,7 @@ return [
     'delete' => 'Usuń',
     'cancel' => 'Anuluj',
     'save' => 'Zapisz',
-
+    'report' => 'Wygeneruj zestawienie',
      // Table headings
      'price'=> 'Cena',
      'operation_type' => 'Typ operacji',

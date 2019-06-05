@@ -63,7 +63,7 @@ class TransactionController extends Controller
     public function update(UpdateTransaction $request, Transaction $transaction)
     {
         $transaction->update($request->validated());
-        return redirect()->route('transactions.index')->with('success', __('transactions.successfully_stored'));
+        return redirect()->route('transactions.index')->with('success', __('transactions.updated'));
     }
 
     /**
@@ -75,7 +75,7 @@ class TransactionController extends Controller
     public function destroy(Transaction $transaction)
     {
         $transaction->delete();
-        return redirect()->route('transactions.index')->with('success', __('transactions.successfully_stored'));
+        return redirect()->route('transactions.index')->with('success', __('transactions.successfully_deleted'));
     }
 
     public function report()

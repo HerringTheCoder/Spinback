@@ -24,7 +24,7 @@
         @foreach($transactions as $transaction)
         <tr>
             <td data-label="id">{{$transaction->id}}</td>
-            <td data-label="title">{{$transaction->disc->metadata->title}}</td>
+            <td data-label="title">{{$transaction->disc->album->title}}</td>
             <td data-label="seller">{{$transaction->user->getFullNameAttribute()}}
             <td data-label="price">{{$transaction->price}}</td>
             <td data-label="department">{{$transaction->department->name}}</td>

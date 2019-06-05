@@ -17,6 +17,7 @@
                 <i class="trash icon"></i>
                 {{ __('resources.delete_button') }}
             </button>
+            <a href="{{route('report')}}"><button class="ui green button right"> @lang('transactions.report')</button></a>
         </div>
 
         <table class="ui compact sortable selectable celled striped definition table transactions">
@@ -81,6 +82,7 @@
             <div class="header">
                 @lang('transactions.new_transaction')
             </div>
+
             <div class="content">
                 <form class="ui form new-transaction-form" method="post" action="{{ route('transactions.store') }}">
                     @csrf
@@ -96,16 +98,15 @@
                     </div>
                     <div class="field">
                             <label>@lang('transactions.department') <i class="home icon blue"></i></label>
-                        <div class="ui selection dropdown">
+                        <div class="ui search selection dropdown">
                                 <input type="hidden" name="department_id">
                                 <i class="dropdown icon"></i>
                                 <div class="default text">
                                     @lang('transactions.department')
                                 </div>
-                                <div class="menu tooltip">
+                                <div class="menu">
                                     @foreach($departments as $department)
-                                <div class="item" value="{{$department->id}}"
-                                    data-tooltip="{{$department->address}}, {{$department->city}}, {{$department->phone_number}}">
+                                <div class="item" data-value="{{$department->id}}" data-tooltip="{{$department->address}}, {{$department->city}}, {{$department->phone_number}}">
                                     {{$department->name}}</div>
                                     @endforeach
 
@@ -122,8 +123,8 @@
                                         @lang('transactions.sale')/@lang('transactions.purchase')
                                     </div>
                                     <div class="menu">
-                                      <div class="item" value="@lang('transactions.sale')">@lang('transactions.sale')</div>
-                                      <div class="item" value="@lang('transactions.purchase')">@lang('transactions.purchase')</div>
+                                      <div class="item" data-value="sale">@lang('transactions.sale')</div>
+                                      <div class="item" data-value="purchase">@lang('transactions.purchase')</div>
                                     </div>
                             </div>
                         </div>
@@ -137,8 +138,8 @@
                                         @lang('transactions.credit_card')/@lang('transactions.cash')
                                     </div>
                                     <div class="menu">
-                                    <div class="item" value="@lang('transactions.cash')">@lang('transactions.cash') <i class="money bill alternate outline green icon" ></i></div>
-                                      <div class="item" value="@lang('transactions.credit_card')">@lang('transactions.credit_card') <i class="credit card outline yellow icon"></i></div>
+                                    <div class="item" data-value="cash">@lang('transactions.cash') <i class="money bill alternate outline green icon" ></i></div>
+                                      <div class="item" data-value="credit card">@lang('transactions.credit_card') <i class="credit card outline yellow icon"></i></div>
                                     </div>
                             </div>
                         </div>

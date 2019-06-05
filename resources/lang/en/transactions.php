@@ -10,7 +10,7 @@ return [
     'delete' => 'Delete',
     'cancel' => 'Cancel',
     'save' => 'Save',
-
+    'report' => 'Generate monthly report',
     // Table headings
     'price'=>'Price',
     'operation_type' => 'Operation type',

@@ -22,9 +22,9 @@ class StoreTransaction extends FormRequest
         return [
                 'department_id' => 'exists:departments,id',
                 'disc_id' => 'exists:discs,id',
-                'price' => 'digits_between:1,6',
-                'operation_type' => 'string',
-                'payment_type' => 'string'
+                'price' => 'required|digits_between:1,6',
+                'operation_type' => 'required|string',
+                'payment_type' => 'required|string'
         ];
     }
 }

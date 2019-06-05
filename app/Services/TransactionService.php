@@ -19,12 +19,12 @@ class TransactionService
         $transactions = Transaction::where('created_at','>=',$formatted_date)->get();
         foreach ($transactions as $transaction)
         {
-         if($transaction->operation_type==='sell')
+         if($transaction->operation_type==='sale')
          {
              $income+=$transaction->price;
              $balance+=$transaction->price;
          }
-            else if($transaction->operation_type==='buy')
+            else if($transaction->operation_type==='purchase')
             {
                 $expense+=$transaction->price;
                 $balance-=$transaction->price;

@@ -20,14 +20,12 @@ class UpdateTransaction extends FormRequest
     public function rules()
     {
         return [
-            [
-                'department_id' => 'exists',
-                'user_id' => 'exists',
-                'disc_id' => 'exists',
+                'department_id' => 'exists:departments,id',
+                'user_id' => 'exists:users,id',
+                'disc_id' => 'exists:discs,id',
                 'price' => 'digits_between:1,6',
-                'operation_type' => 'string',
+                'operation_type' => '',
                 'payment_type' => 'string'
-            ]
         ];
     }
 }
