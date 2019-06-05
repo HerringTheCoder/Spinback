@@ -27,15 +27,19 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $departments = Department::count();
-        $transactions = Transaction::count();
-        $discs = Disc::count();
-        $parcels = Parcel::count();
-        return view('home', compact('departments', 'transactions', 'discs', 'parcels'));
+        $counts = [
+            'departments' => Department::count(),
+            'transactions' => Transaction::count(),
+            'discs' => Disc::count(),
+            'parcels' => Parcel::count()
+        ];
+        $discs = Disc::latest('id')->take(5)->with('album.artist')->with('department')->get();
+        $sold = Disc::sold()->latest('updated_at')->take(5)->with('album.artist')->with('department')->get();
+        return view('home.home', compact('counts', 'discs', 'sold'));
     }
 
     public function about()
     {
-        return view('about');
+        return view('home.about');
     }
 }

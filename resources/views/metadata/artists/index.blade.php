@@ -8,7 +8,7 @@
 
     <p>Artist must be added to the local database before he can be used in other parts of the system.</p>
 
-    <form method="get" action="{{ route('artists.search') }}">
+    <form method="get" action="{{ route('artists.import') }}">
         <div class="ui action left icon input">
             <i class="search icon"></i>
             <input type="text" placeholder="Artist" name="query">

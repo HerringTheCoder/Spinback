@@ -135,3 +135,7 @@ main.main {
     clear: both;
     visibility: hidden;
 }
+
+.ui.search > .results .result .image {
+    width: auto !important;
+}

@@ -1,6 +1,8 @@
 <?php
 namespace App\Http\Requests;
+
 use Illuminate\Foundation\Http\FormRequest;
+
 class StoreDisc extends FormRequest
 {
     /**
@@ -21,12 +23,10 @@ class StoreDisc extends FormRequest
     {
         return [
             [
-            'condition'=>'alphanumeric|string',
-            'photo_path'=>'photo_path',
-            'offer_price'=>'digits_between:1,4',
-            'sold'=>'boolean',
-            'department_id'=>'exists|digits',
-            'metadata_id' =>'exists|digits'
+                'condition' => 'string|nullable',
+                'offer_price' => 'integer|required',
+                'department_id' => 'exists|integer|required',
+                'album_id' => 'exists|uuid|required'
             ]
         ];
     }

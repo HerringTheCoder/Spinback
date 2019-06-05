@@ -58,7 +58,7 @@ class ArtistController extends Controller
         return redirect()->action('ArtistController@index')->with('success', __('departments.successfully_deleted'));
     }
 
-    public function search(Request $request)
+    public function import(Request $request)
     {
         $artists = $this->metadataService->findArtists($request->input('query'));
         return view('metadata.artists.results')->with('artists', $artists);

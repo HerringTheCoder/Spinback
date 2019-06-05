@@ -8,7 +8,7 @@
 
     <p>Album must be added to the local database before it can be used in other parts of the system.</p>
 
-    <form method="get" action="{{ route('albums.search') }}">
+    <form method="get" action="{{ route('albums.import') }}">
         <div class="ui action left icon input">
             <i class="search icon"></i>
             <input type="text" placeholder="Album" name="query">
@@ -55,12 +55,8 @@
                                 <input type="radio" name="album"><label></label>
                             </div>
                         </td>
-                        <td class="center aligned">
-                            @if ($album->cover)
-                                <img src="{{ asset('storage/covers/' . $album->id . '.jpg') }}" height="80">
-                            @else
-                                No cover
-                            @endif
+                        <td class="center aligned collapsing">
+                            <img src="{{ $album->image() }}" height="80">
                         </td>
                         <td data-label="Title">
                             <a href="https://musicbrainz.org/release-group/{{ $album->id }}" target="_blank" rel="noopener noreferrer">{{ $album->title }}</a>
@@ -81,6 +77,8 @@
                 @endforeach
             </tbody>
         </table>
+
+        {{ $albums->appends(request()->input())->links() }}
 
         @include('commons.modals.delete')
     </div>

@@ -7,6 +7,8 @@ use App\Services\DiscService;
 use Illuminate\Http\Request;
 use App\Http\Requests\StoreDisc;
 use App\Http\Requests\UpdateDisc;
+use App\Department;
+use App\Album;
 
 class DiscController extends Controller
 {
@@ -15,17 +17,34 @@ class DiscController extends Controller
         $this->disc = $disc;
         $this->authorizeResource(Disc::class);
         $this->middleware('auth');
-
     }
+
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        $discs = Disc::All();
-        return view('discs.index')->with('discs', $discs);
+        $departments = Department::all();
+        $query = Disc::query();
+        $album = null;
+        if ($request->filled('album')) {
+            $query->where('album_id', $request->input('album'));
+            $album = Album::where('id', $request->input('album'))->first();
+        }
+        if ($request->filled('department')) {
+            $query->department($request->input('department'));
+        }
+        $query->orderBy('created_at', 'desc');
+        $query->with('album')->with('department')->get();
+        $discs = $query->simplePaginate(20);
+        return view('discs.index')->with(compact('discs', 'departments', 'album'));
+    }
+
+    public function show(Disc $disc)
+    {
+        return view('discs.show')->with(compact('disc'));
     }
 
 
@@ -37,7 +56,12 @@ class DiscController extends Controller
      */
     public function store(StoreDisc $request)
     {
-        Department::create($request->validated());
+        Disc::create([
+            'album_id' => $request->input('album'),
+            'department_id' => $request->input('department'),
+            'offer_price' => $request->input('offer_price'),
+            'condition' => $request->input('condition')
+        ]);
         return redirect()->route('discs.index')->with('success', __('discs.successfully_stored'));
     }
 
@@ -50,8 +74,7 @@ class DiscController extends Controller
      */
     public function edit(Disc $disc)
     {
-        //TODO
-        //Return view with edit form
+        return view('discs.edit')->with(compact('disc'));
     }
 
     /**

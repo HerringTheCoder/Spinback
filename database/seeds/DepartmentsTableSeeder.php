@@ -12,13 +12,13 @@ class DepartmentsTableSeeder extends Seeder
      */
     public function run()
     {
-        factory(Department::class, 20)->create();
+        // factory(Department::class, 20)->create();
         $data =
             [
                 [
                     'id' => 1,
                     'name' => 'LCA01',
-                    'address'=>'Sejmowa 5C',
+                    'address' => 'Sejmowa 5C',
                     'city' => 'Legnica',
                     'phone_number' => 777666555
                 ],
@@ -32,9 +32,9 @@ class DepartmentsTableSeeder extends Seeder
                 ],
 
                 [
-                    'id'=>3,
-                    'name'=>'BDG01',
-                    'city' =>'Bydgoszcz',
+                    'id' => 3,
+                    'name' => 'BDG01',
+                    'city' => 'Bydgoszcz',
                     'address' => 'Tragutta 15/4',
                     'phone_number' => 777999666
                 ]

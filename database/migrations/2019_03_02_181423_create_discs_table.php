@@ -17,10 +17,10 @@ class CreateDiscsTable extends Migration
             $table->bigIncrements('id');
             $table->uuid('album_id');
             $table->foreign('album_id')->references('id')->on('albums');
-            $table->string('condition');
-            $table->string('photo_path');
+            $table->string('condition')->nullable();
+            $table->string('photo_path')->nullable();
             $table->integer('offer_price')->unsigned();
-            $table->boolean('sold');
+            $table->boolean('sold')->default(0);
             $table->bigInteger('department_id')->unsigned();
             $table->foreign('department_id')->references('id')->on('departments');
             $table->softDeletes();

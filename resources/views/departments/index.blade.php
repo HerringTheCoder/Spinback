@@ -6,7 +6,7 @@
 
     <div class="resource">
         <div class="controls">
-            <button class="ui primary button new-department">
+            <button class="ui primary button new-resource">
                 @lang('departments.new_department')
             </button>
             <button class="ui button disabled edit-resource">
@@ -54,7 +54,7 @@
         </table>
 
         <div class="controls">
-            <button class="ui primary button new-department">
+            <button class="ui primary button new-resource">
                 @lang('departments.new_department')
             </button>
             <button class="ui button disabled edit-resource">
@@ -67,13 +67,13 @@
             </button>
         </div>
 
-        <div class="ui tiny modal new-department-modal">
+        <div class="ui tiny modal new-resource-modal">
             <i class="close icon"></i>
             <div class="header">
                 @lang('departments.new_department')
             </div>
             <div class="content">
-                <form class="ui form new-department-form" method="post" action="{{ route('departments.store') }}">
+                <form class="ui form" method="post" action="{{ route('departments.store') }}">
                     @csrf
                     <div class="field">
                         <label>@lang('departments.name')</label>
@@ -108,19 +108,3 @@
 
         @include('commons.modals.delete')
 @endsection
-
-@push('scripts')
-    <script>
-        $('table.departments').tablesort();
-
-        $('button.new-department').click(function() {
-            $('.new-department-modal')
-                .modal({
-                    onApprove: function() {
-                        $('.new-department-form').submit();
-                    }
-                })
-                .modal('show');
-        });
-    </script>
-@endpush

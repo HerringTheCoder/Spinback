@@ -71,6 +71,19 @@ $('.edit-resource').click(function() {
     document.location = route;
 });
 
+// Handle new resource form
+$('.resource .controls button.new-resource').click(function() {
+    const $modal = $('.new-resource-modal');
+
+    $modal
+        .modal({
+            onApprove: function() {
+                $modal.find('form').submit();
+            }
+        })
+        .modal('show');
+});
+
 // Add CSRF token to every ajax request
 $.ajaxSetup({
     headers: {
