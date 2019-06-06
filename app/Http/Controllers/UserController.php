@@ -12,6 +12,8 @@ use Illuminate\Support\Facades\Auth;
 use App\Department;
 use App\Http\Requests\ChangePassword;
 use Illuminate\Support\Facades\Hash;
+use App\Mail\AccountDetails;
+use Illuminate\Support\Facades\Mail;
 
 class UserController extends Controller
 {
@@ -45,7 +47,12 @@ class UserController extends Controller
      */
     public function store(StoreUser $request)
     {
-        User::Create($request->validated());
+        $validated = $request->validated();
+        $validated['password'] = Hash::make($validated['password']);
+        $user = User::create($validated);
+        if ($request->has('send_email')) {
+            Mail::to($user)->send(new AccountDetails($user->login, $request->input('password')));
+        }
         return redirect()->route('users.index')->with('success', __('users.successfully_stored'));
     }
 
@@ -57,7 +64,7 @@ class UserController extends Controller
      */
     public function edit(User $user)
     {
-        return view('settings.index')->with('user', Auth::user());
+        return view('users.edit')->with('user', $user);
     }
 
     /**

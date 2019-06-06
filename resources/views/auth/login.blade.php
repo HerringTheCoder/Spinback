@@ -54,7 +54,7 @@
         
             <div class="ui basic segment">
                 <p>
-                    <i class="question circle right floated icon" data-position="top center" data-content="@lang('auth.help')" data-inverted=""></i>
+                    <i class="question circle icon" data-position="top center" data-content="@lang('auth.help')" data-inverted=""></i>
                     <a href="{{ route('password.request') }}">@lang('auth.forgot')</a>
                 </p>
             </div>

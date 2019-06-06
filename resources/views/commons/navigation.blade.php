@@ -35,9 +35,9 @@
         <a class="item {{ request()->is('settings*') ? 'active' : '' }}" href="{{ route('users.settings') }}">
             <b>{{ __('dashboard.nav.settings') }}</b>
         </a>
-        <div class="item">
+        <a class="item {{ request()->is('users*') ? 'active' : '' }}" href="{{ route('users.index') }}">
             <b>{{ __('dashboard.nav.users') }}</b>
-        </div>
+        </a>
         <a class="item {{ request()->is('about') ? 'active' : '' }}" href="{{ route('about') }}">
             <b>{{ __('dashboard.nav.about') }}</b>
         </a>
