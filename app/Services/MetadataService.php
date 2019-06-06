@@ -7,6 +7,7 @@ use App\Exceptions\ArtistNotFoundException;
 use Carbon\Carbon;
 use App\Album;
 use App\Disc;
+use Illuminate\Support\Facades\Log;
 
 class MetadataService
 {
@@ -37,11 +38,13 @@ class MetadataService
             $album['cover'] = true;
         }
         Album::create($album);
+        Log::info('Album ' . $albumData->title . ' imported to database');
     }
 
     public function deleteAlbum(Album $album)
     {
         Disc::where('album_id', $album)->update(['album_id' => null]);
+        Log::info('Album ' . $album->title . ' deleted from database');
         $album->delete();
     }
 
@@ -54,6 +57,7 @@ class MetadataService
             'country' => isset($artist->country) ? $artist->country : '',
             'description' => isset($artist->disambiguation) ? $artist->disambiguation : ''
         ]);
+        Log::info('Artist ' . $artist->name . ' imported to database');
     }
 
     public function findAlbums(string $query)

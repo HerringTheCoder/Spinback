@@ -8,6 +8,7 @@ use App\Http\Requests\StoreTransaction;
 use App\Http\Requests\UpdateTransaction;
 use App\Services\TransactionService;
 use Auth;
+use Illuminate\Support\Facades\Log;
 
 class TransactionController extends Controller
 {
@@ -43,6 +44,7 @@ class TransactionController extends Controller
             $disc->sold = 1;
             $disc->save();
         }
+        Log::info(Auth::user()->fullName . ' made a transaction of disc #' . $transaction->disc->id);
         return redirect()->route('transactions.index')->with('success', __('transactions.successfully_stored'));
     }
 
@@ -78,6 +80,7 @@ class TransactionController extends Controller
      */
     public function destroy(Transaction $transaction)
     {
+        Log::info(Auth::user()->fullName . ' deleted transaction #' . $transaction->id);
         $transaction->delete();
         return redirect()->route('transactions.index')->with('success', __('transactions.successfully_deleted'));
     }

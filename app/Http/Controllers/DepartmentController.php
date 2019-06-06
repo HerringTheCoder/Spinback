@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Department;
 use App\Http\Requests\StoreDepartment;
 use App\Http\Requests\UpdateDepartment;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Log;
 
 class DepartmentController extends Controller
 {
@@ -32,8 +34,9 @@ class DepartmentController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function store(StoreDepartment $request)
-    {   
-        Department::create($request->validated());
+    {
+        $department = Department::create($request->validated());
+        Log::info('Department ' . $department->name . ' created by ' . Auth::user()->fullName);
         return redirect()->route('departments.index')->with('success', __('departments.successfully_stored'));
     }
 
@@ -69,6 +72,7 @@ class DepartmentController extends Controller
      */
     public function destroy(Department $department)
     {
+        Log::info('Department ' . $department->name . ' deleted by ' . Auth::user()->fullName);
         $department->delete();
         return redirect()->route('departments.index')->with('success', __('departments.successfully_deleted'));
     }

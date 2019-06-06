@@ -27,7 +27,7 @@ class StoreDepartment extends FormRequest
             'name' => 'required|unique:departments|max:255',
             'address' => 'required|max:255',
             'city' => 'required|max:255',
-            'phone_number' => 'required|phone|numeric'
+            'phone_number' => 'required|numeric'
         ];
     }
 }

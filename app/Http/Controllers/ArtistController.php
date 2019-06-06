@@ -54,6 +54,7 @@ class ArtistController extends Controller
      */
     public function destroy(Artist $artist)
     {
+        Log::info('Artist ' . $artist->name . ' deleted from database');
         $artist->delete();
         return redirect()->action('ArtistController@index')->with('success', __('artists.successfully_deleted'));
     }
