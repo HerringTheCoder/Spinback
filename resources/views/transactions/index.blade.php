@@ -98,7 +98,7 @@
                     </div>
                     <div class="field">
                             <label>@lang('transactions.department') <i class="home icon blue"></i></label>
-                        <div class="ui search selection dropdown">
+                        <div class="ui search selection dropdown department-dropdown">
                                 <input type="hidden" name="department_id">
                                 <i class="dropdown icon"></i>
                                 <div class="default text">
@@ -116,7 +116,7 @@
                     <div class="two fields">
                             <div class="field">
                                 <label>@lang('transactions.sale')/@lang('transactions.purchase')</label>
-                            <div class="ui selection dropdown">
+                            <div class="ui selection dropdown type-dropdown">
                                     <input type="hidden" name="operation_type">
                                     <i class="dropdown icon"></i>
                                     <div class="default text">
@@ -162,7 +162,6 @@
 
 @push('scripts')
     <script>
-
         $('.ui.dropdown').dropdown();
         $('table.transactions').tablesort();
         $('button.new-transaction').click(function() {
@@ -175,4 +174,15 @@
                 .modal('show');
         });
     </script>
+    @if (request()->has(['department_id', 'disc_id', 'price']))
+        <script>
+            $('input[name="disc_id"]').val({{ request()->input('department_id') }});
+            $('input[name="price"]').val({{ request()->input('price') }});
+            $('button.new-transaction').click();
+            $('.department-dropdown').dropdown('set selected', {{ request()->input('department_id') }});
+            $('.type-dropdown').dropdown('set selected', 'sale');
+        </script>
+    @endif
 @endpush
+
+

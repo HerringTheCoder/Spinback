@@ -31,8 +31,8 @@ class HomeController extends Controller
         $counts = [
             'departments' => Department::count(),
             'transactions' => Transaction::count(),
-            'discs' => Disc::count(),
-            'parcels' => Parcel::count()
+            'discs' => Disc::unsold()->count(),
+            'parcels' => Parcel::where('completed', 0)->count()
         ];
         $discs = Disc::latest('id')->unsold()->take(5)->with('album.artist')->with('department')->get();
         $sold = Transaction::where('operation_type', 'sale')->latest('updated_at')->take(5)->with('disc.album')->with('department')->get();

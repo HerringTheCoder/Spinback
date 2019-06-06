@@ -75,10 +75,12 @@
 
     <div class="controls">
         @unless($disc->sold)
-            <button class="ui button">
-                <i class="plus icon"></i>
-                @lang('discs.make_transaction')
-            </button>
+            <a href="{{ route('transactions.index', ['department_id' => $disc->department_id, 'disc_id' => $disc->id, 'price' => $disc->offer_price]) }}">
+                <button class="ui button">
+                    <i class="plus icon"></i>
+                    @lang('discs.make_transaction')
+                </button>
+            </a>
         @endunless
         <a class="ui button" href="{{ route('discs.edit', ['id' => $disc->id]) }}">
             <i class="pencil icon"></i>
