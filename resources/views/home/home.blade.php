@@ -39,15 +39,15 @@
                 <h3 class="ui header">@lang('home.recently_added')</h3>
                 <div class="ui unstackable items">
                     @foreach ($discs as $disc)
-                        @include('home.disc_item', ['disc' => $disc])
+                        @include('home.disc_item', ['disc' => $disc, 'price' => $disc->offer_price, 'sold' => false])
                     @endforeach
                 </div>
             </div>
             <div class="six wide column">
                 <h3 class="ui header">@lang('home.recently_sold')</h3>
                 <div class="ui unstackable items">
-                    @foreach ($sold as $disc)
-                        @include('home.disc_item', ['disc' => $disc])
+                    @foreach ($sold as $transaction)
+                        @include('home.disc_item', ['disc' => $transaction->disc, 'price' => $transaction->price, 'sold' => true])
                     @endforeach
                 </div>
             </div>

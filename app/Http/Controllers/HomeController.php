@@ -33,8 +33,8 @@ class HomeController extends Controller
             'discs' => Disc::count(),
             'parcels' => Parcel::count()
         ];
-        $discs = Disc::latest('id')->take(5)->with('album.artist')->with('department')->get();
-        $sold = Disc::sold()->latest('updated_at')->take(5)->with('album.artist')->with('department')->get();
+        $discs = Disc::latest('id')->unsold()->take(5)->with('album.artist')->with('department')->get();
+        $sold = Transaction::where('operation_type', 'sale')->latest('updated_at')->take(5)->with('disc.album')->with('department')->get();
         return view('home.home', compact('counts', 'discs', 'sold'));
     }
 

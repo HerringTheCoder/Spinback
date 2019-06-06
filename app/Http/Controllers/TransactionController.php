@@ -16,7 +16,6 @@ class TransactionController extends Controller
         $this->transaction = $transaction;
         $this->authorizeResource(Transaction::class);
         $this->middleware('auth');
-
     }
     /**
      * Display a listing of the resource.
@@ -39,14 +38,11 @@ class TransactionController extends Controller
     public function store(StoreTransaction $request)
     {
         $transaction = Transaction::create(array_merge($request->validated(), ['user_id' => Auth::Id()]));
-       /* TODO
-       if($transaction->operation_type==='sale')
-        {
+        if ($transaction->operation_type === 'sale') {
             $disc = $transaction->disc;
-            $disc->sold=1;
+            $disc->sold = 1;
             $disc->save();
         }
-        */
         return redirect()->route('transactions.index')->with('success', __('transactions.successfully_stored'));
     }
 

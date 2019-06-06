@@ -18,9 +18,9 @@ class Disc extends Model
     {
         parent::boot();
 
-        static::addGlobalScope('unsold', function (Builder $builder) {
-            $builder->where('sold', 0);
-        });
+        // static::addGlobalScope('unsold', function (Builder $builder) {
+        //     $builder->where('sold', 0);
+        // });
     }
 
     public function album()
@@ -40,7 +40,12 @@ class Disc extends Model
 
     public function scopeSold($query)
     {
-        return $query->withoutGlobalScope('unsold')->where('sold', 1);
+        return $query->where('sold', 1);
+    }
+
+    public function scopeUnsold($query)
+    {
+        return $query->where('sold', 0);
     }
 
     public function scopeDepartment($query, $department)

@@ -52,8 +52,8 @@
                                 @elseif ($transaction->operation_type==='purchase')@lang('transactions.purchase')
                                 @endif</td>
                                 <td data-label="Price">{{$transaction->price}}</td>
-                                <td data-label="Employee"><a href={{route('users.show', $transaction->user->id)}}>{{$transaction->user->getFullNameAttribute()}}</a>
-                                <td data-label="Disc"><a href={{route('discs.show', $transaction->disc)}}>{{$transaction->disc->album->title}}</a>
+                                <td data-label="Employee">{{$transaction->user->getFullNameAttribute()}}</td>
+                                <td data-label="Disc"><a href={{ route('discs.show', ['id' => $transaction->disc]) }}>{{$transaction->disc->album->title}}</a></td>
                                     <td class="center aligned" data-label="Payment_Type">
                                         @if($transaction->payment_type==='cash')<div class='ui icon' data-tooltip="@lang('transactions.cash')"><i class="large money bill alternate outline green icon" ></i></div>
                                         @elseif($transaction->payment_type==='credit card')<div class='ui icon' data-tooltip="@lang('transactions.credit_card')"><i class="large credit card outline yellow icon"></i></div>

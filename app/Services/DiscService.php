@@ -12,6 +12,7 @@ class DiscService
     public function query(Request $request)
     {
         $query = Disc::query();
+        $query->unsold();
         $album = null;
         if ($request->filled('album')) {
             $query->where('album_id', $request->input('album'));
