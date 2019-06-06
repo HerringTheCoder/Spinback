@@ -46,7 +46,7 @@ class AlbumController extends Controller
         } catch (ArtistNotFoundException $e) {
             return redirect()->route('albums.index')->with('error', __('metadata.artist_exception'));
         }
-        return redirect()->route('albums.index')->with('success', __('metadata.successfully_stored'));
+        return redirect()->route('albums.index')->with('success', __('albums.successfully_stored'));
     }
 
     /**
@@ -58,7 +58,7 @@ class AlbumController extends Controller
     public function destroy(Album $album)
     {
         $this->metadataService->deleteAlbum($album);
-        return redirect()->route('albums.index')->with('success', __('metadata.successfully_deleted'));
+        return redirect()->route('albums.index')->with('success', __('albums.successfully_deleted'));
     }
 
     public function import(Request $request)

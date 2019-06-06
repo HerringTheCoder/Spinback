@@ -24,7 +24,7 @@ class StoreDisc extends FormRequest
         return [
             [
                 'condition' => 'string|nullable',
-                'offer_price' => 'integer|required',
+                'offer_price' => 'numeric|required',
                 'department_id' => 'exists|integer|required',
                 'album_id' => 'exists|uuid|required'
             ]

@@ -43,7 +43,7 @@ class ArtistController extends Controller
     public function store(StoreArtist $request)
     {
         $this->metadataService->addArtist($request->input('id'));
-        return redirect()->route('artists.index')->with('success', __('artists.successfully stored'));
+        return redirect()->route('artists.index')->with('success', __('artists.successfully_stored'));
     }
 
     /**
@@ -55,7 +55,7 @@ class ArtistController extends Controller
     public function destroy(Artist $artist)
     {
         $artist->delete();
-        return redirect()->action('ArtistController@index')->with('success', __('departments.successfully_deleted'));
+        return redirect()->action('ArtistController@index')->with('success', __('artists.successfully_deleted'));
     }
 
     public function import(Request $request)

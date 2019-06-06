@@ -35,7 +35,7 @@
                 <div class="field">
                     <label>Offer price</label>
                     <div class="ui right labeled input">
-                        <input type="text" name="offer_price" placeholder="Offer price">
+                        <input type="number" name="offer_price" placeholder="Offer price">
                         <div class="ui label">
                             PLN
                         </div>

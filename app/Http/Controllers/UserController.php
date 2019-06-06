@@ -50,6 +50,7 @@ class UserController extends Controller
         $validated = $request->validated();
         $validated['password'] = Hash::make($validated['password']);
         $user = User::create($validated);
+        Bouncer::assign('salesman')->to($user);
         if ($request->has('send_email')) {
             Mail::to($user)->send(new AccountDetails($user->login, $request->input('password')));
         }

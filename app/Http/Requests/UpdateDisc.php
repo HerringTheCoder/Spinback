@@ -23,7 +23,7 @@ class UpdateDisc extends FormRequest
     {
         return [
             'condition' => 'string|nullable',
-            'offer_price' => 'integer',
+            'offer_price' => 'numeric',
         ];
     }
 }
