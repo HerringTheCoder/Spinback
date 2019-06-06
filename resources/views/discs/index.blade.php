@@ -1,8 +1,8 @@
 @extends('layouts.dashboard')
 
-@section('title', __('discs.title'))
+@section('title', __('discs.page_title'))
 @section('content')
-    <h3 class="ui dividing header">@lang('discs.title')</h3>
+    <h3 class="ui dividing header">@lang('discs.page_title')</h3>
 
     <form method="get" action="{{ route('discs.index') }}">
         @if ($album)

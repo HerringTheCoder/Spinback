@@ -1,7 +1,7 @@
 <?php
 
 return [
-    'title' => 'Płyty',
+    'page_title' => 'Płyty',
     'edit_title' => 'Edytuj płytę',
 
     // Buttons

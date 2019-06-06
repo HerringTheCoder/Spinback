@@ -1,7 +1,7 @@
 <?php
 
 return [
-    'title' => 'Discs',
+    'page_title' => 'Discs',
     'edit_title' => 'Edit disc',
 
     // Buttons
