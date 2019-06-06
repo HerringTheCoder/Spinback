@@ -36,7 +36,7 @@
     <div class="ui divided grid">
         <div class="stackable row">
             <div class="six wide column">
-                <h3 class="ui header">Lately added discs</h3>
+                <h3 class="ui header">@lang('home.recently_added')</h3>
                 <div class="ui unstackable items">
                     @foreach ($discs as $disc)
                         @include('home.disc_item', ['disc' => $disc])
@@ -44,7 +44,7 @@
                 </div>
             </div>
             <div class="six wide column">
-                <h3 class="ui header">Lately sold discs</h3>
+                <h3 class="ui header">@lang('home.recently_sold')</h3>
                 <div class="ui unstackable items">
                     @foreach ($sold as $disc)
                         @include('home.disc_item', ['disc' => $disc])
@@ -52,7 +52,7 @@
                 </div>
             </div>
             <div class="four wide column">
-                <h3 class="ui header">Statistics</h3>
+                <h3 class="ui header">@lang('home.statistics')</h3>
                 <div class="ui stacked segment"></div>
             </div>
         </div>

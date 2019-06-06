@@ -1,8 +1,8 @@
 @extends('layouts.dashboard')
 
-@section('title', 'Discs')
+@section('title', __('discs.title'))
 @section('content')
-    <h3 class="ui dividing header">Discs</h3>
+    <h3 class="ui dividing header">@lang('discs.title')</h3>
 
     <form method="get" action="{{ route('discs.index') }}">
         @if ($album)
@@ -15,16 +15,16 @@
                 <div class="field">
                     <div class="ui search album-search">
                         @if ($album)
-                            <input class="prompt" type="text" placeholder="Album title" value="{{ $album->title }}">
+                            <input class="prompt" type="text" placeholder="@lang('discs.album_title')" value="{{ $album->title }}">
                         @else
-                            <input class="prompt" type="text" placeholder="Album title">
+                            <input class="prompt" type="text" placeholder="@lang('discs.album_title')">
                         @endif
                         <div class="results"></div>
                     </div>
                 </div>
                 <div class="field">
                     <select class="ui search dropdown department-dropdown" name="department">
-                        <option value="">Department</option>
+                        <option value="">@lang('discs.department')</option>
                         @foreach ($departments as $department)
                             @if ($department->id == request()->input('department'))
                                 <option selected value="{{ $department->id }}">{{ $department->name }}</option>
@@ -35,7 +35,7 @@
                     </select>
                 </div>
                 <div class="field">
-                    <button class="ui button" type="submit">Filter</button>
+                    <button class="ui button" type="submit">@lang('discs.filter')</button>
                 </div>
             </div> 
         </div>
@@ -44,7 +44,7 @@
     <div class="resource">
         <div class="controls">
             <button class="ui primary button new-resource">
-                New disc
+                @lang('discs.new_disc')
             </button>
             <button class="ui button disabled edit-resource">
                 <i class="edit icon"></i>
@@ -61,14 +61,14 @@
                 <tr>
                     <th></th>
                     <th>#</th>
-                    <th>Department</th>
-                    <th>Cover</th>
+                    <th>@lang('discs.department')</th>
+                    <th>@lang('discs.cover')</th>
                     <th>Album</th>
                     {{-- <th>Artist</th> --}}
-                    <th>Condition</th>
-                    <th>Price</th>
-                    <th>Created</th>
-                    <th>Updated</th>
+                    <th>@lang('discs.condition')</th>
+                    <th>@lang('discs.offer_price')</th>
+                    <th>@lang('discs.created_at')</th>
+                    <th>@lang('discs.updated_at')</th>
                 </tr>
             </thead>
             <tbody>
@@ -122,7 +122,7 @@
 
         <div class="controls">
             <button class="ui primary button new-resource">
-                New disc
+                @lang('discs.new_disc')
             </button>
             <button class="ui button disabled edit-resource">
                 <i class="edit icon"></i>

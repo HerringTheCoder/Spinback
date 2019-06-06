@@ -1,7 +1,7 @@
 <div class="ui tiny modal new-resource-modal">
     <i class="close icon"></i>
     <div class="header">
-        New disc
+        @lang('discs.new_disc')
     </div>
     <div class="content">
         <form class="ui form" method="post" action="{{ route('discs.store') }}">
@@ -15,9 +15,9 @@
                 </div>
             </div>
             <div class="field">
-                <label>Oddział</label>
+                <label>@lang('discs.department')</label>
                 <select class="ui search dropdown department-dropdown" name="department">
-                    <option value="">Department</option>
+                    <option value="">@lang('discs.department')</option>
                     @foreach ($departments as $department)
                         @if ($department->id == request()->input('department'))
                             <option selected value="{{ $department->id }}">{{ $department->name }}</option>
@@ -29,13 +29,13 @@
             </div>
             <div class="two fields">
                 <div class="field">
-                    <label>Condition</label>
-                    <input type="text" name="condition" placeholder="Condition">
+                    <label>@lang('discs.condition')</label>
+                    <input type="text" name="condition" placeholder="@lang('discs.condition')">
                 </div>
                 <div class="field">
-                    <label>Offer price</label>
+                    <label>@lang('discs.offer_price')</label>
                     <div class="ui right labeled input">
-                        <input type="number" name="offer_price" placeholder="Offer price">
+                        <input type="number" name="offer_price" placeholder="@lang('discs.offer_price')">
                         <div class="ui label">
                             PLN
                         </div>

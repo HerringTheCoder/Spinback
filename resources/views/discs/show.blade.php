@@ -7,13 +7,13 @@
     <table class="ui definition table">
         <tbody>
             <tr>
-                <td>Cover</td>
+                <td>@lang('discs.cover')</td>
                 <td>
                     <img class="ui image" src="{{ $disc->album->image() }}">
                 </td>
             </tr>
             <tr>
-                <td>Title</td>
+                <td>@lang('discs.title')</td>
                 <td>
                     <a href="https://musicbrainz.org/release-group/{{ $disc->album->id }}" target="_blank" rel="noopener noreferrer">{{ $disc->album->title }}</a>
                 </td>
@@ -31,41 +31,41 @@
                 </td>
             </tr>
             <tr>
-                <td>Department</td>
+                <td>@lang('discs.department')</td>
                 <td>
                     {{ $disc->department->name }}
                 </td>
             </tr>
             <tr>
-                <td>Condition</td>
+                <td>@lang('discs.condition')</td>
                 <td>
                     {{ $disc->condition }}
                 </td>
             </tr>
             <tr>
-                <td>Offer price</td>
+                <td>@lang('discs.offer_price')</td>
                 <td>
                     {{ $disc->offer_price }} PLN
                 </td>
             </tr>
             <tr>
-                <td>Sold</td>
+                <td>@lang('discs.sold')</td>
                 <td>
                     @if($disc->sold)
-                        <i class="green check icon"></i> Yes
+                        <i class="green check icon"></i> @lang('discs.yes')
                     @else
-                        No
+                        @lang('discs.no')
                     @endif
                 </td>
             </tr>
             <tr>
-                <td>Added</td>
+                <td>@lang('discs.created_at')</td>
                 <td>
                     {{ $disc->created_at }}
                 </td>
             </tr>
             <tr>
-                <td>Updated</td>
+                <td>@lang('discs.updated_at')</td>
                 <td>
                     {{ $disc->updated_at }}
                 </td>
@@ -77,16 +77,16 @@
         @unless($disc->sold)
             <button class="ui button">
                 <i class="plus icon"></i>
-                Make a transaction
+                @lang('discs.make_transaction')
             </button>
         @endunless
         <a class="ui button" href="{{ route('discs.edit', ['id' => $disc->id]) }}">
             <i class="pencil icon"></i>
-            Edit
+            @lang('resources.edit_button')
         </a>
         <button class="ui delete button">
             <i class="trash icon"></i>
-            Delete
+            @lang('resources.delete_button')
         </button>
     </div>
         

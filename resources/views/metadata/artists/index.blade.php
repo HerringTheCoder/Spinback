@@ -1,34 +1,34 @@
 @extends('layouts.dashboard')
 
-@section('title', 'Artists')
+@section('title', __('artists.title'))
 @section('content')
     @include('metadata.tabs')
 
-    <h3 class="ui dividing header">Add new artist</h3>
+    <h3 class="ui dividing header">@lang('artists.import')</h3>
 
-    <p>Artist must be added to the local database before he can be used in other parts of the system.</p>
+    <p>@lang('artists.import_desc')</p>
 
     <form method="get" action="{{ route('artists.import') }}">
         <div class="ui action left icon input">
             <i class="search icon"></i>
             <input type="text" placeholder="Artist" name="query">
-            <button type="submit" class="ui button">Search</button>
+            <button type="submit" class="ui button">@lang('artists.search')</button>
         </div>
     </form>
 
-    <h3 class="ui dividing header">Artists</h3>
+    <h3 class="ui dividing header">@lang('artists.title')</h3>
 
     <div class="resource">
         <div class="controls">
             <button class="ui button disabled delete-resource">
                 <i class="trash icon"></i>
-                Delete
+                @lang('resources.delete_button')
             </button>
         
             <form method="get" action="{{ route('artists.index') }}" class="ui icon input" style="float: right;">
                 <div class="ui icon input">
                     <i class="search icon"></i>
-                    <input type="text" name="query" placeholder="Search..." value="{{ request()->input('query') }}">
+                    <input type="text" name="query" placeholder="@lang('artists.search')..." value="{{ request()->input('query') }}">
                 </div>
             </form>
         </div>
@@ -37,8 +37,8 @@
             <thead>
                 <tr>
                     <th></th>
-                    <th>Name</th>
-                    <th>Description</th>
+                    <th>@lang('artists.name')</th>
+                    <th>@lang('artists.description')</th>
                 </tr>
             </thead>
             <tbody>

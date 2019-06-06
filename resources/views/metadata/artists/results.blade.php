@@ -1,8 +1,8 @@
 @extends('layouts.dashboard')
 
-@section('title', 'Artists results for \'' . request()->input('query') . '\'')
+@section('title', __('artists.search_results', ['text' => request()->input('query')]))
 @section('content')
-    <h3 class="ui dividing header">Artists results for '<em>{{ request()->input('query') }}</em>'</h3>
+    <h3 class="ui dividing header">@lang('artists.search_results', ['text' => request()->input('query')])</h3>
     
     @if (!empty($artists))
         <div class="ui segments">
@@ -31,7 +31,7 @@
                             <form method="post" action="{{ route('artists.store') }}">
                                 @csrf
                                 <input type="hidden" name="id" value="{{ $artist->id }}">
-                                <button type="submit" class="ui primary button">Pick</button>
+                                <button type="submit" class="ui primary button">>@lang('artists.pick')</button>
                             </form>
                         </div>
                     </div>

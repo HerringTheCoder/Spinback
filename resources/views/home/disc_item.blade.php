@@ -8,7 +8,7 @@
             @if ($disc->sold)
             <i class="green check icon"></i>
             @endif
-            in {{ $disc->department->name }} for {{ $disc->offer_price }} PLN
+            @lang('home.disc_meta', ['name' => $disc->department->name, 'price' => $disc->offer_price])
         </div>
         <div class="extra">
             {{ $disc->created_at->diffForHumans() }}

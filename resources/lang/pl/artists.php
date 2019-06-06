@@ -1,8 +1,11 @@
 <?php
 
 return [
-    'title' => 'Artysta',
+    'title' => 'Artyści',
     'edit_title' => 'Edytuj artystę',
+
+    'import' => 'Zaimportuj artystę',
+    'import_desc' => 'Artsta musi zostać zaimportowany do lokalnej bazy danych, zanim będzie można go użyć w pozostałych częściach systemu.',
 
     // Buttons
     'new_department' => 'Dodaj artystę',
@@ -10,6 +13,7 @@ return [
     'delete' => 'Usuń',
     'cancel' => 'Anuluj',
     'save' => 'Zapisz',
+    'search' => 'Szukaj',
 
     // Table headings
     'name' => 'Nazwa',

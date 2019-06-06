@@ -1,8 +1,11 @@
 <?php
 
 return [
-    'title' => 'Artist',
+    'title' => 'Artists',
     'edit_title' => 'Edit artist',
+
+    'import' => 'Import artist',
+    'import_desc' => 'Artists must be imported into the local database before they can be used in other parts of the system.',
 
     // Buttons
     'new_department' => 'New artist',
@@ -10,6 +13,7 @@ return [
     'delete' => 'Delete',
     'cancel' => 'Cancel',
     'save' => 'Save',
+    'search' => 'Search',
 
     // Table headings
     'name' => 'Name',

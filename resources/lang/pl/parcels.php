@@ -12,9 +12,9 @@ return [
     'save' => 'Zapisz',
 
     // Table headings
-    'tracking_code'=> 'numer przesyłki',
-    'completed'=> 'Doręczona',
-    'confirm'=>'Potwierdź odebranie',
+    'tracking_code' => 'Numer przesyłki',
+    'completed' => 'Doręczona',
+    'confirm' => 'Potwierdź odebranie',
     'awaiting' => "W drodze",
     'delete_header' => 'Usuń przesyłkę',
     'delete_confirm' => 'Za chwilę usuniesz przesyłkę <strong></strong>. Jesteś pewien?',

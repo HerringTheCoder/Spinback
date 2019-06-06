@@ -1,28 +1,28 @@
 @extends('layouts.dashboard')
 
-@section('title', 'Albums')
+@section('title', __('albums.page_title'))
 @section('content')
     @include('metadata.tabs')
 
-    <h3 class="ui dividing header">Add new album</h3>
+    <h3 class="ui dividing header">@lang('albums.import')</h3>
 
-    <p>Album must be added to the local database before it can be used in other parts of the system.</p>
+    <p>@lang('albums.import_desc')</p>
 
     <form method="get" action="{{ route('albums.import') }}">
         <div class="ui action left icon input">
             <i class="search icon"></i>
             <input type="text" placeholder="Album" name="query">
-            <button type="submit" class="ui button">Search</button>
+            <button type="submit" class="ui button">@lang('albums.search')</button>
         </div>
     </form>
 
-    <h3 class="ui dividing header">Albums</h3>
+    <h3 class="ui dividing header">@lang('albums.page_title')</h3>
 
     <div class="resource">
         <div class="controls">
             <button class="ui button disabled delete-resource">
                 <i class="trash icon"></i>
-                Delete
+                @lang('resources.delete_button')
             </button>
         
             <form method="get" action="{{ route('albums.index') }}" style="float: right;">
@@ -37,11 +37,11 @@
             <thead>
                 <tr>
                     <th></th>
-                    <th>Cover</th>
-                    <th>Name</th>
-                    <th>Artist</th>
-                    <th>Genre</th>
-                    <th>Release date</th>
+                    <th>@lang('albums.cover')</th>
+                    <th>@lang('albums.title')</th>
+                    <th>@lang('albums.artist')</th>
+                    <th>@lang('albums.genre')</th>
+                    <th>@lang('albums.release_date')</th>
                 </tr>
             </thead>
             <tbody>

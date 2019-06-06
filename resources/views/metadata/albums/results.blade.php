@@ -1,8 +1,8 @@
 @extends('layouts.dashboard')
 
-@section('title', 'Albums results for \'' . request()->input('query') . '\'')
+@section('title', __('albums.search_results', ['text' => request()->input('query')]))
 @section('content')
-    <h3 class="ui dividing header">Albums results for '<em>{{ request()->input('query') }}</em>'</h3>
+    <h3 class="ui dividing header">@lang('albums.search_results', ['text' => request()->input('query')])</h3>
 
     <div class="ui segments">
         @foreach ($albums as $album)
@@ -25,7 +25,7 @@
                         <form method="post" action="{{ route('albums.store') }}">
                             @csrf
                             <input type="hidden" name="id" value="{{ $album->id }}">
-                            <button type="submit" class="ui primary button">Pick</button>
+                            <button type="submit" class="ui primary button">@lang('albums.pick')</button>
                         </form>
                     </div>
                 </div>
@@ -34,7 +34,7 @@
     </div>
 
     <p>
-        Search results provided by <a href="https://musicbrainz.org/" alt="MusicBrainz"><img class="ui tiny spaced image" src="{{ asset('images/musicbrainz.svg') }}"></a>
+        @lang('albums.results_provided_by') <a href="https://musicbrainz.org/" alt="MusicBrainz"><img class="ui tiny spaced image" src="{{ asset('images/musicbrainz.svg') }}"></a>
     </p>
     
 @endsection

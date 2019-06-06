@@ -44,7 +44,7 @@ class AlbumController extends Controller
         try {
             $this->metadataService->addAlbum($request->input('id'));
         } catch (ArtistNotFoundException $e) {
-            return redirect()->route('albums.index')->with('error', __('metadata.artist_exception'));
+            return redirect()->route('albums.index')->with('error', __('albums.artist_exception'));
         }
         return redirect()->route('albums.index')->with('success', __('albums.successfully_stored'));
     }
