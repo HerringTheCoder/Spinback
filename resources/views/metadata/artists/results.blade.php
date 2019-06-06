@@ -31,7 +31,7 @@
                             <form method="post" action="{{ route('artists.store') }}">
                                 @csrf
                                 <input type="hidden" name="id" value="{{ $artist->id }}">
-                                <button type="submit" class="ui primary button">>@lang('artists.pick')</button>
+                                <button type="submit" class="ui primary button">@lang('artists.pick')</button>
                             </form>
                         </div>
                     </div>

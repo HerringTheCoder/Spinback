@@ -14,6 +14,7 @@ return [
     'cancel' => 'Cancel',
     'save' => 'Save',
     'search' => 'Search',
+    'pick' => 'Pick',
 
     // Table headings
     'name' => 'Name',

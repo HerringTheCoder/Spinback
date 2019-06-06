@@ -14,6 +14,7 @@ return [
     'cancel' => 'Anuluj',
     'save' => 'Zapisz',
     'search' => 'Szukaj',
+    'pick' => 'Wybierz',
 
     // Table headings
     'name' => 'Nazwa',
