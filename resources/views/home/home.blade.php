@@ -14,22 +14,28 @@
                 </a>
             </div>
             <div class="four wide column">
-                <div class="ui stacked segment">
-                    <h2>{{ $counts['transactions'] }}</h2>
-                    @lang('home.transactions')
-                </div>
+                <a href="{{ route('transactions.index') }}">
+                    <div class="ui stacked segment">
+                        <h2>{{ $counts['transactions'] }}</h2>
+                        @lang('home.transactions')
+                    </div>
+                </a>
             </div>
             <div class="four wide column">
-                <div class="ui stacked segment">
-                    <h2>{{ $counts['discs'] }}</h2>
-                    @lang('home.discs')
-                </div>
+                <a href="{{ route('discs.index') }}">
+                    <div class="ui stacked segment">
+                        <h2>{{ $counts['discs'] }}</h2>
+                        @lang('home.discs')
+                    </div>
+                </a>
             </div>
             <div class="four wide column">
-                <div class="ui stacked segment">
-                    <h2>{{ $counts['parcels'] }}</h2>
-                    @lang('home.parcels')
-                </div>
+                <a href="{{ route('parcels.index') }}">
+                    <div class="ui stacked segment">
+                        <h2>{{ $counts['parcels'] }}</h2>
+                        @lang('home.parcels')
+                    </div>
+                </a>
             </div>
         </div>
     </div>
@@ -53,7 +59,12 @@
             </div>
             <div class="four wide column">
                 <h3 class="ui header">@lang('home.statistics')</h3>
-                <div class="ui stacked segment"></div>
+                <div class="ui segment">
+                    <p>@lang('home.trans_last_24h', ['count' => $stats['trans_last_24h']])</p>
+                </div>
+                <div class="ui segment">
+                    <p>@lang('home.trans_last_week', ['count' => $stats['trans_last_week']])</p>
+                </div>
             </div>
         </div>
     </div>

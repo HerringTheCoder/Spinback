@@ -12,5 +12,8 @@ return [
     'recently_sold' => 'Ostatnio sprzedane płyty',
     'statistics' => 'Statystyki',
 
-    'disc_meta' => 'w :name za :price PLN'
+    'disc_meta' => 'w :name za :price PLN',
+
+    'trans_last_24h' => 'W ciągu ostatniej doby przeprowadzono :count transakcji.',
+    'trans_last_week' => 'W ciągu ostatniego tygodnia przeprowadzono :count transakcji.'
 ];
