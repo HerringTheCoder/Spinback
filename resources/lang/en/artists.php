@@ -4,6 +4,9 @@ return [
     'title' => 'Artists',
     'edit_title' => 'Edit artist',
 
+    'search_results' => 'Search results for \':text\'',
+    'results_provided_by' => 'Search results provided by',
+
     'import' => 'Import artist',
     'import_desc' => 'Artists must be imported into the local database before they can be used in other parts of the system.',
 

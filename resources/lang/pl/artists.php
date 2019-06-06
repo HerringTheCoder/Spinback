@@ -4,6 +4,9 @@ return [
     'title' => 'Artyści',
     'edit_title' => 'Edytuj artystę',
 
+    'search_results' => 'Wyniki wyszukiwania dla \':text\'',
+    'results_provided_by' => 'Wyniki wyszukiwania dostarczone przez',
+
     'import' => 'Zaimportuj artystę',
     'import_desc' => 'Artsta musi zostać zaimportowany do lokalnej bazy danych, zanim będzie można go użyć w pozostałych częściach systemu.',
 
