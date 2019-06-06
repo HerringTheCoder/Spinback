@@ -10,6 +10,7 @@ use App\Http\Requests\UpdateDisc;
 use App\Department;
 use App\Album;
 use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Facades\Auth;
 
 class DiscController extends Controller
 {
