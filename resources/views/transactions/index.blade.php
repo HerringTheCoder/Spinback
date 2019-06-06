@@ -176,7 +176,7 @@
     </script>
     @if (request()->has(['department_id', 'disc_id', 'price']))
         <script>
-            $('input[name="disc_id"]').val({{ request()->input('department_id') }});
+            $('input[name="disc_id"]').val({{ request()->input('disc_id') }});
             $('input[name="price"]').val({{ request()->input('price') }});
             $('button.new-transaction').click();
             $('.department-dropdown').dropdown('set selected', {{ request()->input('department_id') }});
