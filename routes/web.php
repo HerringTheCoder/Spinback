@@ -31,5 +31,9 @@ Route::resource('deliveries', 'DeliveryController')->except(['create', 'show']);
 Route::get('transactions/report', 'TransactionController@report')->name('report');
 Route::resource('transactions', 'TransactionController')->except(['create', 'show']);
 Route::resource('users', 'UserController')->except(['create']);
+Route::get('settings', 'UserController@settings')->name('users.settings');
+Route::post('settings/change_password', 'UserController@changePassword')->name('users.change_password');
+Route::post('settings/default_department', 'UserController@setDefaultDepartment')->name('users.default_department');
+
 
 Route::get('search/albums', 'AlbumController@search')->name('albums.search');

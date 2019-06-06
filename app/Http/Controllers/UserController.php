@@ -8,6 +8,12 @@ use Illuminate\Http\Request;
 use Bouncer;
 use App\Http\Requests\UpdateUser;
 use App\Http\Requests\StoreUser;
+use Illuminate\Support\Facades\Auth;
+use App\Department;
+use App\Http\Requests\ChangePassword;
+use Illuminate\Support\Facades\Hash;
+use App\Mail\AccountDetails;
+use Illuminate\Support\Facades\Mail;
 
 class UserController extends Controller
 {
@@ -16,7 +22,6 @@ class UserController extends Controller
         $this->user = $user;
         $this->authorizeResource(User::class);
         $this->middleware('auth');
-
     }
     /**
      * Display a listing of the resource.
@@ -42,7 +47,12 @@ class UserController extends Controller
      */
     public function store(StoreUser $request)
     {
-        User::Create($request->validated());
+        $validated = $request->validated();
+        $validated['password'] = Hash::make($validated['password']);
+        $user = User::create($validated);
+        if ($request->has('send_email')) {
+            Mail::to($user)->send(new AccountDetails($user->login, $request->input('password')));
+        }
         return redirect()->route('users.index')->with('success', __('users.successfully_stored'));
     }
 
@@ -54,7 +64,7 @@ class UserController extends Controller
      */
     public function edit(User $user)
     {
-        //return view('users.edit');
+        return view('users.edit')->with('user', $user);
     }
 
     /**
@@ -79,17 +89,35 @@ class UserController extends Controller
      */
     public function destroy(User $user)
     {
-        if( $this->user->safeDelete($user) )
-        return redirect()->route('users.index')->with('success', __('users.successfully_deleted'));
+        if ($this->user->safeDelete($user))
+            return redirect()->route('users.index')->with('success', __('users.successfully_deleted'));
         else
-        return redirect()->route('users.index')->with('warning', __('users.self_protection'));
+            return redirect()->route('users.index')->with('warning', __('users.self_protection'));
     }
 
     public function deactivate(User $user)
     {
-        if($this->user->safeDeactivate($user))
-        return redirect()->route('users.index')->with('success', __('users.successfully_deactivated'));
+        if ($this->user->safeDeactivate($user))
+            return redirect()->route('users.index')->with('success', __('users.successfully_deactivated'));
         else
-        return redirect()->route('users.index')->with('warning', __('users.self_protection'));
+            return redirect()->route('users.index')->with('warning', __('users.self_protection'));
+    }
+
+    public function settings()
+    {
+        $user = Auth::user();
+        // $departments = Department::all();
+        return view('users.settings', compact('user', 'departments'));
+    }
+
+    public function changePassword(ChangePassword $request)
+    {
+        $user = Auth::user();
+        if (!Hash::check($request->input('old_password'), $user->password)) {
+            return redirect()->route('users.settings')->with('error', 'Wrong current password');
+        }
+        $user->password = Hash::make($request->input('new_password'));
+        $user->save();
+        return redirect()->route('users.settings')->with('success', 'Password succesfully changed');
     }
 }
