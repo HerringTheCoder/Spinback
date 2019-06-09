@@ -40,5 +40,22 @@
     "Whoops, something went wrong on our servers.": "Ups! Coś poszło nie tak na naszych serwerach.",
     "Regards": "Pozdrawiamy",
     "If you’re having trouble clicking the \":actionText\" button, copy and paste the URL below\ninto your web browser: [:actionURL](:actionURL)": "Jeśli masz problem z naciśnięciem przycisku \":actionText\", skopiuj i wklej poniższy adres do swojej przeglądarki: [:actionURL](:actionURL)",
-    "This password reset link will expire in :count minutes.": "Ten link zdezaktywuje się za :count minut."
+    "This password reset link will expire in :count minutes.": "Ten link zdezaktywuje się za :count minut.",
+    "Reports": "Raporty",
+    "Albums report": "Raport o albumach",
+    "Departments report": "Raport o oddziałach",
+    "Monthly report": "Raport miesięczny",
+    "Here are the top 20 albums, which gained the most income.": "Oto 20 albumów, które osiągnęły największy przychód.",
+    "Here are the top 20 departments, which gained the most income.": "Oto 20 oddziałów, które osiągnęły największy przychód.",
+    "Summary of transactions in this month.": "Podsumowanie transakcji z tego miesiąca",
+    "Date": "Data",
+    "Total income": "Przychód",
+    "Total outcome": "Rozchód",
+    "Total profit": "Zysk",
+    "Department": "Oddział",
+    "Income": "Przychód",
+    "Average price": "Średnia cena",
+    "Count": "Liczba",
+    "Cover": "Okładka",
+    "Title": "Tytuł"
 }

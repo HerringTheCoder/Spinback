@@ -35,5 +35,8 @@ Route::get('settings', 'UserController@settings')->name('users.settings');
 Route::post('settings/change_password', 'UserController@changePassword')->name('users.change_password');
 Route::post('settings/default_department', 'UserController@setDefaultDepartment')->name('users.default_department');
 
+Route::get('reports/albums', 'ReportController@albums')->name('reports.albums');
+Route::get('reports/departments', 'ReportController@departments')->name('reports.departments');
+Route::get('reports/monthly', 'ReportController@monthly')->name('reports.monthly');
 
 Route::get('search/albums', 'AlbumController@search')->name('albums.search');

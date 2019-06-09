@@ -38,6 +38,22 @@
         <a class="item {{ request()->is('users*') ? 'active' : '' }}" href="{{ route('users.index') }}">
             <b>{{ __('dashboard.nav.users') }}</b>
         </a>
+        <div class="item">
+            <div class="header">
+                {{ __('Reports') }}
+            </div>
+            <div class="menu">
+                <a class="item {{ request()->is('reports/albums') ? 'active' : '' }}" href="{{ route('reports.albums') }}">
+                    {{ __('Albums report') }}
+                </a>
+                <a class="item {{ request()->is('reports/departments') ? 'active' : '' }}" href="{{ route('reports.departments') }}">
+                    {{ __('Departments report') }}
+                </a>
+                <a class="item {{ request()->is('reports/monthly') ? 'active' : '' }}" href="{{ route('reports.monthly') }}">
+                    {{ __('Monthly report') }}
+                </a>
+            </div>
+        </div>
         <a class="item {{ request()->is('about') ? 'active' : '' }}" href="{{ route('about') }}">
             <b>{{ __('dashboard.nav.about') }}</b>
         </a>
