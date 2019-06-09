@@ -29,13 +29,13 @@
                     <td>
                         {{ $album->title }}
                     </td>
-                    <td>
+                    <td data-sort-value="{{ $album->total }}">
                         <strong>{{ $album->total }} PLN</strong>
                     </td>
-                    <td>
+                    <td data-sort-value="{{ round($album->avg) }}">
                         {{ round($album->avg, 2) }} PLN
                     </td>
-                    <td>
+                    <td data-sort-value="{{ $album->count }}">
                         {{ $album->count }}
                     </td>
                 </tr>

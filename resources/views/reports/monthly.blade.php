@@ -21,13 +21,13 @@
                     <td>
                         {{ $result->date }}
                     </td>
-                    <td>
+                    <td data-sort-value="{{ $result->total_income }}">
                         {{ $result->total_income }} PLN
                     </td>
-                    <td>
+                    <td data-sort-value="{{ $result->total_outcome }}">
                         {{ $result->total_outcome }} PLN
                     </td>
-                    <td>
+                    <td data-sort-value="{{ $result->total_income - $result->total_outcome }}">
                         {{ $result->total_income - $result->total_outcome }} PLN
                     </td>
                 </tr>

@@ -25,13 +25,13 @@
                     <td>
                         {{ $department->name }}
                     </td>
-                    <td>
+                    <td data-sort-value="{{ $department->total }}">
                         <strong>{{ $department->total }} PLN</strong>
                     </td>
-                    <td>
+                    <td data-sort-value="{{ round($department->avg) }}">
                         {{ round($department->avg, 2) }} PLN
                     </td>
-                    <td>
+                    <td data-sort-value="{{ $department->count }}">
                         {{ $department->count }}
                     </td>
                 </tr>
