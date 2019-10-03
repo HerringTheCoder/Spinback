@@ -1,1 +1,141 @@
-@import "auth";
+@import 'auth';
+
+.dashboard {
+    display: grid;
+    grid-template-columns: 18rem 1fr;
+    grid-template-rows: 56px 1fr;
+    grid-template-areas:
+        'navigation header'
+        'navigation main';
+    height: 100vh;
+}
+
+header.header {
+    grid-area: header;
+    background: #474747;
+
+    .menu {
+        height: 100% !important;
+        margin: 0 !important;
+    }
+
+    .item:last-child {
+        margin-right: 0 !important;
+    }
+}
+
+aside.navigation {
+    grid-area: navigation;
+    background: #1b1c1d;
+
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+
+    .menu {
+        border-radius: 0 !important;
+        margin: 0 !important;
+    }
+
+    .item.logo-wrapper {
+        text-align: center;
+
+        .logo {
+            display: inline-block !important;
+        }
+    }
+
+    .close-menu {
+        display: none !important;
+    }
+
+    footer {
+        text-align: center;
+        color: #555;
+        padding-bottom: 15px;
+        margin-top: 10px;
+        background: linear-gradient(#1b1c1d, #111);
+    }
+}
+
+main.main {
+    position: relative;
+    grid-area: main;
+    padding: 0.8rem;
+}
+
+.home-background {
+    position: absolute;
+    width: 100%;
+    height: 120px;
+    margin: -0.8rem;
+
+    background: linear-gradient(#ddd, #fff);
+}
+
+// .home-background + div {
+//     margin-top: 0.5em !important;
+// }
+
+@media only screen and (max-width: 767px) {
+    .dashboard {
+        grid-template-columns: 100%;
+        grid-template-areas:
+            'header'
+            'main';
+    }
+
+    aside.navigation {
+        display: none;
+    }
+
+    .mobile-hidden {
+        display: none !important;
+    }
+
+    .dashboard.mobile-menu {
+        grid-template-columns: 100%;
+        grid-template-rows: 100%;
+        grid-template-areas: 'navigation';
+
+        main.main,
+        header.header,
+        aside.navigation footer {
+            display: none;
+        }
+
+        aside.navigation {
+            display: block;
+        }
+
+        .close-menu {
+            display: block !important;
+        }
+    }
+
+    .header .icon.sign-out {
+        margin: 0 !important;
+    }
+
+    .resource .controls > * {
+        display: block !important;
+        float: none !important;
+        margin: 5px 0 !important;
+    }
+}
+
+.pagination {
+    margin-bottom: 1em;
+}
+
+.pagination:after {
+    content: '.';
+    display: block;
+    height: 0;
+    clear: both;
+    visibility: hidden;
+}
+
+.ui.search > .results .result .image {
+    width: auto !important;
+}

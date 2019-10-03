@@ -16,7 +16,8 @@ class CreateParcelsTable extends Migration
         Schema::create('parcels', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('tracking_code');
-            $table->boolean('completed');
+            $table->boolean('completed')->default(0);
+            $table->softDeletes();
             $table->timestamps();
         });
     }

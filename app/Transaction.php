@@ -3,23 +3,24 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
-
+use Illuminate\Database\Eloquent\SoftDeletes;
 class Transaction extends Model
 {
-    protected $guarded = ['id', 'created_at', 'updated_at'];
+    use SoftDeletes;
+    protected $fillable = ['department_id', 'user_id', 'disc_id', 'price', 'operation_type', 'payment_type'];
 
     public function department()
     {
-        $this->belongsTo('App/Department');
+        return $this->belongsTo('App\Department')->withTrashed();
     }
 
     public function user()
     {
-        $this->belongsTo('App/User');
+        return $this->belongsTo('App\User')->withTrashed();
     }
 
     public function disc()
     {
-        $this->belongsTo('App/Disc');
+        return $this->belongsTo('App\Disc')->withTrashed();
     }
 }

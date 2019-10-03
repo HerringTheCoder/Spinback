@@ -1,6 +1,7 @@
-@extends('layouts.app')
+@extends('layouts.master')
 
-@section('content')
+@section('title', 'Login')
+@section('body')
 <div class="ui grid middle aligned center aligned auth">
     <div class="column">
         <img src="{{ asset('images/spinback-300.png') }}" title="Spinback" class="logo">
@@ -40,16 +41,31 @@
         <div class="container">
             <a href="{{ route('locale', ['locale' => 'pl']) }}">
                 <button class="ui button">
-                    <i class="pl flag"></i> polski
+                    <i class="pl flag"></i> Polski
                 </button>
             </a>
             
             <a href="{{ route('locale', ['locale' => 'en']) }}">
-                    <button class="ui button">
+                <button class="ui button">
                     <i class="uk flag"></i> English
                 </button>
             </a>
+
+        
+            <div class="ui basic segment">
+                <p>
+                    <i class="question circle icon" data-position="top center" data-content="@lang('auth.help')" data-inverted=""></i>
+                    <a href="{{ route('password.request') }}">@lang('auth.forgot')</a>
+                </p>
+            </div>
         </div>
+        
     </div>
 </div>
 @endsection
+
+@push('scripts')
+    <script>
+        $('.question.circle.icon').popup();
+    </script>
+@endpush

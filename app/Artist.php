@@ -3,12 +3,17 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Artist extends Model
 {
-    protected $fillable=[
-        'name', 'country', 'description'
-        ];
+    use SoftDeletes;
+
+    public $incrementing = false;
+
+    protected $fillable = [
+        'id', 'name', 'country', 'description'
+    ];
 
     public function metadata()
     {

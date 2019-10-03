@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\Hash;
 use App\User;
 
 class UsersTableSeeder extends Seeder
@@ -21,7 +22,7 @@ class UsersTableSeeder extends Seeder
                     'first_name' => 'Jan',
                     'last_name' => 'Kowalski',
                     'password' => Hash::make('secret'),
-                    'email' => 'admin@mail.com',
+                    'email' => 'admin@example.com',
                     'email_verified_at' => \Carbon\Carbon::createFromDate(2000,01,01)->toDateTimeString(),
 
                 ]
@@ -30,7 +31,12 @@ class UsersTableSeeder extends Seeder
             ];
         foreach ($data as $row) {
             $model = User::firstOrNew(["id" => $row["id"]]);
-            Bouncer::assign('user')->to($model);
+            if($model->id!==1) {
+                Bouncer::assign('user')->to($model);
+            }
+            else {
+                Bouncer::assign('admin')->to($model);
+            }
             $model->fill($row);
             $model->save();
         }

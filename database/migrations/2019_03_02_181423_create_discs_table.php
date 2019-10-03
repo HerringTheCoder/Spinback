@@ -15,14 +15,15 @@ class CreateDiscsTable extends Migration
     {
         Schema::create('discs', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->bigInteger('metadata_id')->unsigned();
-            $table->foreign('metadata_id')->references('id')->on('metadata');
-            $table->string('condition');
-            $table->string('photo_path');
+            $table->uuid('album_id');
+            $table->foreign('album_id')->references('id')->on('albums');
+            $table->string('condition')->nullable();
+            $table->string('photo_path')->nullable();
             $table->integer('offer_price')->unsigned();
-            $table->boolean('sold');
+            $table->boolean('sold')->default(0);
             $table->bigInteger('department_id')->unsigned();
             $table->foreign('department_id')->references('id')->on('departments');
+            $table->softDeletes();
             $table->timestamps();
         });
     }

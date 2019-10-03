@@ -25,6 +25,7 @@ class CreateTransactionsTable extends Migration
             $table->integer('price')->unsigned();
             $table->string('operation_type'); //buy - sale
             $table->string('payment_type'); //credit card - money
+            $table->softDeletes();
             $table->timestamps();
         });
     }

@@ -3,28 +3,35 @@
 namespace App\Http\Controllers;
 
 use App\Artist;
+use App\Http\Requests\StoreArtist;
 use Illuminate\Http\Request;
+use App\Services\MetadataService;
 
 class ArtistController extends Controller
 {
+    private $metadataService;
+
+    public function __construct(MetadataService $metadataService)
+    {
+        $this->metadataService = $metadataService;
+        $this->authorizeResource(Artist::class);
+        $this->middleware('auth');
+    }
+
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        //
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
+        $query = Artist::query();
+        if ($request->filled('query')) {
+            $query->where('name', 'like', '%' . $request->input('query') . '%');
+        }
+        $query->orderBy('name', 'asc');
+        $artists = $query->simplePaginate(20);
+        return view('metadata.artists.index')->with('artists', $artists);
     }
 
     /**
@@ -33,43 +40,10 @@ class ArtistController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(StoreArtist $request)
     {
-        //
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Artist  $artist
-     * @return \Illuminate\Http\Response
-     */
-    public function show(Artist $artist)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Artist  $artist
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(Artist $artist)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Artist  $artist
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, Artist $artist)
-    {
-        //
+        $this->metadataService->addArtist($request->input('id'));
+        return redirect()->route('artists.index')->with('success', __('artists.successfully_stored'));
     }
 
     /**
@@ -80,6 +54,24 @@ class ArtistController extends Controller
      */
     public function destroy(Artist $artist)
     {
-        //
+        Log::info('Artist ' . $artist->name . ' deleted from database');
+        $artist->delete();
+        return redirect()->action('ArtistController@index')->with('success', __('artists.successfully_deleted'));
+    }
+
+    public function import(Request $request)
+    {
+        $artists = $this->metadataService->findArtists($request->input('query'));
+        return view('metadata.artists.results')->with('artists', $artists);
+    }
+
+    public function autocomplete(Request $request)
+    {
+        $artists = Artist::where('name', 'like', '%' . $request->input('query') . '%')->get();
+        return [
+            'results' => $artists->map(function ($item) {
+                return ['name' => $item->name];
+            })
+        ];
     }
 }

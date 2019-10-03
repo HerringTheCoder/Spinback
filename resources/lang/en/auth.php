@@ -19,7 +19,16 @@ return [
     'labels' => [
         'login' => 'Login',
         'password' => 'Password',
+        'repeat_password' => 'Repeat password',
         'submit' => 'Login',
+        'send_reset' => 'Send reset link',
+        'reset' => 'Reset password'
     ],
 
+    'reset_title' => 'Reset password',
+
+    'forgot' => 'Forgot your password?',
+    'back_to_login' => 'Back to the login page',
+
+    'help' => 'In order to use Spinback system, login is required. If you don\'t have an account, please contact administrator.'
 ];

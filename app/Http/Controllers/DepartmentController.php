@@ -3,10 +3,19 @@
 namespace App\Http\Controllers;
 
 use App\Department;
-use Illuminate\Http\Request;
+use App\Http\Requests\StoreDepartment;
+use App\Http\Requests\UpdateDepartment;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Log;
 
 class DepartmentController extends Controller
 {
+    public function __construct()
+    {
+        $this->authorizeResource(Department::class);
+        $this->middleware('auth');
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -14,17 +23,8 @@ class DepartmentController extends Controller
      */
     public function index()
     {
-        //
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
+        $departments = Department::all();
+        return view('departments.index', compact('departments'));
     }
 
     /**
@@ -33,20 +33,11 @@ class DepartmentController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(StoreDepartment $request)
     {
-        //
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Department  $department
-     * @return \Illuminate\Http\Response
-     */
-    public function show(Department $department)
-    {
-        //
+        $department = Department::create($request->validated());
+        Log::info('Department ' . $department->name . ' created by ' . Auth::user()->fullName);
+        return redirect()->route('departments.index')->with('success', __('departments.successfully_stored'));
     }
 
     /**
@@ -57,7 +48,7 @@ class DepartmentController extends Controller
      */
     public function edit(Department $department)
     {
-        //
+        return view('departments.edit', compact('department'));
     }
 
     /**
@@ -67,9 +58,10 @@ class DepartmentController extends Controller
      * @param  \App\Department  $department
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Department $department)
+    public function update(UpdateDepartment $request, Department $department)
     {
-        //
+        $department->update($request->validated());
+        return redirect()->route('departments.index')->with('success', __('departments.successfully_updated'));
     }
 
     /**
@@ -80,6 +72,8 @@ class DepartmentController extends Controller
      */
     public function destroy(Department $department)
     {
-        //
+        Log::info('Department ' . $department->name . ' deleted by ' . Auth::user()->fullName);
+        $department->delete();
+        return redirect()->route('departments.index')->with('success', __('departments.successfully_deleted'));
     }
 }
